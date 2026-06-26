@@ -2233,3 +2233,12 @@ strong.highlight-sweep.active::after {
         --card-gap: 20px;
     }
 }
+
+/* Unique Selling Proposition Layout Adjustments */
+@media (min-width: 992px) {
+    .usp-grid {
+        grid-template-columns: 0.85fr 1.15fr !important;
+        gap: var(--space-lg) !important;
+    }
+}
+

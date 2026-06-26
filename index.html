@@ -287,32 +287,105 @@
                             </div>
                         </div>
                         <div class="overview-visual-column">
-                            <div class="placeholder-frame ratio-4-3" id="conflict-frame-target">
-                                <svg class="reveal-element" viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; padding: 25px 35px;" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Grid lines -->
-                                    <line x1="60" y1="50" x2="360" y2="50" stroke="rgba(46, 46, 46, 0.05)" stroke-width="1" />
-                                    <line x1="60" y1="120" x2="360" y2="120" stroke="rgba(46, 46, 46, 0.05)" stroke-width="1" />
-                                    <line x1="60" y1="190" x2="360" y2="190" stroke="rgba(46, 46, 46, 0.05)" stroke-width="1" />
-                                    <line x1="60" y1="260" x2="360" y2="260" stroke="rgba(46, 46, 46, 0.15)" stroke-width="1.5" />
-                                    
-                                    <!-- Axis Labels -->
-                                    <text x="50" y="54" font-family="var(--font-mono)" font-size="9" fill="var(--color-text-muted)" text-anchor="end">300k t</text>
-                                    <text x="50" y="124" font-family="var(--font-mono)" font-size="9" fill="var(--color-text-muted)" text-anchor="end">200k t</text>
-                                    <text x="50" y="194" font-family="var(--font-mono)" font-size="9" fill="var(--color-text-muted)" text-anchor="end">100k t</text>
-                                    <text x="50" y="264" font-family="var(--font-mono)" font-size="9" fill="var(--color-text-muted)" text-anchor="end">0</text>
-                                    
-                                    <!-- Bar 1: Consumption -->
-                                    <rect x="110" y="50" width="60" height="210" fill="var(--color-text-charcoal)" rx="4" />
-                                    <text x="140" y="40" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">300,000t</text>
-                                    <text x="140" y="280" font-family="var(--font-heading)" font-size="10" font-weight="600" fill="var(--color-text-charcoal)" text-anchor="middle">Consumed</text>
-                                    
-                                    <!-- Bar 2: Recycled -->
-                                    <rect x="250" y="240" width="60" height="20" fill="var(--color-keells-green)" rx="4" />
-                                    <text x="280" y="230" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--color-keells-green-dark)" text-anchor="middle">&lt;10%</text>
-                                    <text x="280" y="280" font-family="var(--font-heading)" font-size="10" font-weight="600" fill="var(--color-keells-green-dark)" text-anchor="middle">Recycled</text>
-                                </svg>
+                            <div class="infographic-container" id="conflict-frame-target">
+                                <!-- R&D Header Tag -->
+                                <div class="info-header-tag" style="opacity:0;">
+                                    <span>🍃</span> Research &amp; Development
+                                </div>
+
+                                <!-- 3 Subtle Particles -->
+                                <div class="floating-particle" style="top: 25%; left: 25%;"></div>
+                                <div class="floating-particle" style="top: 35%; left: 75%;"></div>
+                                <div class="floating-particle" style="top: 65%; left: 30%;"></div>
+
+                                <!-- Donut Chart Wrapper -->
+                                <div class="donut-chart-wrap">
+                                    <!-- SVG Donut & Callouts (ViewBox: 0 0 800 600) -->
+                                    <svg id="conflict-pie-root" viewBox="0 0 680 500"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         class="donut-svg"
+                                         style="overflow:visible; display:block;">
+                                        <defs>
+                                            <linearGradient id="arcGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop offset="0%" stop-color="#5CBF3A"/>
+                                                <stop offset="100%" stop-color="#89D548"/>
+                                            </linearGradient>
+                                            <filter id="greenGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                                <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#5CBF3A" flood-opacity="0.05"/>
+                                            </filter>
+                                        </defs>
+
+                                        <!-- Donut Chart -->
+                                        <!-- Matte Charcoal track (90% unrecycled) -->
+                                        <circle cx="340" cy="250" r="150"
+                                                fill="none" stroke="#3E3E3E" stroke-width="42" />
+
+                                        <!-- Green active segment (10% recycled) -->
+                                        <circle class="active-arc" cx="340" cy="250" r="150"
+                                                fill="none" stroke="url(#arcGreen)" stroke-width="42"
+                                                stroke-dasharray="942.48" stroke-dashoffset="942.48"
+                                                stroke-linecap="round"
+                                                transform="rotate(-90 340 250)" filter="url(#greenGlow)" />
+
+                                        <!-- ── Callout: 90% left (Horizontal center-left alignment) ── -->
+                                        <g class="callout-left" opacity="0">
+                                            <circle cx="169" cy="250" r="3" fill="#3E3E3E" class="glow-dot" />
+                                            <line class="callout-line" x1="169" y1="250" x2="95" y2="250"
+                                                  stroke="#3E3E3E" stroke-width="2" stroke-linecap="round"
+                                                  stroke-dasharray="74" stroke-dashoffset="74" />
+                                            <text x="85" y="242" text-anchor="end"
+                                                  font-family="'Outfit', sans-serif" font-size="28"
+                                                  font-weight="800" fill="#3E3E3E">90%</text>
+                                            <text x="85" y="265" text-anchor="end"
+                                                  font-family="'Inter', sans-serif" font-size="14"
+                                                  font-weight="500" fill="#6B7280">Unrecycled</text>
+                                        </g>
+
+                                        <!-- ── Callout: 10% right (Centered on green segment at -72deg) ── -->
+                                        <g class="callout-right" opacity="0">
+                                            <circle cx="393" cy="87" r="3" fill="#89D548" filter="url(#greenGlow)" class="glow-dot" />
+                                            <line class="callout-line" x1="393" y1="87" x2="470" y2="70"
+                                                  stroke="#5CBF3A" stroke-width="2" stroke-linecap="round"
+                                                  stroke-dasharray="79" stroke-dashoffset="79" />
+                                            <text x="480" y="65" text-anchor="start"
+                                                  font-family="'Outfit', sans-serif" font-size="28"
+                                                  font-weight="800" fill="#3D8B37">10%</text>
+                                            <text x="480" y="88" text-anchor="start"
+                                                  font-family="'Inter', sans-serif" font-size="14"
+                                                  font-weight="500" fill="#6B7280">Recycled</text>
+                                        </g>
+                                    </svg>
+
+                                    <!-- Donut Center HTML Overlay -->
+                                    <div class="donut-center-html">
+                                        <div class="center-number">0</div>
+                                        <div class="center-label-1">METRIC TONS</div>
+                                        <div class="center-label-2">CONSUMED / YEAR</div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Info Cards -->
+                                <div class="info-cards-wrap">
+                                    <!-- Left Card -->
+                                    <div class="info-card card-left" style="opacity: 0;">
+                                        <div class="card-icon">🗑️</div>
+                                        <div class="card-content">
+                                            <div class="card-val">90%</div>
+                                            <div class="card-lbl">Unrecycled</div>
+                                        </div>
+                                    </div>
+                                    <!-- Right Card -->
+                                    <div class="info-card card-right" style="opacity: 0;">
+                                        <div class="card-icon">♻️</div>
+                                        <div class="card-content">
+                                            <div class="card-val">10%</div>
+                                            <div class="card-lbl">Recycled</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -320,45 +393,129 @@
 <section id="slide-survey" class="slide-section" data-frame-target="#survey-frame-target" data-blob1-color="#3D8B37" data-blob1-x="15vw" data-blob1-y="30vh" data-blob1-scale="1.1" data-blob2-color="#FFD54A" data-blob2-x="-15vw" data-blob2-y="-10vh" data-blob2-scale="0.9">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-num">01.2 / Survey Analysis</span>
-                        <h2 class="split-line">Primary Survey Results & Demand Validation</h2>
+                        <span class="section-num">01.2 / Research Insights</span>
+                        <h2 class="split-line">Consumer Recycling Barriers</h2>
                     </div>
-                    <div class="grid grid-2">
+                    <div class="grid grid-2" style="align-items: start;">
+                        <!-- Left Side: Context & 4 Information Cards -->
                         <div class="overview-text-column">
-                            <div class="overview-box reveal-element" style="margin-bottom: var(--space-sm);">
-                                <span class="mono-label">Primary Survey Data</span>
-                                <h4>Verifying Consumer Motivation</h4>
-                                <p>A primary survey conducted with over 30+ respondents validated the demand for instant rewards. When asked: <em>"Would you use a machine that instantly rewards you for recycling a bottle?"</em>, <strong class="highlight-sweep">100% of respondents</strong> answered affirmatively. Additionally, <strong class="highlight-sweep">87% of respondents</strong> stated that the lack of convenient, incentivised drop-off points is their primary barrier to recycling plastic bottles regularly.</p>
+                            <div class="overview-box reveal-element" style="margin-bottom: 24px;">
+                                <span class="mono-label">RESEARCH INSIGHTS</span>
+                                <h4>Understanding the Challenges</h4>
+                                <p>Research consistently identifies several factors that influence recycling behaviour. Studies show that convenience, accessibility, consumer awareness, and incentives play a major role in determining whether people recycle plastic packaging. Improving these areas can significantly increase participation in recycling programmes and support a circular economy.</p>
                             </div>
-                            <div class="overview-box reveal-element">
-                                <span class="mono-label">Preferred Reward Channels</span>
-                                <h4>Incentive Preference Rankings</h4>
-                                <p>The survey surfaced strong user preference for instant grocery discounts (Nexus loyalty points) and mobile top-up reload credits over charitable donations. This directly shaped our choice of integrating the service with the John Keells Nexus loyalty program, matching the highest frequency shopper behavior.</p>
-                            </div>
-                        </div>
-                        <div class="overview-visual-column">
-                            <div class="placeholder-frame ratio-4-3 transparent-bg" id="survey-frame-target">
-                                <div class="concentric-rings-container">
-                                    <svg class="concentric-rings-svg" viewBox="0 0 200 200">
-                                        <!-- Grid lines -->
-                                        <line x1="100" y1="0" x2="100" y2="200" stroke="rgba(46, 46, 46, 0.05)" stroke-width="0.8" />
-                                        <line x1="0" y1="100" x2="200" y2="100" stroke="rgba(46, 46, 46, 0.05)" stroke-width="0.8" />
-                                        
-                                        <!-- Rings -->
-                                        <circle class="ring ring-1" cx="100" cy="100" r="30" stroke="rgba(109, 187, 69, 0.15)" stroke-width="1.5" fill="none" />
-                                        <circle class="ring ring-2" cx="100" cy="100" r="50" stroke="rgba(109, 187, 69, 0.25)" stroke-width="2" fill="none" />
-                                        <circle class="ring ring-3" cx="100" cy="100" r="70" stroke="rgba(109, 187, 69, 0.35)" stroke-width="2" fill="none" stroke-dasharray="4 2" />
-                                        <circle class="ring ring-4" cx="100" cy="100" r="85" stroke="var(--color-keells-green)" stroke-width="2.5" fill="none" />
-                                    </svg>
-                                    <!-- Center Label -->
-                                    <div class="concentric-center-label">
-                                        <div class="concentric-number">87%</div>
-                                        <div class="concentric-text">Barrier</div>
+                            
+                            <!-- 2x2 Information Cards Grid -->
+                            <div class="insights-grid reveal-element">
+                                <!-- Card 1: Convenience -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">🚶</div>
+                                        <h5>Convenience</h5>
                                     </div>
+                                    <p class="insight-card-desc">Easy access to recycling facilities is one of the strongest factors influencing recycling participation.</p>
+                                    <div class="insight-card-src">Source: OECD – Systematic Review of Plastic Packaging Recycling Behaviour</div>
                                 </div>
-                                <span class="frame-label" style="font-size: 0.75rem;">[ 87% identify lack of instant incentives as primary recycling barrier ]</span>
+                                
+                                <!-- Card 2: Accessibility -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">⏱</div>
+                                        <h5>Accessibility</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Consumers are more likely to recycle when recycling fits naturally into their daily routine.</p>
+                                    <div class="insight-card-src">Source: Household Recycling Barrier Studies</div>
+                                </div>
+                                
+                                <!-- Card 3: Incentives -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">💰</div>
+                                        <h5>Incentives</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Financial rewards, loyalty points, vouchers, and deposit-return systems have been shown to increase recycling participation.</p>
+                                    <div class="insight-card-src">Source: OECD Deposit Return System Guidance / Resources, Conservation & Recycling Journal</div>
+                                </div>
+                                
+                                <!-- Card 4: Knowledge & Awareness -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">♻</div>
+                                        <h5>Knowledge &amp; Awareness</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Clear instructions and public awareness improve correct recycling behaviour and reduce contamination.</p>
+                                    <div class="insight-card-src">Source: Systematic Review of Plastic Packaging Recycling Behaviour</div>
+                                </div>
                             </div>
                         </div>
+                        
+                        <!-- Right Side: Ecosystem Diagram & Insight Card -->
+                        <div class="overview-visual-column">
+                            <div class="ecosystem-diagram-card" id="survey-frame-target">
+                                <span class="frame-label" style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--color-keells-green-dark); font-weight: 600;">[ Research Summary ]</span>
+                                
+                                <!-- SVG Ecosystem Diagram (viewBox 0 0 500 400) -->
+                                <svg class="ecosystem-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" style="overflow:visible; display:block; width:100%; height:auto;">
+                                    <!-- Connection lines (connecting outer nodes to center node) -->
+                                    <line class="diag-link top-link" x1="250" y1="150" x2="250" y2="90" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    <line class="diag-link bottom-link" x1="250" y1="250" x2="250" y2="310" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    <line class="diag-link left-link" x1="200" y1="200" x2="150" y2="200" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    <line class="diag-link right-link" x1="300" y1="200" x2="350" y2="200" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    
+                                    <!-- Center Node: Recycling Behaviour -->
+                                    <g class="diag-node node-center" transform="translate(250, 200)">
+                                        <circle cx="0" cy="0" r="50" fill="#FFFFFF" stroke="#8BC34A" stroke-width="2" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="-12" font-family="'Outfit', sans-serif" font-size="22" fill="#3D8B37" text-anchor="middle">♻</text>
+                                        <text x="0" y="8" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#2E2E2E" text-anchor="middle">Recycling</text>
+                                        <text x="0" y="21" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#2E2E2E" text-anchor="middle">Behaviour</text>
+                                    </g>
+
+                                    <!-- Top Node: Convenience -->
+                                    <g class="diag-node node-top" transform="translate(250, 70)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Convenience</text>
+                                    </g>
+
+                                    <!-- Bottom Node: Accessibility -->
+                                    <g class="diag-node node-bottom" transform="translate(250, 330)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Accessibility</text>
+                                    </g>
+
+                                    <!-- Left Node: Awareness -->
+                                    <g class="diag-node node-left" transform="translate(90, 200)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Awareness</text>
+                                    </g>
+
+                                    <!-- Right Node: Incentives -->
+                                    <g class="diag-node node-right" transform="translate(410, 200)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Incentives</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            
+                            <!-- Key Research Finding Insight Card -->
+                            <div class="diagram-insight-card reveal-element">
+                                <div class="insight-card-header">
+                                    <div class="insight-icon-circle">💡</div>
+                                    <h5>Key Research Finding</h5>
+                                </div>
+                                <p class="insight-card-body">Multiple studies conclude that improving convenience, providing incentives, and increasing public awareness are among the most effective strategies for increasing consumer recycling participation. Reverse Vending Machines combine these elements by offering accessible collection points with immediate rewards.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Sources Footer -->
+                    <div class="sources-section reveal-element">
+                        <h6>Sources</h6>
+                        <ul>
+                            <li>OECD – Improving Recycling Markets</li>
+                            <li>OECD – Creating Incentives for Greener Products</li>
+                            <li>Resources, Conservation &amp; Recycling</li>
+                            <li>Drivers of and Barriers to Consumers' Plastic Packaging Recycling (2022)</li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -373,36 +530,114 @@
                         <table class="strategy-table" style="font-size: 0.75rem;">
                             <thead>
                                 <tr>
-                                    <th>Product / Initiative</th>
-                                    <th>Position & Limitations</th>
+                                    <th style="width: 40%;">Product / Initiative</th>
+                                    <th style="width: 60%;">Position & Market Analysis</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Plasticcycle (John Keells Group)</strong></td>
-                                    <td>Bin-based passive collection network — 300+ bins, 215,000+ kg collected since 2017. No individual incentive or instant feedback; relies entirely on voluntary disposal.</td>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Plasticcycle (John Keells Group)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-none" title="Reward System: Not Available">— Rewards</span>
+                                            <span class="comp-badge badge-none" title="Reverse Vending Machine: Not Available">— RVM</span>
+                                            <span class="comp-badge badge-partial" title="Retail Integration: Partial">○ Retail</span>
+                                            <span class="comp-badge badge-none" title="Mobile App: Not Available">— App</span>
+                                            <span class="comp-badge badge-none" title="Real-time Analytics: Not Available">— Analytics</span>
+                                            <span class="comp-badge badge-none" title="Loyalty Programme: Not Available">— Loyalty</span>
+                                            <span class="comp-badge badge-partial" title="Sustainability Reporting: Partial">○ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Plasticcycle is John Keells Group's plastic collection and recycling initiative, providing dedicated collection points across Sri Lanka to encourage responsible plastic disposal. The programme focuses on increasing plastic recovery through partnerships with recyclers and public awareness campaigns but does not provide consumers with immediate rewards or an integrated Reverse Vending Machine experience.</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Trash2Cash (Chakra Suthra, Sri Lanka)</strong></td>
-                                    <td>Sri Lanka’s first plastic-for-reward recycling system, exchanging plastic for mobile reload credit. Confirms local demand for incentivised recycling; no public RVM hardware network identified at scale.</td>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Trash2Cash (Chakra Suthra)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-avail" title="Reward System: Available">✓ Rewards</span>
+                                            <span class="comp-badge badge-partial" title="Reverse Vending Machine: Partial">○ RVM</span>
+                                            <span class="comp-badge badge-partial" title="Retail Integration: Partial">○ Retail</span>
+                                            <span class="comp-badge badge-partial" title="Mobile App: Partial">○ App</span>
+                                            <span class="comp-badge badge-partial" title="Real-time Analytics: Partial">○ Analytics</span>
+                                            <span class="comp-badge badge-partial" title="Loyalty Programme: Partial">○ Loyalty</span>
+                                            <span class="comp-badge badge-partial" title="Sustainability Reporting: Partial">○ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Trash2Cash is Sri Lanka's reward-based recycling platform that allows users to exchange recyclable materials for mobile reloads, vouchers, and other rewards. The initiative demonstrates growing local demand for incentive-based recycling and operates through collection partners and selected smart recycling locations.</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>TOMRA (Global Market Leader)</strong></td>
-                                    <td>91,000+ RVM installations across 60+ markets; deposit-return systems achieve up to 98% return rates. Enterprise-grade hardware, not localised for a Sri Lankan retail or CSR-partnership model.</td>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">TOMRA (Global Market Leader)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-avail" title="Reward System: Available">✓ Rewards</span>
+                                            <span class="comp-badge badge-avail" title="Reverse Vending Machine: Available">✓ RVM</span>
+                                            <span class="comp-badge badge-avail" title="Retail Integration: Available">✓ Retail</span>
+                                            <span class="comp-badge badge-avail" title="Mobile App: Available">✓ App</span>
+                                            <span class="comp-badge badge-avail" title="Real-time Analytics: Available">✓ Analytics</span>
+                                            <span class="comp-badge badge-partial" title="Loyalty Programme: Partial">○ Loyalty</span>
+                                            <span class="comp-badge badge-avail" title="Sustainability Reporting: Available">✓ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">TOMRA is the world's leading Reverse Vending Machine provider, supplying deposit-return technology across numerous countries. Its systems achieve very high bottle return rates where national Deposit Return Schemes exist. However, these solutions are designed primarily for regulated deposit markets and are not specifically tailored for Sri Lanka's retail environment.</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Tadweer (UAE)</strong></td>
-                                    <td>Government-backed RVM network paired with a consumer rewards app. Strong template for the hardware + app + CSR loop; not present in Sri Lanka.</td>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Tadweer (United Arab Emirates)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-avail" title="Reward System: Available">✓ Rewards</span>
+                                            <span class="comp-badge badge-partial" title="Reverse Vending Machine: Partial">○ RVM</span>
+                                            <span class="comp-badge badge-none" title="Retail Integration: Not Available">— Retail</span>
+                                            <span class="comp-badge badge-avail" title="Mobile App: Available">✓ App</span>
+                                            <span class="comp-badge badge-avail" title="Real-time Analytics: Available">✓ Analytics</span>
+                                            <span class="comp-badge badge-none" title="Loyalty Programme: Not Available">— Loyalty</span>
+                                            <span class="comp-badge badge-avail" title="Sustainability Reporting: Available">✓ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Tadweer operates government-supported recycling initiatives in the UAE, combining public recycling infrastructure with environmental awareness programmes. Their approach demonstrates how public-sector investment and digital engagement can strengthen recycling participation.</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Generic RVM Manufacturers (China/India)</strong></td>
-                                    <td>Off-the-shelf machines with barcode scanning, compaction, and printed/SMS coupons. Affordable hardware base, but no brand, no local partner network, no app ecosystem.</td>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Reverse Vending Machine Manufacturers</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-partial" title="Reward System: Partial">○ Rewards</span>
+                                            <span class="comp-badge badge-avail" title="Reverse Vending Machine: Available">✓ RVM</span>
+                                            <span class="comp-badge badge-none" title="Retail Integration: Not Available">— Retail</span>
+                                            <span class="comp-badge badge-none" title="Mobile App: Not Available">— App</span>
+                                            <span class="comp-badge badge-partial" title="Real-time Analytics: Partial">○ Analytics</span>
+                                            <span class="comp-badge badge-none" title="Loyalty Programme: Not Available">— Loyalty</span>
+                                            <span class="comp-badge badge-none" title="Sustainability Reporting: Not Available">— Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Several manufacturers from China, India, and other countries supply affordable Reverse Vending Machines with barcode scanning, bottle compaction, and cloud connectivity. These products generally require local software integration, retailer partnerships, and operational support before large-scale deployment.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="reveal-element" style="padding: 10px; background: rgba(109, 187, 69, 0.05); border-left: 3px solid var(--color-keells-green); border-radius: 4px;">
-                        <p style="font-size: 0.8rem; line-height: 1.4; color: var(--color-text-charcoal);"><strong>Key takeaway:</strong> No local player currently combines instant reward + retail-embedded placement + a corporate sustainability partner with an existing collection and processing network. Positioning the RVM service alongside Plasticcycle’s infrastructure fills this gap.</p>
+                    
+                    <!-- Key Takeaway Insight Card -->
+                    <div class="competitor-insight-card" style="margin-top: 24px; padding: 24px; background: #FFFFFF; border: 1.5px solid rgba(139, 195, 74, 0.25); border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.025);">
+                        <div class="insight-card-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <div class="insight-icon-circle" style="background: rgba(139, 195, 74, 0.1); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #3D8B37; flex-shrink: 0;">💡</div>
+                            <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--color-text-charcoal); margin: 0;">Key Market Insight</h5>
+                        </div>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #4A4A4A; margin: 0 0 12px 0;">Sri Lanka's recycling ecosystem already includes plastic collection programmes and reward-based recycling initiatives. However, there remains an opportunity to create a more integrated ecosystem that combines Reverse Vending Machines, supermarket loyalty programmes, real-time data analytics, sustainability reporting, and scalable retail deployment into a single consumer experience.</p>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #4A4A4A; margin: 0; font-weight: 500;">GreenLoop aims to strengthen the existing recycling ecosystem by bringing these components together through a modern, retailer-integrated platform rather than replacing current initiatives.</p>
+                    </div>
+
+                    <!-- Bottom Sources Footer -->
+                    <div class="sources-section reveal-element">
+                        <h6>Sources</h6>
+                        <ul>
+                            <li><a href="https://plasticcycle.lk/" target="_blank" rel="noopener noreferrer">John Keells Group – Plasticcycle</a></li>
+                            <li><a href="https://www.chakrasuthra.lk/trash2cash" target="_blank" rel="noopener noreferrer">Chakra Suthra – Trash2Cash</a></li>
+                            <li><a href="https://www.tomra.com/" target="_blank" rel="noopener noreferrer">TOMRA Collection</a></li>
+                            <li><a href="https://www.tadweer.ae/" target="_blank" rel="noopener noreferrer">Tadweer Group</a></li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -413,73 +648,201 @@
                         <span class="section-num">02.1 / USP</span>
                         <h2 class="split-line">Unique Selling Proposition</h2>
                     </div>
-                    <div class="grid grid-2">
+                    <div class="grid grid-2 usp-grid">
                         <div class="overview-text-column">
                             <div class="overview-box reveal-element" style="margin-bottom: var(--space-sm);">
-                                <span class="mono-label">The Core Concept Statement</span>
-                                <h4>"Recycling, Rewarded Instantly."</h4>
-                                <p>Green Loop is a Reverse Vending Machine (RVM) service that closes the loop between action and reward. It is designed to plug directly into the John Keells Group's sustainability network, providing users with immediate points, checkouts discounts, and environmental statistics in exchange for empty plastic bottles.</p>
+                                <span class="mono-label" style="font-weight: 700; letter-spacing: 1px;">The Core Concept Statement</span>
+                                <h4 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin-top: 8px; margin-bottom: 12px;">"Recycling, <strong class="highlight-sweep">Rewarded Instantly</strong>."</h4>
+                                <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-muted);">Green Loop is a Reverse Vending Machine (RVM) service that <strong class="highlight-sweep">closes the loop</strong> between action and reward. It is designed to plug directly into the John Keells Group's sustainability network, providing users with immediate points, checkout discounts, and environmental statistics in exchange for empty plastic bottles.</p>
                             </div>
                             <div class="overview-box reveal-element">
-                                <span class="mono-label">Service Core Goals</span>
-                                <h4>Driving Circular Action</h4>
-                                <p>Instead of relying on a person's voluntary environmental good intentions, the RVM turns recycling into an immediate transaction. It is a premium product experience that bridges the physical action of dropping a bottle and the digital receipt of loyalty incentives, creating a repeatable habit loop.</p>
+                                <span class="mono-label" style="font-weight: 700; letter-spacing: 1px;">Service Core Goals</span>
+                                <h4 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin-top: 8px; margin-bottom: 12px;">Driving <strong class="highlight-sweep">Circular Action</strong></h4>
+                                <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-muted);">Instead of relying on a person's voluntary environmental good intentions, the RVM turns recycling into an <strong class="highlight-sweep">immediate transaction</strong>. It is a premium product experience that bridges the physical action of dropping a bottle and the digital receipt of loyalty incentives, creating a <strong class="highlight-sweep">repeatable habit loop</strong>.</p>
                             </div>
                         </div>
                         <div class="overview-visual-column" style="display: flex; align-items: center; justify-content: center;">
-                            <div id="usp-frame-target" class="placeholder-frame ratio-4-3" style="width: 100%;">
-                                <svg class="reveal-element" viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; padding: 25px;" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Background Elements -->
-                                    <circle cx="200" cy="150" r="140" fill="none" stroke="rgba(109, 187, 69, 0.03)" stroke-width="1" />
-                                    <circle cx="200" cy="150" r="90" fill="none" stroke="rgba(109, 187, 69, 0.03)" stroke-width="1" />
-                                    
-                                    <!-- Flow 1: Traditional Passive Bins -->
-                                    <text x="25" y="40" font-family="var(--font-mono)" font-size="9" font-weight="700" fill="var(--color-text-muted)" letter-spacing="1">A. TRADITIONAL PASSIVE BIN</text>
-                                    <g transform="translate(25, 55)">
-                                        <!-- Node 1 -->
-                                        <rect x="0" y="0" width="80" height="35" rx="6" fill="#E5E7EB" stroke="rgba(46, 46, 46, 0.1)" stroke-width="1" />
-                                        <text x="40" y="21" font-family="var(--font-heading)" font-size="10" font-weight="600" fill="var(--color-text-charcoal)" text-anchor="middle">1. Discard</text>
-                                        
-                                        <!-- Connector -->
-                                        <line x1="80" y1="17.5" x2="130" y2="17.5" stroke="rgba(46, 46, 46, 0.2)" stroke-width="1.5" stroke-dasharray="3 3" />
-                                        <polygon points="130,17.5 125,14 125,21" fill="rgba(46, 46, 46, 0.4)" />
-                                        
-                                        <!-- Node 2 -->
-                                        <rect x="130" y="0" width="80" height="35" rx="6" fill="#E5E7EB" stroke="rgba(46, 46, 46, 0.1)" stroke-width="1" />
-                                        <text x="170" y="21" font-family="var(--font-heading)" font-size="10" font-weight="600" fill="var(--color-text-charcoal)" text-anchor="middle">2. Passive Bin</text>
-                                        
-                                        <!-- Connector -->
-                                        <line x1="210" y1="17.5" x2="260" y2="17.5" stroke="rgba(46, 46, 46, 0.2)" stroke-width="1.5" stroke-dasharray="3 3" />
-                                        <polygon points="260,17.5 255,14 255,21" fill="rgba(46, 46, 46, 0.4)" />
-                                        
-                                        <!-- Node 3 (No reward) -->
-                                        <rect x="260" y="0" width="90" height="35" rx="6" fill="rgba(239, 68, 68, 0.05)" stroke="rgba(239, 68, 68, 0.2)" stroke-width="1" />
-                                        <text x="305" y="21" font-family="var(--font-heading)" font-size="10" font-weight="700" fill="#EF4444" text-anchor="middle">No Incentive</text>
+                            <div id="usp-frame-target" class="placeholder-frame ratio-4-3" style="width: 100%; border-radius: 24px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1.2px solid rgba(92, 191, 67, 0.12); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.03); overflow: visible; padding: 24px;">
+                                <svg class="usp-svg" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block; overflow: visible;">
+                                    <defs>
+                                        <!-- Glow Filters -->
+                                        <filter id="usp-glow-green" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="6" result="blur" />
+                                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                        </filter>
+                                        <filter id="usp-glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="5" result="blur" />
+                                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                        </filter>
+                                    </defs>
+
+                                    <!-- HUD Blueprint Grid & Markings (Opacity < 3%) -->
+                                    <g class="hud-blueprint" opacity="0.02" style="pointer-events: none;">
+                                        <!-- Grid -->
+                                        <pattern id="usp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2E2E2E" stroke-width="0.5" />
+                                        </pattern>
+                                        <rect x="0" y="0" width="680" height="500" fill="url(#usp-grid)" />
+
+                                        <!-- Tech Measurement Rings & Orbit Lines (Only faint central blueprint circle) -->
+                                        <circle cx="340" cy="250" r="140" fill="none" stroke="#2E2E2E" stroke-width="0.8" />
                                     </g>
-                                    
-                                    <!-- Flow 2: Green Loop Active System -->
-                                    <text x="25" y="160" font-family="var(--font-mono)" font-size="9" font-weight="700" fill="var(--color-keells-green-dark)" letter-spacing="1">B. GREEN LOOP ACTIVE SYSTEM</text>
-                                    <g transform="translate(25, 175)">
-                                        <!-- Node 1 -->
-                                        <rect x="0" y="0" width="80" height="35" rx="6" fill="var(--color-keells-green-light)" stroke="rgba(109, 187, 69, 0.3)" stroke-width="1" />
-                                        <text x="40" y="21" font-family="var(--font-heading)" font-size="10" font-weight="600" fill="var(--color-keells-green-dark)" text-anchor="middle">1. Deposit</text>
+
+                                    <!-- Process Flow Headers -->
+                                    <g class="flow-headers">
+                                        <text x="40" y="55" font-family="var(--font-heading)" font-size="9" font-weight="800" fill="#8E8E93" letter-spacing="1.2">TRADITIONAL PASSIVE BIN</text>
+                                        <line x1="40" y1="65" x2="640" y2="65" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="2 4" />
                                         
-                                        <!-- Connector -->
-                                        <line x1="80" y1="17.5" x2="130" y2="17.5" stroke="var(--color-keells-green)" stroke-width="1.5" />
-                                        <polygon points="130,17.5 125,14 125,21" fill="var(--color-keells-green-dark)" />
-                                        
-                                        <!-- Node 2 -->
-                                        <rect x="130" y="0" width="80" height="35" rx="6" fill="var(--color-keells-green-light)" stroke="rgba(109, 187, 69, 0.3)" stroke-width="1" />
-                                        <text x="170" y="21" font-family="var(--font-heading)" font-size="10" font-weight="600" fill="var(--color-keells-green-dark)" text-anchor="middle">2. Scan & Crush</text>
-                                        
-                                        <!-- Connector -->
-                                        <line x1="210" y1="17.5" x2="260" y2="17.5" stroke="var(--color-keells-green)" stroke-width="1.5" />
-                                        <polygon points="260,17.5 255,14 255,21" fill="var(--color-keells-green-dark)" />
-                                        
-                                        <!-- Node 3 (Rewards) -->
-                                        <rect x="260" y="0" width="90" height="35" rx="6" fill="var(--color-keells-green)" stroke="var(--color-keells-green-dark)" stroke-width="1.5" />
-                                        <text x="305" y="21" font-family="var(--font-heading)" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">Nexus Points</text>
+                                        <text x="40" y="225" font-family="var(--font-heading)" font-size="9" font-weight="800" fill="#5CBF43" letter-spacing="1.2">GREENLOOP SMART RECYCLING SYSTEM</text>
+                                        <line x1="40" y1="235" x2="640" y2="235" stroke="rgba(92, 191, 67, 0.15)" stroke-width="1" />
                                     </g>
+
+                                    <!-- Process Connectors: Top Flow (Traditional Recycling) -->
+                                    <g class="traditional-connectors">
+                                        <line class="connector-dash" x1="185" y1="120" x2="275" y2="120" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="3 3" />
+                                        <line class="connector-dash" x1="405" y1="120" x2="495" y2="120" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="3 3" />
+                                    </g>
+
+                                    <!-- Process Connectors: Bottom Flow (GreenLoop Active System) -->
+                                    <g class="greenloop-connectors">
+                                        <!-- Smooth curves dipping slightly -->
+                                        <path class="flow-path link-1" d="M 133,345 Q 141.25,353 149.5,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+                                        <path class="flow-path link-2" d="M 265.5,345 Q 273.75,353 282,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+                                        <path class="flow-path link-3" d="M 398,345 Q 406.25,353 414.5,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+                                        <path class="flow-path link-4" d="M 530.5,345 Q 538.75,353 547,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+
+                                        <!-- Glowing pulse paths (animated dashoffset) -->
+                                        <path class="flow-pulse pulse-1" d="M 133,345 Q 141.25,353 149.5,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                        <path class="flow-pulse pulse-2" d="M 265.5,345 Q 273.75,353 282,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                        <path class="flow-pulse pulse-3" d="M 398,345 Q 406.25,353 414.5,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                        <path class="flow-pulse pulse-4" d="M 530.5,345 Q 538.75,353 547,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                    </g>
+
+                                    <!-- FLOW 1 NODES: Traditional Flow -->
+                                    <g class="traditional-nodes">
+                                        <!-- Node 1: Discard -->
+                                        <g class="usp-node node-traditional node-discard" transform="translate(120, 120)">
+                                            <rect x="-65" y="-28" width="130" height="56" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+                                            <!-- Trash Icon -->
+                                            <g transform="translate(-40, 0)">
+                                                <circle cx="0" cy="0" r="10" fill="#F4F4F5" />
+                                                <path d="M -4,-5 L 4,-5 L 3.5,5 L -3.5,5 Z M -2,-5 L -2,3 M 2,-5 L 2,3 M -5,-6 L 5,-6" fill="none" stroke="#8E8E93" stroke-width="1" stroke-linecap="round" />
+                                            </g>
+                                            <text x="-22" y="-2" font-family="var(--font-heading)" font-size="11.5" font-weight="700" fill="#1A1A1A">Discard</text>
+                                            <text x="-22" y="14" font-family="var(--font-body)" font-size="9" font-weight="500" fill="#8E8E93">Landfill waste</text>
+                                        </g>
+
+                                        <!-- Node 2: Passive Bin -->
+                                        <g class="usp-node node-traditional node-passive-bin" transform="translate(340, 120)">
+                                            <rect x="-65" y="-28" width="130" height="56" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+                                            <!-- Bin Icon -->
+                                            <g transform="translate(-40, 0)">
+                                                <circle cx="0" cy="0" r="10" fill="#F4F4F5" />
+                                                <path d="M -5,-4 L 5,-4 L 4,5 L -4,5 Z M -6,-5 L 6,-5 M -2,-4 L -2,3 M 2,-4 L 2,3" fill="none" stroke="#8E8E93" stroke-width="1" stroke-linecap="round" />
+                                            </g>
+                                            <text x="-22" y="-2" font-family="var(--font-heading)" font-size="11.5" font-weight="700" fill="#1A1A1A">Passive Bin</text>
+                                            <text x="-22" y="14" font-family="var(--font-body)" font-size="9" font-weight="500" fill="#8E8E93">No sorting</text>
+                                        </g>
+
+                                        <!-- Node 3: No Reward (Warning / Alert) -->
+                                        <g class="usp-node node-traditional node-no-reward" transform="translate(560, 120)">
+                                            <rect x="-65" y="-28" width="130" height="56" rx="10" fill="#FFF5F5" stroke="#FF5C5C" stroke-width="1.5" />
+                                            <!-- Warning Icon -->
+                                            <g transform="translate(-40, 0)">
+                                                <circle cx="0" cy="0" r="10" fill="#FFEAE8" />
+                                                <path d="M 0,-4 L 0,1 M 0,3 L 0,4" fill="none" stroke="#FF5C5C" stroke-width="1.2" stroke-linecap="round" />
+                                                <path d="M -1,-4 H 1 M -1.5,3.5 H 1.5" fill="none" stroke="#FF5C5C" stroke-width="1" />
+                                            </g>
+                                            <text x="-22" y="-2" font-family="var(--font-heading)" font-size="11.5" font-weight="700" fill="#FF5C5C">No Reward</text>
+                                            <text x="-22" y="14" font-family="var(--font-body)" font-size="9" font-weight="500" fill="#8E8E93">Zero feedback</text>
+                                        </g>
+                                    </g>
+
+                                    <!-- FLOW 2 NODES: GreenLoop Smart System -->
+                                    <g class="greenloop-nodes">
+                                        <!-- Node 1: Deposit Bottle -->
+                                        <g class="usp-node node-greenloop node-deposit" transform="translate(75, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Bottle Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M -2,-5 L 2,-5 L 2,-3 L 3.5,-1 L 3.5,5 L -3.5,5 L -3.5,-1 L -2,-3 Z M -2,-1 H 2 M -2,2 H 2" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Deposit Bottle</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">Plastic Accepted</text>
+                                        </g>
+
+                                        <!-- Node 2: AI Material Scan -->
+                                        <g class="usp-node node-greenloop node-scan" transform="translate(207.5, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Scanner Eye Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M -6,0 C -3,-4 3,-4 6,0 C 3,4 -3,4 -6,0 Z" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                                <circle cx="0" cy="0" r="2.5" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                            </g>
+                                            <!-- Vertical Scanning Line Overlay inside clip path -->
+                                            <g clip-path="url(#card-clip-2)">
+                                                <line class="scan-line" x1="-56" y1="-44" x2="56" y2="-44" stroke="#7ED957" stroke-width="1.5" style="opacity: 0; filter: drop-shadow(0 0 3px #7ED957);" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">AI Material Scan</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">PET, weight scan</text>
+                                            
+                                            <!-- Sub-status checkmarks group below card -->
+                                            <g class="scan-checklist" transform="translate(0, 64)" opacity="0">
+                                                <rect x="-48" y="-8" width="96" height="42" rx="6" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.15)" stroke-width="1" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.02));" />
+                                                <text class="check-item check-pet" x="-36" y="4" font-family="var(--font-mono)" font-size="7.5" font-weight="700" fill="#8E8E93">PET</text>
+                                                <text class="check-item check-label" x="-10" y="4" font-family="var(--font-mono)" font-size="7.5" font-weight="700" fill="#8E8E93">LABEL</text>
+                                                <text class="check-item check-weight" x="22" y="4" font-family="var(--font-mono)" font-size="7.5" font-weight="700" fill="#8E8E93">WT</text>
+                                                <text class="check-item check-verified" x="0" y="24" font-family="var(--font-heading)" font-size="8.5" font-weight="800" fill="#8E8E93" text-anchor="middle">WAITING</text>
+                                            </g>
+                                        </g>
+
+                                        <!-- Node 3: Material Verification -->
+                                        <g class="usp-node node-greenloop node-verify" transform="translate(340, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Shield Check Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M -5,-5 C -1,-5 0,-7 0,-7 C 0,-7 1,-5 5,-5 C 5,-1 3.5,3.5 0,5 C -3.5,3.5 -5,-1 -5,-5 Z M -2,-1 L -0.5,0.5 L 2.5,-2.5" fill="none" stroke="#5CBF43" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Verification</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">Instant checks</text>
+                                        </g>
+
+                                        <!-- Node 4: Smart Crushing -->
+                                        <g class="usp-node node-greenloop node-crush" transform="translate(472.5, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Crusher/Gear Icon -->
+                                            <g transform="translate(0, -22)" class="crush-gear-g">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <circle cx="0" cy="0" r="4" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                                <path d="M 0,-7 L 0,-4 M 0,4 L 0,7 M -7,0 L -4,0 M 4,0 L 7,0 M -5,-5 L -3,-3 M 3,3 L 5,5 M -5,5 L -3,3 M 3,-3 L 5,-5" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Smart Crushing</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">Volume reduced</text>
+                                        </g>
+
+                                        <!-- Node 5: Instant Nexus Points -->
+                                        <g class="usp-node node-greenloop node-reward" transform="translate(605, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Reward Star Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M 0,-6 L 1.8,-1.8 L 6,-1.8 L 2.6,1 L 3.8,5.2 L 0,2.6 L -3.8,5.2 L -2.6,1 L -6,-1.8 L -1.8,-1.8 Z" fill="none" stroke="#5CBF43" stroke-width="1" stroke-linejoin="round" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Nexus Points</text>
+                                            <text class="rewards-text-sub" x="0" y="31" font-family="var(--font-mono)" font-size="11" font-weight="800" fill="#5CBF43" text-anchor="middle">+0 PTS</text>
+                                        </g>
+                                    </g>
+
+                                    <!-- Subtle Pulse Ring for Reward Activation -->
+                                    <circle class="reward-pulse-ring" cx="605" cy="345" r="58" fill="none" stroke="#5CBF43" stroke-width="1.2" opacity="0" pointer-events="none" />
+
+                                    <!-- Clip path definition for AI Scan module scanning bounds -->
+                                    <clipPath id="card-clip-2">
+                                        <rect x="-57" y="-46" width="114" height="92" rx="11" />
+                                    </clipPath>
                                 </svg>
                             </div>
                         </div>
@@ -1886,5 +2249,566 @@
 
     <!-- JS script -->
     <script src="script.js?v=3.1"></script>
+
+    <!-- Animated Donut Chart Styles + Logic -->
+    <style>
+        /* Custom layout columns for the conflict section */
+        #slide-conflict .grid-2 {
+            grid-template-columns: 1fr 1.3fr;
+            align-items: center;
+        }
+
+        /* Infographic Container */
+        .infographic-container {
+            position: relative;
+            width: 100%;
+            max-width: 560px; /* Reduced card frame size */
+            margin: 0 auto; /* Centered in column */
+            background-color: #FAFAFA !important;
+            border: 1px solid rgba(139, 195, 74, 0.4);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+            padding: 56px 40px 40px 40px; /* Generous whitespace */
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+        }
+        .infographic-container:hover {
+            box-shadow: 0 24px 68px rgba(0,0,0,0.07);
+        }
+
+        /* Floating R&D Header Tag */
+        .info-header-tag {
+            position: absolute;
+            top: 24px;
+            left: 40px; /* Aligned with left border padding boundary */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 195, 74, 0.25);
+            border-radius: 12px;
+            padding: 4px 10px; /* Slightly reduced padding */
+            font-family: var(--font-heading); /* Outfit */
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #3D8B37;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            z-index: 10;
+        }
+
+        /* Donut Chart Wrap / Center elements */
+        .donut-chart-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 480px; /* Scaled down wrapper for visual compacting */
+            aspect-ratio: 680 / 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+            margin: 20px auto 0 auto;
+        }
+        .donut-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .donut-chart-wrap:hover .donut-svg {
+            transform: scale(1.02);
+        }
+
+        /* Donut Center HTML Overlay */
+        .donut-center-html {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .center-number {
+            font-family: var(--font-heading); /* Outfit */
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800;
+            color: #2E2E2E;
+            line-height: 1;
+            margin-bottom: 6px; /* Adjusted spacing */
+        }
+        .center-label-1 {
+            font-family: var(--font-body); /* Inter */
+            font-size: 0.58rem; /* 9px */
+            font-weight: 700;
+            color: #8E8E93;
+            letter-spacing: 2px;
+            margin-bottom: 4px; /* Adjusted spacing */
+        }
+        .center-label-2 {
+            font-family: var(--font-body); /* Inter */
+            font-size: 0.58rem; /* 9px */
+            font-weight: 700;
+            color: #8E8E93;
+            letter-spacing: 1.5px;
+        }
+
+        /* Bottom Cards Wrap */
+        .info-cards-wrap {
+            width: 100%;
+            display: flex;
+            gap: 32px; /* Increased gap */
+            margin-top: 24px;
+            z-index: 5;
+        }
+        .info-card {
+            flex: 1;
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.025); /* Clean shadow instead of borders */
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            height: 64px; /* Reduced height */
+        }
+        .info-card:hover {
+            transform: translateY(-4px); /* Subtle hover elevation */
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+        }
+        .card-icon {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .card-val {
+            font-family: var(--font-heading); /* Outfit */
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .card-left .card-val {
+            color: #3E3E3E;
+        }
+        .card-right .card-val {
+            color: #3D8B37;
+        }
+        .card-lbl {
+            font-family: var(--font-body); /* Inter */
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #6B7280;
+            margin-top: 2px;
+        }
+
+        /* Floating Particles */
+        .floating-particle {
+            position: absolute;
+            width: 3px; /* Reduced size */
+            height: 3px;
+            background-color: #89D548;
+            border-radius: 50%;
+            opacity: 0.25; /* More subtle opacity */
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Interactive SVG text hover */
+        .callout-left text, .callout-right text {
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+
+        /* Active Arc Hover */
+        .active-arc {
+            transition: filter 0.5s ease;
+        }
+        .donut-chart-wrap:hover .active-arc {
+            filter: drop-shadow(0 3px 8px rgba(92,191,58,0.2)) !important; /* Subtle glow increase */
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            #slide-conflict .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .infographic-container {
+                padding: 32px 20px 24px 20px;
+            }
+            .info-header-tag {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+                width: fit-content;
+            }
+            .donut-chart-wrap {
+                aspect-ratio: 680 / 500;
+                margin-top: 0;
+            }
+            .info-cards-wrap {
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 16px;
+            }
+            .info-card {
+                width: 100%;
+            }
+        }
+
+        /* ── Research Insights Styling ── */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .insight-item-card {
+            background: #FFFFFF;
+            border: 1.5px solid rgba(139, 195, 74, 0.2);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .insight-item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(109, 187, 69, 0.08);
+            border-color: rgba(109, 187, 69, 0.4);
+        }
+        .insight-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .insight-icon-circle {
+            background: rgba(139, 195, 74, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #3D8B37;
+            flex-shrink: 0;
+        }
+        .insight-card-header h5 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text-charcoal);
+            margin: 0;
+        }
+        .insight-card-desc {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            line-height: 1.4;
+            color: #555555;
+            margin: 0;
+            flex-grow: 1;
+        }
+        .insight-card-src {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            line-height: 1.3;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-top: 1px dashed rgba(0,0,0,0.06);
+            padding-top: 6px;
+            margin-top: 4px;
+        }
+        .ecosystem-diagram-card {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            background: #FAFAFA !important;
+            border: 1px solid rgba(139, 195, 74, 0.4);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+            padding: 40px 32px 32px 32px;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .ecosystem-svg {
+            width: 100%;
+            height: auto;
+            overflow: visible;
+        }
+        .diag-node circle, .diag-node rect {
+            transition: stroke-width 0.3s ease, filter 0.3s ease;
+        }
+        .diag-node:hover circle {
+            stroke-width: 2.5px;
+            filter: drop-shadow(0 6px 14px rgba(139, 195, 74, 0.25)) !important;
+        }
+        .diag-node:hover rect {
+            stroke-width: 2px;
+            filter: drop-shadow(0 6px 14px rgba(139, 195, 74, 0.15)) !important;
+        }
+        .diag-node text {
+            pointer-events: none;
+            user-select: none;
+        }
+        .diagram-insight-card {
+            background: #FFFFFF;
+            border: 1.5px solid rgba(139, 195, 74, 0.2);
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.025);
+            margin-top: 24px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .diagram-insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+        }
+        .diagram-insight-card .insight-card-body {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #4A4A4A;
+            margin: 6px 0 0 0;
+        }
+        .sources-section {
+            width: 100%;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .sources-section h6 {
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-charcoal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 12px 0;
+        }
+        .sources-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 24px;
+        }
+        .sources-section li {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            color: #6B7280;
+            position: relative;
+            padding-left: 12px;
+        }
+        .sources-section li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8BC34A;
+            font-weight: bold;
+        }
+
+        /* ── Competitor Matrix Styling ── */
+        .competitor-badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+        .comp-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.58rem;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 0.2px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .comp-badge.badge-avail {
+            background-color: rgba(76, 175, 80, 0.08);
+            border: 1px solid rgba(76, 175, 80, 0.18);
+            color: #2E7D32;
+        }
+        .comp-badge.badge-partial {
+            background-color: rgba(245, 127, 23, 0.08);
+            border: 1px solid rgba(245, 127, 23, 0.18);
+            color: #F57F17;
+        }
+        .comp-badge.badge-none {
+            background-color: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            color: #7A7A7A;
+        }
+        .competitor-insight-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .competitor-insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(109, 187, 69, 0.08) !important;
+            border-color: rgba(109, 187, 69, 0.4) !important;
+        }
+        .sources-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .sources-section a:hover {
+            color: var(--color-keells-green) !important;
+            text-decoration: underline !important;
+        }
+
+        @media (max-width: 768px) {
+            .insights-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .sources-section ul {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .sources-section {
+                margin-top: 32px;
+            }
+        }
+    </style>
+    <script>
+        // Premium GSAP Donut chart scroll animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('conflict-frame-target');
+            if (!container) return;
+
+            const arc = container.querySelector('.active-arc');
+            const label = container.querySelector('.center-number');
+
+            // Set initial state for animated elements (Circumference C = 2 * pi * 150 = 942.48)
+            gsap.set(arc, { strokeDashoffset: 942.48 });
+
+            // Create ScrollTrigger timeline
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#conflict-frame-target',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none',
+                    once: true
+                }
+            });
+
+            // 1. Container fades in & scales from 0.96 -> 1
+            tl.fromTo(container, 
+                { opacity: 0, scale: 0.96 },
+                { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }
+            );
+
+            // 2. Header slides from left
+            tl.fromTo(container.querySelector('.info-header-tag'),
+                { opacity: 0, x: -30 },
+                { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' },
+                '-=0.4'
+            );
+
+            // 3. Donut chart draws itself clockwise
+            tl.to(arc, {
+                strokeDashoffset: 848.23, // 10% recycled (942.48 - 94.25)
+                duration: 1.8,
+                ease: 'power2.inOut'
+            }, '-=0.2');
+
+            // 4. Center number counts up from 0 to 300K
+            const counterObj = { value: 0 };
+            tl.to(counterObj, {
+                value: 300000,
+                duration: 2.0,
+                ease: 'power2.out',
+                onUpdate: () => {
+                    const val = Math.round(counterObj.value);
+                    label.textContent = val >= 1000
+                        ? Math.round(val / 1000) + 'K'
+                        : val;
+                }
+            }, '<');
+
+            // 5. Fade in callout lines and percentage labels AFTER donut finishes drawing
+            tl.to(container.querySelectorAll('.callout-line'), {
+                strokeDashoffset: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }, '+=0.1');
+
+            tl.to(container.querySelectorAll('.callout-left, .callout-right'), {
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            }, '<');
+
+            // 6. Bottom cards slide upward with a small stagger
+            tl.fromTo(container.querySelectorAll('.info-card'),
+                { opacity: 0, y: 15 },
+                { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
+                '-=0.4'
+            );
+
+            // 7. Trigger breathing animation loop and random walks for particles
+            tl.add(() => {
+                // Breathing glow animation on active arc (gently pulses every 6 seconds)
+                // 1.5s active + 1.5s back + 3s repeatDelay = 6 seconds total cycle
+                gsap.to(arc, {
+                    filter: 'drop-shadow(0 2px 6px rgba(92,191,58,0.15))',
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut',
+                    repeatDelay: 3.0
+                });
+
+                // Random walks for particles
+                const particles = container.querySelectorAll('.floating-particle');
+                particles.forEach(p => {
+                    gsap.to(p, {
+                        x: 'random(-20, 20)',
+                        y: 'random(-20, 20)',
+                        duration: 'random(4, 7)',
+                        repeat: -1,
+                        yoyo: true,
+                        ease: 'sine.inOut'
+                    });
+                });
+            });
+
+            // Interactive Hover Scale for SVG text on callouts
+            container.querySelectorAll('.callout-left, .callout-right').forEach(c => {
+                c.addEventListener('mouseenter', () => {
+                    gsap.to(c.querySelectorAll('text'), { scale: 1.05, duration: 0.3, ease: 'power1.out', transformOrigin: 'center' });
+                });
+                c.addEventListener('mouseleave', () => {
+                    gsap.to(c.querySelectorAll('text'), { scale: 1.0, duration: 0.3, ease: 'power1.out', transformOrigin: 'center' });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

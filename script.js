@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Placeholder Borders injection for dashed border animations
-    const placeholders = document.querySelectorAll('.placeholder-frame');
+    const placeholders = document.querySelectorAll('.placeholder-frame:not(#usp-frame-target)');
     placeholders.forEach(frame => {
         // Create wrapper SVG
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -325,8 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'slide-hero': '[ Green Loop System Canvas ]',
         'slide-overview': '[ Green Loop System Canvas ]',
         'slide-directory': '[ Green Loop System Canvas ]',
-        'slide-conflict': '[ Research & Development ]',
-        'slide-survey': '[ Research & Development ]',
+        'slide-conflict': '[ Waste Statistics ]',
+        'slide-survey': '[ Research Insights ]',
         'slide-competitors': '[ Research & Development ]',
         'slide-usp': '[ Product Definition ]',
         'slide-decisions': '[ Product Definition ]',
@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Attach frame hover listeners to all potential visual targets on page load
     const attachFrameHoverListeners = () => {
-        const frameHoverTargets = document.querySelectorAll('.placeholder-frame, .strategy-table-wrapper, .color-spec-card, .directory-card, .metric-card');
+        const frameHoverTargets = document.querySelectorAll('.placeholder-frame:not(#usp-frame-target), .strategy-table-wrapper, .color-spec-card, .directory-card, .metric-card');
         frameHoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 hoveredElement = el;
@@ -629,6 +629,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Standard Reveal Elements (Text blocks, boxes, column contents)
     document.querySelectorAll('.reveal-element').forEach(el => {
+        if (el.closest('#slide-survey')) {
+            return; // Handled separately (coordinated timeline)
+        }
         if (el.classList.contains('directory-grid-13') ||
             el.classList.contains('metric-row') ||
             el.classList.contains('strategy-table-wrapper') ||
@@ -709,51 +712,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 7. Custom Section Diagrams Animations (Pre-split trigger logic)
     
-    // 7a. Survey Concentric Circles Animation
-    const surveySvg = document.querySelector('.concentric-rings-svg');
-    if (surveySvg) {
-        const concentricLabel = document.querySelector('.concentric-center-label');
+    // 7a. Research Insights (Ecosystem Diagram & Cards) Animation
+    const slideSurvey = document.getElementById('slide-survey');
+    if (slideSurvey) {
+        const overviewBox = slideSurvey.querySelector('.overview-text-column .overview-box');
+        const cards = slideSurvey.querySelectorAll('.insight-item-card');
+        const ecosystemCard = slideSurvey.querySelector('.ecosystem-diagram-card');
+        const centerNode = slideSurvey.querySelector('.node-center');
+        const outerNodes = slideSurvey.querySelectorAll('.diag-node:not(.node-center)');
+        const links = slideSurvey.querySelectorAll('.diag-link');
+        const insightCard = slideSurvey.querySelector('.diagram-insight-card');
+        const sourcesSection = slideSurvey.querySelector('.sources-section');
+
+        // Set initial states
+        gsap.set(overviewBox, { y: anim.ySmall, opacity: 0 });
+        gsap.set(cards, { y: anim.ySmall, opacity: 0 });
+        gsap.set(ecosystemCard, { scale: anim.scale, opacity: 0 });
+        
+        if (prefersReducedMotion) {
+            gsap.set(centerNode, { scale: 1, opacity: 0 });
+            gsap.set(outerNodes, { scale: 1, opacity: 0 });
+            links.forEach(link => {
+                gsap.set(link, { opacity: 0 });
+            });
+        } else {
+            gsap.set(centerNode, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+            gsap.set(outerNodes, { scale: 0.8, opacity: 0, transformOrigin: 'center center' });
+            links.forEach(link => {
+                const length = link.getTotalLength();
+                gsap.set(link, { strokeDasharray: length, strokeDashoffset: length });
+            });
+        }
+        
+        gsap.set(insightCard, { y: anim.ySmall, opacity: 0 });
+        gsap.set(sourcesSection, { y: anim.ySmall, opacity: 0 });
+
         const surveyTL = gsap.timeline({
             scrollTrigger: {
-                trigger: surveySvg,
-                start: "top 80%",
+                trigger: slideSurvey,
+                start: "top 75%",
                 once: true
             }
         });
-        
-        surveyTL.from('.concentric-rings-svg .ring', {
-            transformOrigin: "center center",
-            scale: 0,
-            opacity: 0,
-            duration: 1.6,
-            stagger: 0.25,
-            ease: "back.out(1.2)"
-        })
-        .to(concentricLabel, {
-            opacity: 1,
+
+        // 1. Reveal left overview text column & right ecosystem frame card
+        surveyTL.to([overviewBox, ecosystemCard], {
+            y: 0,
             scale: 1,
-            duration: 1.0,
+            opacity: 1,
+            duration: anim.duration,
+            stagger: 0.15,
             ease: anim.ease
-        }, "-=0.4")
-        .add(() => {
-            if (!prefersReducedMotion) {
-                gsap.to('.ring-3', {
-                    rotation: 360,
-                    transformOrigin: "center center",
-                    duration: 30,
-                    repeat: -1,
-                    ease: "none"
-                });
-                gsap.to('.ring-4', {
-                    scale: 1.05,
-                    transformOrigin: "center center",
-                    duration: 2.0,
-                    yoyo: true,
-                    repeat: -1,
-                    ease: "power1.inOut"
-                });
-            }
-        });
+        })
+        // 2. Stagger reveal the 4 left info cards
+        .to(cards, {
+            y: 0,
+            opacity: 1,
+            duration: anim.duration * 0.8,
+            stagger: 0.1,
+            ease: anim.ease
+        }, "-=0.6");
+
+        if (prefersReducedMotion) {
+            surveyTL.to([centerNode, outerNodes, links], {
+                opacity: 1,
+                duration: anim.duration,
+                stagger: 0.1,
+                ease: anim.ease
+            }, "-=0.4");
+        } else {
+            surveyTL.to(centerNode, {
+                scale: 1,
+                opacity: 1,
+                duration: anim.duration,
+                ease: "back.out(1.5)"
+            }, "-=0.8")
+            .to(links, {
+                strokeDashoffset: 0,
+                duration: 0.8,
+                stagger: 0.08,
+                ease: "power2.out"
+            }, "-=0.4")
+            .to(outerNodes, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "back.out(1.2)"
+            }, "-=0.6");
+        }
+
+        // 6. Reveal bottom right insight card & sources section
+        surveyTL.to([insightCard, sourcesSection], {
+            y: 0,
+            opacity: 1,
+            duration: anim.duration,
+            stagger: 0.15,
+            ease: anim.ease
+        }, "-=0.4");
     }
 
     // 7b. Behavioral Habit Loop Sequential draw-on
@@ -820,6 +876,394 @@ document.addEventListener('DOMContentLoaded', () => {
                    .to('.floor-plan-svg .clearance-rect', { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" })
                    .to('.floor-plan-svg .machine-hatch', { opacity: 1, duration: 0.6 }, "<0.3")
                    .to('.floor-plan-svg .dim-line', { opacity: 1, duration: 0.8, stagger: 0.25 }, "-=0.3");
+    }
+
+    // 7d. USP Process Flow Interactive Animation
+    const slideUsp = document.getElementById('slide-usp');
+    if (slideUsp) {
+        const glassCard = document.getElementById('usp-frame-target');
+        const leftBoxes = slideUsp.querySelectorAll('.overview-text-column .overview-box');
+        const traditionalNodes = slideUsp.querySelectorAll('.node-traditional');
+        const greenloopNodes = slideUsp.querySelectorAll('.node-greenloop');
+        const traditionalConnectors = slideUsp.querySelectorAll('.traditional-connectors line');
+        const greenloopConnectors = slideUsp.querySelectorAll('.flow-path');
+        const greenloopPulses = slideUsp.querySelectorAll('.flow-pulse');
+        const hudBlueprint = slideUsp.querySelector('.hud-blueprint');
+        const flowHeaders = slideUsp.querySelector('.flow-headers');
+        
+        const scanChecklist = slideUsp.querySelector('.scan-checklist');
+        const checkItems = slideUsp.querySelectorAll('.check-item');
+        const scanLine = slideUsp.querySelector('.scan-line');
+        const crushGear = slideUsp.querySelector('.crush-gear-g');
+        const rewardText = slideUsp.querySelector('.rewards-text-sub');
+        const pulseRing = slideUsp.querySelector('.reward-pulse-ring');
+
+        // Set initial states
+        gsap.set(glassCard, { y: 20, opacity: 0 });
+        gsap.set(leftBoxes, { y: anim.ySmall, opacity: 0 });
+        gsap.set(traditionalNodes, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+        gsap.set(greenloopNodes, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+        gsap.set(flowHeaders, { opacity: 0 });
+        gsap.set(hudBlueprint, { opacity: 0 });
+        gsap.set(traditionalConnectors, { opacity: 0 });
+        gsap.set(pulseRing, { attr: { r: 58 }, opacity: 0 });
+        
+        greenloopConnectors.forEach(path => {
+            const len = path.getTotalLength();
+            gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+        });
+        greenloopPulses.forEach(pulse => {
+            const len = pulse.getTotalLength();
+            gsap.set(pulse, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
+        });
+        
+        gsap.set(scanChecklist, { opacity: 0, y: 5 });
+        gsap.set(checkItems, { opacity: 0 });
+        gsap.set(scanLine, { opacity: 0, y: -44 });
+        gsap.set(crushGear, { transformOrigin: 'center center', rotation: 0 });
+
+        const uspTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#slide-usp',
+                start: "top 75%",
+                once: true
+            }
+        });
+
+        // 1. Entrance animation
+        uspTL.to(glassCard, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        })
+        .to(leftBoxes, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: anim.ease
+        }, "-=0.6")
+        .to(flowHeaders, {
+            opacity: 1,
+            duration: 0.6
+        }, "-=0.4")
+        .to(hudBlueprint, {
+            opacity: 0.02,
+            duration: 0.8
+        }, "-=0.4")
+        .to(traditionalNodes, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.2)"
+        }, "-=0.3")
+        .to(traditionalConnectors, {
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1
+        }, "-=0.2")
+        .to(greenloopNodes, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.2)"
+        }, "-=0.4");
+
+        greenloopConnectors.forEach((path, idx) => {
+            uspTL.to(path, {
+                strokeDashoffset: 0,
+                duration: 0.6,
+                ease: "sine.inOut"
+            }, `-=${0.5 - idx * 0.1}`);
+        });
+
+        uspTL.call(() => {
+            startPulseCycle();
+            startIdleDrift();
+            attachNodeHoverEffects();
+        });
+
+        // 2. Idle Floating drift
+        function startIdleDrift() {
+            // Keep nodes static as requested by the user
+        }
+
+        // 3. Recurring Pulse timeline loop
+        function startPulseCycle() {
+            if (prefersReducedMotion) return;
+            
+            const cycle = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+            
+            const p1 = slideUsp.querySelector('.pulse-1');
+            const p2 = slideUsp.querySelector('.pulse-2');
+            const p3 = slideUsp.querySelector('.pulse-3');
+            const p4 = slideUsp.querySelector('.pulse-4');
+            
+            const nDeposit = slideUsp.querySelector('.node-deposit');
+            const nScan = slideUsp.querySelector('.node-scan');
+            const nVerify = slideUsp.querySelector('.node-verify');
+            const nCrush = slideUsp.querySelector('.node-crush');
+            const nReward = slideUsp.querySelector('.node-reward');
+            
+            const checkPet = slideUsp.querySelector('.check-pet');
+            const checkLabel = slideUsp.querySelector('.check-label');
+            const checkWeight = slideUsp.querySelector('.check-weight');
+            const checkVerified = slideUsp.querySelector('.check-verified');
+
+            // Reset callback
+            cycle.add(() => {
+                gsap.set([nDeposit, nScan, nVerify, nCrush, nReward], { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", scale: 1.0 });
+                gsap.set([p1, p2, p3, p4], { opacity: 0, strokeDashoffset: 18 });
+                gsap.set(scanLine, { opacity: 0, y: -44 });
+                gsap.set(scanChecklist, { opacity: 0, y: 5 });
+                gsap.set([checkPet, checkLabel, checkWeight], { opacity: 0, fill: "#8E8E93" });
+                if (checkVerified) {
+                    checkVerified.textContent = "WAITING";
+                    gsap.set(checkVerified, { fill: "#8E8E93" });
+                }
+                if (rewardText) rewardText.textContent = "+0 PTS";
+                gsap.set(pulseRing, { opacity: 0, attr: { r: 58 } });
+            });
+
+            // Node 1: Deposit active state
+            cycle.to(nDeposit, {
+                stroke: "#5CBF43",
+                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
+                scale: 1.02,
+                duration: 0.15,
+                ease: "power2.out"
+            })
+            .to(nDeposit, {
+                stroke: "rgba(92, 191, 67, 0.25)",
+                filter: "none",
+                scale: 1.0,
+                duration: 0.15,
+                ease: "power2.inOut"
+            })
+            // Pulse 1 travels
+            .set(p1, { opacity: 1 }, "+=0.1")
+            .to(p1, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p1, { opacity: 0 })
+            
+            // Node 2: Scan active state & scan animation
+            .to(nScan, {
+                stroke: "#5CBF43",
+                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
+                scale: 1.02,
+                duration: 0.15,
+                ease: "power2.out"
+            })
+            .set(scanLine, { opacity: 1 })
+            .to(scanLine, { y: 44, duration: 0.8, ease: "power1.inOut" })
+            .set(scanLine, { opacity: 0 })
+            .to(scanChecklist, { opacity: 1, y: 0, duration: 0.3 })
+            .to(checkPet, { opacity: 1, fill: "#5CBF43", duration: 0.2 })
+            .to(checkLabel, { opacity: 1, fill: "#5CBF43", duration: 0.2 }, "+=0.1")
+            .to(checkWeight, { opacity: 1, fill: "#5CBF43", duration: 0.2 }, "+=0.1")
+            .add(() => {
+                if (checkVerified) {
+                    checkVerified.textContent = "VERIFIED ✓";
+                    gsap.set(checkVerified, { fill: "#5CBF43" });
+                }
+            }, "+=0.1")
+            .to(nScan, {
+                stroke: "rgba(92, 191, 67, 0.25)",
+                filter: "none",
+                scale: 1.0,
+                duration: 0.15,
+                ease: "power2.inOut"
+            })
+            // Pulse 2 travels
+            .set(p2, { opacity: 1 }, "+=0.2")
+            .to(p2, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p2, { opacity: 0 })
+
+            // Node 3: Verification active state
+            .to(nVerify, {
+                stroke: "#5CBF43",
+                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
+                scale: 1.02,
+                duration: 0.15,
+                ease: "power2.out"
+            })
+            .to(nVerify, {
+                stroke: "rgba(92, 191, 67, 0.25)",
+                filter: "none",
+                scale: 1.0,
+                duration: 0.15,
+                ease: "power2.inOut"
+            })
+            // Pulse 3 travels
+            .set(p3, { opacity: 1 }, "+=0.2")
+            .to(p3, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p3, { opacity: 0 })
+
+            // Node 4: Crusher active state & gears turn
+            .to(nCrush, {
+                stroke: "#5CBF43",
+                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
+                scale: 1.02,
+                duration: 0.15,
+                ease: "power2.out"
+            })
+            .to(crushGear, { rotation: 180, duration: 0.6, ease: "power2.inOut" }, "<")
+            .to(nCrush, {
+                stroke: "rgba(92, 191, 67, 0.25)",
+                filter: "none",
+                scale: 1.0,
+                duration: 0.15,
+                ease: "power2.inOut"
+            })
+            // Pulse 4 travels
+            .set(p4, { opacity: 1 }, "+=0.2")
+            .to(p4, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p4, { opacity: 0 })
+
+            // Node 5: Reward active state & count up & pulse ring
+            .to(nReward, {
+                stroke: "#5CBF43",
+                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.15))",
+                scale: 1.02,
+                duration: 0.15,
+                ease: "power2.out"
+            });
+
+            const pointsObj = { val: 0 };
+            cycle.to(pointsObj, {
+                val: 350,
+                duration: 0.8,
+                ease: "power1.out",
+                onUpdate: () => {
+                    if (rewardText) {
+                        rewardText.textContent = `+${Math.round(pointsObj.val)} PTS`;
+                    }
+                }
+            }, "<");
+
+            cycle.set(pulseRing, { opacity: 0.8, attr: { r: 58 } }, "<")
+            .to(pulseRing, {
+                attr: { r: 88 },
+                opacity: 0,
+                duration: 0.7,
+                ease: "power2.out"
+            }, "<")
+            .to(nReward, {
+                stroke: "rgba(92, 191, 67, 0.25)",
+                filter: "none",
+                scale: 1.0,
+                duration: 0.15,
+                ease: "power2.inOut"
+            }); }
+
+        // 4. Node Hover Micro-interactions
+        function attachNodeHoverEffects() {
+            const allNodes = slideUsp.querySelectorAll('.usp-node');
+            allNodes.forEach(node => {
+                const isTraditional = node.classList.contains('node-traditional');
+                
+                node.addEventListener('mouseenter', () => {
+                    if (isTraditional) {
+                        gsap.to(node, {
+                            y: 116,
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        gsap.to(node.querySelector('rect'), {
+                            stroke: "#A1A1A6",
+                            filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.05))",
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        if (node.classList.contains('node-no-reward')) {
+                            gsap.to(node.querySelector('rect'), {
+                                stroke: "#FF3B30",
+                                fill: "#FFF0F0",
+                                duration: 0.3,
+                                overwrite: "auto"
+                            });
+                        }
+                    } else {
+                        gsap.to(node, {
+                            y: 341,
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        gsap.to(node.querySelector('rect'), {
+                            stroke: "#5CBF43",
+                            filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.05))",
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        
+                        if (node.classList.contains('node-deposit')) highlightLink('.link-1');
+                        else if (node.classList.contains('node-scan')) highlightLink('.link-1, .link-2');
+                        else if (node.classList.contains('node-verify')) highlightLink('.link-2, .link-3');
+                        else if (node.classList.contains('node-crush')) highlightLink('.link-3, .link-4');
+                        else if (node.classList.contains('node-reward')) highlightLink('.link-4');
+                    }
+                });
+                
+                node.addEventListener('mouseleave', () => {
+                    if (isTraditional) {
+                        gsap.to(node, {
+                            y: 120,
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        gsap.to(node.querySelector('rect'), {
+                            stroke: "#E5E7EB",
+                            filter: "none",
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        if (node.classList.contains('node-no-reward')) {
+                            gsap.to(node.querySelector('rect'), {
+                                stroke: "#FF5C5C",
+                                fill: "#FFF5F5",
+                                duration: 0.3,
+                                overwrite: "auto"
+                            });
+                        }
+                    } else {
+                        gsap.to(node, {
+                            y: 345,
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        gsap.to(node.querySelector('rect'), {
+                            stroke: "rgba(92, 191, 67, 0.25)",
+                            filter: "none",
+                            duration: 0.3,
+                            overwrite: "auto"
+                        });
+                        resetLinks();
+                    }
+                });
+            });
+        }
+
+        function highlightLink(selector) {
+            slideUsp.querySelectorAll(selector).forEach(link => {
+                gsap.to(link, {
+                    stroke: "#5CBF43",
+                    strokeWidth: 3,
+                    duration: 0.3
+                });
+            });
+        }
+
+        function resetLinks() {
+            slideUsp.querySelectorAll('.flow-path').forEach(link => {
+                gsap.to(link, {
+                    stroke: "rgba(92, 191, 67, 0.18)",
+                    strokeWidth: 2,
+                    duration: 0.3
+                });
+            });
+        }
     }
 
     // 8. Portal Directory Grid Cards Reveal (3D Rotation flip-down)
@@ -929,6 +1373,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 { opacity: 0, rotationX: -10, transformOrigin: "top center", x: -8 },
                 { opacity: 1, rotationX: 0, x: 0, duration: 1.2, stagger: 0.15, ease: anim.ease }
             , "-=0.3");
+        }
+
+        // If this is the competitor slide, also animate the insight card and badges
+        const section = wrapper.closest('#slide-competitors');
+        if (section) {
+            const insightCard = section.querySelector('.competitor-insight-card');
+            const badges = section.querySelectorAll('.comp-badge');
+            
+            // Set initial state
+            gsap.set(insightCard, { y: anim.ySmall, opacity: 0 });
+            
+            if (badges.length > 0) {
+                if (prefersReducedMotion) {
+                    gsap.set(badges, { opacity: 0 });
+                    tableTL.to(badges, {
+                        opacity: 1,
+                        duration: 0.4,
+                        stagger: 0.01,
+                        ease: anim.ease
+                    }, "-=0.6");
+                } else {
+                    gsap.set(badges, { scale: 0.8, opacity: 0 });
+                    tableTL.to(badges, {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.4,
+                        stagger: 0.01,
+                        ease: "back.out(1.5)"
+                    }, "-=0.6");
+                }
+            }
+            
+            tableTL.to(insightCard, {
+                y: 0,
+                opacity: 1,
+                duration: 1.0,
+                ease: anim.ease
+            }, "-=0.4");
         }
     });
 
