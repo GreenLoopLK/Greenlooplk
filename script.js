@@ -403,6 +403,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let frameScale = 1;
         let frameTargetBounds = { left: 0, top: 0, width: 0, height: 0 };
 
+        // Force hide the shared frame ONLY when slide-applications is active, targeted, or pinned
+        const st = ScrollTrigger.getById('applications-trigger');
+        const isInsideSlideApps = target && (target.closest('#slide-applications') || target.id === 'slide-applications');
+        const isScrollInsideApps = st && (window.scrollY >= st.start && window.scrollY < st.end);
+
+        if (isInsideSlideApps || isScrollInsideApps) {
+            gsap.to('#shared-frame', { opacity: 0, scale: 0.8, duration: 0.3, overwrite: 'auto' });
+            return;
+        }
+
         if (!target) {
             frameOpacity = 0;
             frameScale = 0.8;
@@ -670,12 +680,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        tl.from(placeholder, {
-            scale: anim.scale,
-            opacity: 0,
-            duration: 1.2,
-            ease: anim.ease
-        });
+        tl.fromTo(placeholder, 
+            {
+                scale: anim.scale,
+                opacity: 0
+            },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 1.2,
+                ease: anim.ease
+            }
+        );
         
         const rect = placeholder.querySelector('.placeholder-border-rect');
         if (rect && !prefersReducedMotion) {
@@ -1073,17 +1089,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update modal elements
                 morphOverlay.querySelector('.modal-num').innerText = num;
                 morphOverlay.querySelector('.modal-title').innerText = title;
-                morphOverlay.querySelector('.modal-frame-label').innerText = `[ ${frameLabel} ]`;
                 morphOverlay.querySelector('.modal-desc').innerText = desc;
 
                 // Clone and inject the SVG/visual content
                 const placeholder = card.querySelector('.placeholder-frame');
                 const modalPlaceholderBox = morphOverlay.querySelector('.modal-placeholder-box');
                 
-                // Clear previous content
-                modalPlaceholderBox.innerHTML = '';
+                // Clear only visual content (svg or img) but keep metadata like labels & crosshairs
+                const prevVisual = modalPlaceholderBox.querySelector('svg, img');
+                if (prevVisual) {
+                    prevVisual.remove();
+                }
+
+                // Set the modal frame label
+                const modalLabel = modalPlaceholderBox.querySelector('.modal-frame-label');
+                if (modalLabel) {
+                    modalLabel.innerText = `[ ${frameLabel} ]`;
+                }
                 
+                modalPlaceholderBox.classList.remove('ratio-16-9', 'ratio-4-3', 'ratio-1-1');
                 if (placeholder) {
+                    if (placeholder.classList.contains('ratio-4-3')) {
+                        modalPlaceholderBox.classList.add('ratio-4-3');
+                    } else if (placeholder.classList.contains('ratio-1-1')) {
+                        modalPlaceholderBox.classList.add('ratio-1-1');
+                    } else {
+                        modalPlaceholderBox.classList.add('ratio-16-9');
+                    }
+
                     const visual = placeholder.querySelector('svg, img');
                     if (visual) {
                         const clonedVisual = visual.cloneNode(true);
@@ -1097,6 +1130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Animate modal opening
                 morphOverlay.classList.add('active');
+                morphOverlay.querySelector('.morph-modal-card').classList.add('expanded');
                 
                 gsap.fromTo('.morph-modal-card', 
                     { scale: 0.9, opacity: 0, y: 30 },
@@ -1105,8 +1139,94 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Click-to-enlarge for all other placeholder-frame elements (mockups and diagrams)
+        const placeholderFrames = document.querySelectorAll('.placeholder-frame');
+        placeholderFrames.forEach(frame => {
+            // Skip if it's already inside a data-morph="card" element or is the modal box itself
+            if (frame.closest('[data-morph="card"]') || frame.classList.contains('modal-placeholder-box')) {
+                return;
+            }
+
+            // Make it clickable visually
+            frame.style.cursor = 'zoom-in';
+
+            frame.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Find parent slide-section to extract content context
+                const section = frame.closest('.slide-section');
+                let num = '0.0';
+                let title = 'Visual Specification';
+                let desc = 'Detailed diagram / visual template representation.';
+                let frameLabel = 'Visual Frame';
+
+                if (section) {
+                    const numEl = section.querySelector('.section-num');
+                    const titleEl = section.querySelector('h2.split-line, h2');
+                    const descEl = section.querySelector('p'); // first paragraph
+
+                    if (numEl) num = numEl.innerText.trim();
+                    if (titleEl) title = titleEl.innerText.trim();
+                    if (descEl) desc = descEl.innerText.trim();
+
+                    // Determine default label
+                    const rawLabel = frameLabels[section.id] || '[ Visual Frame ]';
+                    frameLabel = rawLabel.replace(/[\[\]]/g, '').trim(); // Remove brackets if present
+                }
+
+                // Update modal text fields
+                morphOverlay.querySelector('.modal-num').innerText = num;
+                morphOverlay.querySelector('.modal-title').innerText = title;
+                morphOverlay.querySelector('.modal-desc').innerText = desc;
+
+                const modalPlaceholderBox = morphOverlay.querySelector('.modal-placeholder-box');
+                
+                // Clear only visual content (svg or img) but keep metadata like labels & crosshairs
+                const prevVisual = modalPlaceholderBox.querySelector('svg, img');
+                if (prevVisual) {
+                    prevVisual.remove();
+                }
+
+                // Set the modal frame label
+                const modalLabel = modalPlaceholderBox.querySelector('.modal-frame-label');
+                if (modalLabel) {
+                    modalLabel.innerText = `[ ${frameLabel} ]`;
+                }
+
+                // Find visual element (svg or img)
+                modalPlaceholderBox.classList.remove('ratio-16-9', 'ratio-4-3', 'ratio-1-1');
+                if (frame.classList.contains('ratio-4-3')) {
+                    modalPlaceholderBox.classList.add('ratio-4-3');
+                } else if (frame.classList.contains('ratio-1-1')) {
+                    modalPlaceholderBox.classList.add('ratio-1-1');
+                } else {
+                    modalPlaceholderBox.classList.add('ratio-16-9');
+                }
+
+                const visual = frame.querySelector('svg, img');
+                if (visual) {
+                    const clonedVisual = visual.cloneNode(true);
+                    clonedVisual.style.width = '100%';
+                    clonedVisual.style.height = '100%';
+                    clonedVisual.style.display = 'block';
+                    clonedVisual.style.padding = '0';
+                    modalPlaceholderBox.appendChild(clonedVisual);
+                }
+
+                // Animate modal opening
+                morphOverlay.classList.add('active');
+                morphOverlay.querySelector('.morph-modal-card').classList.add('expanded');
+                gsap.fromTo('.morph-modal-card', 
+                    { scale: 0.9, opacity: 0, y: 30 },
+                    { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
+                );
+            });
+        });
+
         const closeModal = () => {
-            gsap.to('.morph-modal-card', {
+            const card = morphOverlay.querySelector('.morph-modal-card');
+            gsap.to(card, {
                 scale: 0.9,
                 opacity: 0,
                 y: 30,
@@ -1114,6 +1234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: "power3.in",
                 onComplete: () => {
                     morphOverlay.classList.remove('active');
+                    card.classList.remove('expanded');
                 }
             });
         };
@@ -1122,7 +1243,158 @@ document.addEventListener('DOMContentLoaded', () => {
         morphOverlay.querySelector('.morph-modal-bg').addEventListener('click', closeModal);
     }
 
-    // 16. Window resize handler to maintain frame positioning
+    // 14. Horizontal Scroll Pinning & Middle Highlight
+    const track = document.querySelector('.horizontal-track');
+    const headerSticky = document.querySelector('.horizontal-header-sticky');
+    if (track && headerSticky) {
+        let isAnimatingCard = false;
+        let currentCardIndex = 0;
+        const cards = document.querySelectorAll('.horizontal-card');
+        const mm = gsap.matchMedia();
+
+        // Desktop: Pin & scrub, but NO snap in ScrollTrigger to prevent conflict with wheel hijacking
+        mm.add("(min-width: 993px)", () => {
+            gsap.to(track, {
+                x: () => {
+                    const totalMove = track.scrollWidth - window.innerWidth;
+                    return -totalMove;
+                },
+                ease: 'none',
+                scrollTrigger: {
+                    id: 'applications-trigger',
+                    trigger: '#slide-applications',
+                    pin: true,
+                    scrub: 1.0,
+                    start: 'top top',
+                    end: () => `+=${track.scrollWidth - window.innerWidth + 800}`,
+                    invalidateOnRefresh: true,
+                    onUpdate: () => {
+                        updateHighlightedCard();
+                    },
+                    onRefresh: () => {
+                        updateHighlightedCard();
+                    }
+                }
+            });
+            updateHighlightedCard();
+        });
+
+        // Mobile/Tablet: Pin, scrub, AND snap in ScrollTrigger. No wheel hijack runs on mobile.
+        mm.add("(max-width: 992px)", () => {
+            gsap.to(track, {
+                x: () => {
+                    const totalMove = track.scrollWidth - window.innerWidth;
+                    return -totalMove;
+                },
+                ease: 'none',
+                scrollTrigger: {
+                    id: 'applications-trigger',
+                    trigger: '#slide-applications',
+                    pin: true,
+                    scrub: 1.0,
+                    snap: {
+                        snapTo: 1 / (cards.length - 1),
+                        duration: { min: 0.2, max: 0.4 },
+                        delay: 0.05,
+                        ease: "power1.inOut"
+                    },
+                    start: 'top top',
+                    end: () => `+=${track.scrollWidth - window.innerWidth + 800}`,
+                    invalidateOnRefresh: true,
+                    onUpdate: () => {
+                        updateHighlightedCard();
+                    },
+                    onRefresh: () => {
+                        updateHighlightedCard();
+                    }
+                }
+            });
+            updateHighlightedCard();
+        });
+
+        function updateHighlightedCard() {
+            const viewportCenter = window.innerWidth / 2;
+            
+            let closestCard = null;
+            let minDistance = Infinity;
+            let closestIdx = 0;
+            
+            cards.forEach((card, idx) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.left + rect.width / 2;
+                const distance = Math.abs(cardCenter - viewportCenter);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestCard = card;
+                    closestIdx = idx;
+                }
+            });
+            
+            cards.forEach((card, idx) => {
+                if (idx === closestIdx) {
+                    card.classList.add('highlighted');
+                } else {
+                    card.classList.remove('highlighted');
+                }
+            });
+
+            if (!isAnimatingCard) {
+                currentCardIndex = closestIdx;
+            }
+        }
+
+        // Card-by-Card Wheel Scroll Hijack for Desktop
+        const slideSection = document.getElementById('slide-applications');
+        if (slideSection) {
+            slideSection.addEventListener('wheel', (e) => {
+                if (window.innerWidth <= 992) return; // Only hijack on desktop
+
+                const st = ScrollTrigger.getById('applications-trigger');
+                if (!st || !st.isActive) return;
+
+                if (e.deltaY > 0) {
+                    // Scroll down: move to next card
+                    if (currentCardIndex < cards.length - 1) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (!isAnimatingCard) {
+                            isAnimatingCard = true;
+                            currentCardIndex++;
+                            const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
+                            lenis.scrollTo(targetScroll, {
+                                duration: 0.5,
+                                force: true,
+                                onComplete: () => {
+                                    isAnimatingCard = false;
+                                }
+                            });
+                        }
+                    }
+                } else if (e.deltaY < 0) {
+                    // Scroll up: move to previous card
+                    if (currentCardIndex > 0) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (!isAnimatingCard) {
+                            isAnimatingCard = true;
+                            currentCardIndex--;
+                            const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
+                            lenis.scrollTo(targetScroll, {
+                                duration: 0.5,
+                                force: true,
+                                onComplete: () => {
+                                    isAnimatingCard = false;
+                                }
+                            });
+                        }
+                    }
+                }
+            }, { passive: false });
+        }
+    }
+
+    // 15. Window resize handler to maintain frame positioning
     window.addEventListener('resize', () => {
         const activeDot = document.querySelector('.dot-link.active');
         if (activeDot) {
