@@ -1349,7 +1349,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth <= 992) return; // Only hijack on desktop
 
             const st = ScrollTrigger.getById('applications-trigger');
-            if (!st || !st.isActive) return;
+            if (!st) return;
+
+            const scrollY = window.scrollY;
+            // Active if inside the trigger range, with a 10px buffer at the boundaries
+            const isActive = scrollY >= (st.start - 10) && scrollY <= (st.end + 10);
+            if (!isActive) return;
 
             // If we are currently animating, we MUST intercept and block the scroll event
             if (isAnimatingCard) {
@@ -1366,10 +1371,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     isAnimatingCard = true;
                     currentCardIndex++;
                     const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
+                    
+                    // Fail-safe to unlock scrolling after 600ms under any circumstances
+                    const unlockTimeout = setTimeout(() => {
+                        isAnimatingCard = false;
+                    }, 600);
+
                     lenis.scrollTo(targetScroll, {
                         duration: 0.5,
                         force: true,
                         onComplete: () => {
+                            clearTimeout(unlockTimeout);
                             isAnimatingCard = false;
                         }
                     });
@@ -1383,10 +1395,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     isAnimatingCard = true;
                     currentCardIndex--;
                     const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
+                    
+                    // Fail-safe to unlock scrolling after 600ms under any circumstances
+                    const unlockTimeout = setTimeout(() => {
+                        isAnimatingCard = false;
+                    }, 600);
+
                     lenis.scrollTo(targetScroll, {
                         duration: 0.5,
                         force: true,
                         onComplete: () => {
+                            clearTimeout(unlockTimeout);
                             isAnimatingCard = false;
                         }
                     });
