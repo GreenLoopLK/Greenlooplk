@@ -208,25 +208,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroTagline = heroSection.querySelector('.tagline');
         const heroMeta = heroSection.querySelector('.meta-tag');
 
-        // Logo Draw-on circle stroke
-        loadTL.fromTo('.symbol-ring circle', 
-            { strokeDashoffset: 260, strokeDasharray: "180 80" },
-            { strokeDashoffset: 0, duration: 2.2, ease: "power3.out" }
-        )
-        // Logo Text Fade/Slide Down
-        .from('.logo-text', {
-            opacity: 0,
-            y: -10,
-            duration: 1.0,
-            ease: anim.ease
-        }, "<0.12")
+        // Set logo to starting position (centered on hero) before animating
+        gsap.set('#shared-logo', {
+            left: '50%',
+            top: '28vh',
+            xPercent: -50,
+            yPercent: -50,
+            scale: 1.4,
+            opacity: 0
+        });
+
+        // Logo placeholder fade + scale entrance
+        loadTL.to('#shared-logo', {
+            opacity: 1,
+            scale: 1.4,
+            duration: 0.8,
+            ease: 'power2.out'
+        })
         // Eyebrow Label
         .from(heroMeta, {
             opacity: 0,
             x: -anim.x,
             duration: 1.0,
             ease: anim.ease
-        }, "-=1.1");
+        }, "-=0.5");
 
         if (prefersReducedMotion) {
             loadTL.from([heroHeading, heroTagline], { opacity: 0, duration: 1.0, stagger: 0.2 }, "-=0.4");
@@ -388,41 +393,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateSharedElements(activeSlide) {
         const logoCenter = activeSlide.getAttribute('data-logo-center') === 'true';
-        let logoTarget = {};
+        let logoProps = {};
 
         if (logoCenter) {
-            const logoWidth = 200; // estimated logo width
-            logoTarget = {
-                left: (window.innerWidth - logoWidth) / 2,
-                top: window.innerHeight * 0.28,
-                scale: 1.5,
-                transformOrigin: 'center center'
+            // Hero: perfectly centered using xPercent/yPercent — no pixel math needed
+            logoProps = {
+                left: '50%',
+                top: '28vh',
+                xPercent: -50,
+                yPercent: -50,
+                scale: 1.4
             };
         } else {
             const headerLogoTarget = document.getElementById('header-logo-target');
             if (headerLogoTarget) {
                 const rect = headerLogoTarget.getBoundingClientRect();
-                logoTarget = {
+                logoProps = {
                     left: rect.left,
-                    top: rect.top,
-                    scale: 0.75,
-                    transformOrigin: 'left center'
+                    top: rect.top + rect.height / 2,
+                    xPercent: 0,
+                    yPercent: -50,
+                    scale: 0.7
                 };
             } else {
-                logoTarget = {
+                logoProps = {
                     left: 20,
                     top: 20,
-                    scale: 0.75,
-                    transformOrigin: 'left center'
+                    xPercent: 0,
+                    yPercent: 0,
+                    scale: 0.7
                 };
             }
         }
 
         gsap.to('#shared-logo', {
-            left: logoTarget.left,
-            top: logoTarget.top,
-            scale: logoTarget.scale,
-            transformOrigin: logoTarget.transformOrigin,
+            left: logoProps.left,
+            top: logoProps.top,
+            xPercent: logoProps.xPercent,
+            yPercent: logoProps.yPercent,
+            scale: logoProps.scale,
             duration: 1.2,
             ease: 'power3.inOut',
             overwrite: 'auto'

@@ -189,55 +189,46 @@ body {
     z-index: 20;
 }
 
-/* Persistent Shared Logo */
+/* Persistent Shared Logo — position fully managed by GSAP */
 .shared-brand-logo {
     position: fixed;
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
     z-index: 25;
     pointer-events: none;
-    /* Start centered for hero — JS will animate from here */
-    left: 50%;
-    top: 28vh;
-    transform: translateX(-50%) scale(1.5);
-    transform-origin: center center;
-    will-change: transform, left, top, font-size, opacity;
+    opacity: 0; /* GSAP fades this in */
+    will-change: transform, left, top, opacity;
 }
 
-.shared-brand-logo .logo-symbol {
-    position: relative;
-    width: 40px;
-    height: 40px;
+/* Logo placeholder box */
+.logo-placeholder-box {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1.5px dashed rgba(61, 139, 55, 0.5);
+    border-radius: 6px;
+    background: rgba(109, 187, 69, 0.04);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    transition: border-color 0.3s ease;
 }
 
-.shared-brand-logo .symbol-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-keells-green-dark);
-    border-radius: 50%;
+.logo-ph-icon {
+    color: var(--color-keells-green-dark);
+    flex-shrink: 0;
+    opacity: 0.7;
 }
 
-.shared-brand-logo .symbol-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    stroke: var(--color-keells-green);
-    transform: rotate(0deg);
-}
-
-.shared-brand-logo .logo-text {
-    font-family: var(--font-heading);
+.logo-ph-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 500;
-    font-size: 1.5rem;
-    color: var(--color-text-charcoal);
-    letter-spacing: -0.5px;
+    color: var(--color-keells-green-dark);
+    letter-spacing: 0.08em;
+    opacity: 0.8;
 }
+
 
 /* Persistent Shared Morphing Frame */
 .shared-morph-frame {
