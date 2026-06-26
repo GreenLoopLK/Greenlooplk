@@ -532,8 +532,8 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Push content below the shared logo which sits at ~35vh */
-    padding-top: calc(35vh + 75px);
+    /* Logo centers at 35vh, height=120px so bottom = 35vh+60px, +20px gap */
+    padding-top: calc(35vh + 80px);
 }
 
 /* Prevent FOUC on hero text before GSAP runs */
