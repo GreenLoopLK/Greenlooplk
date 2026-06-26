@@ -612,6 +612,29 @@ body.js-ready .hero-content .hero-cta-wrap {
     background-color: var(--color-keells-green-light);
 }
 
+.placeholder-frame.has-image {
+    background-color: var(--color-bg-secondary);
+    border: 1.5px solid var(--color-border-default);
+    display: block;
+    padding: 0;
+}
+
+.placeholder-frame.has-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.placeholder-frame.has-image .placeholder-border-svg {
+    display: none !important;
+}
+
+.placeholder-frame.has-image:hover {
+    border-color: var(--color-keells-green);
+    box-shadow: 0 8px 30px rgba(61, 139, 55, 0.08);
+}
+
 .ratio-16-9 { aspect-ratio: 16 / 9; }
 .ratio-4-3 { aspect-ratio: 4 / 3; }
 .ratio-1-1 { aspect-ratio: 1 / 1; }
