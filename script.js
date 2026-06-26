@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const initScrubbedLogoTrigger = () => {
             gsap.fromTo('#shared-logo', 
                 {
-                    x: '50vw',
+                    x: () => window.innerWidth * 0.5 - 20,
                     y: '35vh',
                     xPercent: -50,
                     yPercent: -50,
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Set logo to starting position (centered on hero) before animating
             gsap.set('#shared-logo', {
-                x: '50vw',
+                x: () => window.innerWidth * 0.5 - 20,
                 y: '35vh',
                 xPercent: -50,
                 yPercent: -50,

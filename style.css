@@ -521,6 +521,64 @@ p {
     will-change: transform, opacity;
 }
 
+/* Slide 0: Hero Section — override base flex centering so padding-top is from the top of the section */
+#slide-hero {
+    align-items: flex-start;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-image: url('assets/hero_bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    isolation: isolate;
+}
+
+/* Subtle dark gradient at bottom so text area is readable */
+#slide-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.35) 50%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 0;
+}
+
+/* Make hero text white so it reads over the image */
+#slide-hero .hero-content .meta-tag {
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#slide-hero .hero-content .tagline {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+#slide-hero .hero-content .mono-label {
+    color: #a8e878 !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+#slide-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
 /* Slide 0: Hero Section Content */
 .hero-content {
     max-width: 800px;
@@ -532,10 +590,9 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* slide-section has 120px top padding already.
-       Logo centers at 35vh, bottom at 35vh+60px, +20px gap = 35vh+80px total.
-       So hero-content needs: (35vh+80px) - 120px = 35vh - 40px */
-    padding-top: calc(35vh - 40px);
+    /* Logo GSAP centers at 35vh, half-height=60px → bottom at 35vh+60px, +20px gap */
+    padding-top: calc(35vh + 80px);
+    padding-bottom: 80px;
 }
 
 /* Prevent FOUC on hero text before GSAP runs */
@@ -558,6 +615,24 @@ p {
 body.js-ready .hero-content .meta-tag,
 body.js-ready .hero-content .hero-cta-wrap {
     opacity: unset;
+}
+
+/* Hero Image Showcase */
+.hero-image-showcase {
+    width: 100%;
+    max-width: 900px;
+    margin-top: var(--space-lg);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--color-border-default);
+    box-shadow: 0 24px 80px rgba(61, 139, 55, 0.08), 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.hero-image-showcase img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 .hero-content .tagline {
