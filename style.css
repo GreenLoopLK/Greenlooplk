@@ -602,6 +602,15 @@ body.js-ready .hero-content .hero-cta-wrap {
     transition: var(--transition-premium);
 }
 
+.placeholder-frame img,
+.placeholder-frame svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .placeholder-frame.transparent-bg {
     background-color: transparent;
     border: 1px dashed var(--color-border-default);
@@ -620,10 +629,7 @@ body.js-ready .hero-content .hero-cta-wrap {
 }
 
 .placeholder-frame.has-image img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    display: block;
 }
 
 .placeholder-frame.has-image .placeholder-border-svg {
