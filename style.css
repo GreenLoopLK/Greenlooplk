@@ -532,8 +532,10 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Logo centers at 35vh, height=120px so bottom = 35vh+60px, +20px gap */
-    padding-top: calc(35vh + 80px);
+    /* slide-section has 120px top padding already.
+       Logo centers at 35vh, bottom at 35vh+60px, +20px gap = 35vh+80px total.
+       So hero-content needs: (35vh+80px) - 120px = 35vh - 40px */
+    padding-top: calc(35vh - 40px);
 }
 
 /* Prevent FOUC on hero text before GSAP runs */
