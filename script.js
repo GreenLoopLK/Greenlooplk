@@ -199,6 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // State variables for logo transition lifecycle
+    let isPageLoading = true;
+    let isLogoCentered = null;
+
     // 6b. Page Load Hero Cascade (Awwwards Mask Entrance)
     const heroSection = document.querySelector('#slide-hero');
     if (heroSection) {
@@ -210,12 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set logo to starting position (centered on hero) before animating
         gsap.set('#shared-logo', {
-            left: '50%',
-            top: '28vh',
+            x: '50vw',
+            y: '28vh',
             xPercent: -50,
             yPercent: -50,
-            scale: 1.4,
-            opacity: 0
+            scale: 0.9,
+            opacity: 0,
+            transformOrigin: 'center center'
         });
 
         // Logo placeholder fade + scale entrance
@@ -223,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opacity: 1,
             scale: 1.4,
             duration: 0.8,
-            ease: 'power2.out'
+            ease: 'power3.out'
         })
         // Eyebrow Label
         .from(heroMeta, {
@@ -269,7 +274,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .from('.dot-nav', {
             opacity: 0,
             duration: 1.2
-        }, "-=0.6");
+        }, "-=0.6")
+        .call(() => {
+            isPageLoading = false;
+        });
+    } else {
+        isPageLoading = false;
     }
 
     // 6c. Active State Sync for Dot Navigation, Mesh Colors, and Shared Morphing Frame on scroll
@@ -391,51 +401,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateSharedElements(activeSlide) {
+    function updateSharedElements(activeSlide, force = false) {
         const logoCenter = activeSlide.getAttribute('data-logo-center') === 'true';
-        let logoProps = {};
 
-        if (logoCenter) {
-            // Hero: perfectly centered using xPercent/yPercent — no pixel math needed
-            logoProps = {
-                left: '50%',
-                top: '28vh',
-                xPercent: -50,
-                yPercent: -50,
-                scale: 1.4
-            };
-        } else {
-            const headerLogoTarget = document.getElementById('header-logo-target');
-            if (headerLogoTarget) {
-                const rect = headerLogoTarget.getBoundingClientRect();
-                logoProps = {
-                    left: rect.left,
-                    top: rect.top + rect.height / 2,
-                    xPercent: 0,
-                    yPercent: -50,
-                    scale: 0.7
-                };
-            } else {
-                logoProps = {
-                    left: 20,
-                    top: 20,
-                    xPercent: 0,
-                    yPercent: 0,
-                    scale: 0.7
-                };
-            }
+        // If page is loading and it's the hero slide, let the load timeline handle the logo entrance
+        if (isPageLoading && logoCenter && !force) {
+            return;
         }
 
-        gsap.to('#shared-logo', {
-            left: logoProps.left,
-            top: logoProps.top,
-            xPercent: logoProps.xPercent,
-            yPercent: logoProps.yPercent,
-            scale: logoProps.scale,
-            duration: 1.2,
-            ease: 'power3.inOut',
-            overwrite: 'auto'
-        });
+        // Only run animation if state changes or force is true
+        if (logoCenter !== isLogoCentered || force) {
+            isLogoCentered = logoCenter;
+            let logoProps = {};
+
+            if (logoCenter) {
+                // Hero: perfectly centered using xPercent/yPercent — no pixel math needed
+                logoProps = {
+                    x: '50vw',
+                    y: '28vh',
+                    xPercent: -50,
+                    yPercent: -50,
+                    scale: 1.4,
+                    transformOrigin: 'center center'
+                };
+            } else {
+                const headerLogoTarget = document.getElementById('header-logo-target');
+                if (headerLogoTarget) {
+                    const rect = headerLogoTarget.getBoundingClientRect();
+                    logoProps = {
+                        x: rect.left,
+                        y: rect.top + rect.height / 2,
+                        xPercent: 0,
+                        yPercent: -50,
+                        scale: 0.7,
+                        transformOrigin: 'left center'
+                    };
+                } else {
+                    logoProps = {
+                        x: 20,
+                        y: 20,
+                        xPercent: 0,
+                        yPercent: 0,
+                        scale: 0.7,
+                        transformOrigin: 'left center'
+                    };
+                }
+            }
+
+            gsap.to('#shared-logo', {
+                x: logoProps.x,
+                y: logoProps.y,
+                xPercent: logoProps.xPercent,
+                yPercent: logoProps.yPercent,
+                scale: logoProps.scale,
+                transformOrigin: logoProps.transformOrigin,
+                duration: 1.2,
+                ease: 'power3.inOut',
+                overwrite: 'auto'
+            });
+        }
 
         // Determine default target for active slide
         const frameHide = activeSlide.getAttribute('data-frame-hide') === 'true';
@@ -1124,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = activeDot.getAttribute('href');
             const activeSlide = document.querySelector(targetId);
             if (activeSlide) {
-                updateSharedElements(activeSlide);
+                updateSharedElements(activeSlide, true);
             }
         }
     });
