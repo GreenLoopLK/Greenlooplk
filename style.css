@@ -189,17 +189,13 @@ body {
     z-index: 20;
 }
 
-/* Persistent Shared Logo — position fully managed by GSAP */
+/* Persistent Shared Logo — now static inside hero-content */
 .shared-brand-logo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    z-index: 25;
-    pointer-events: none;
+    justify-content: center;
+    margin-bottom: var(--space-md);
     opacity: 0; /* GSAP fades this in */
-    will-change: transform, opacity;
 }
 
 /* Logo placeholder box */
