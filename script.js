@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.fromTo('#shared-logo', 
                 {
                     x: '50vw',
-                    y: '40vh',
+                    y: '35vh',
                     xPercent: -50,
                     yPercent: -50,
                     scale: 0.85,
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set logo to starting position (centered on hero) before animating
             gsap.set('#shared-logo', {
                 x: '50vw',
-                y: '40vh',
+                y: '35vh',
                 xPercent: -50,
                 yPercent: -50,
                 scale: 0.55,
