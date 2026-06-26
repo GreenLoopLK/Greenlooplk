@@ -206,78 +206,128 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6b. Page Load Hero Cascade (Awwwards Mask Entrance)
     const heroSection = document.querySelector('#slide-hero');
     if (heroSection) {
-        const loadTL = gsap.timeline({ delay: 0.2 });
+        const isScrolledPastHero = window.scrollY > window.innerHeight * 0.5;
 
-        const heroHeading = heroSection.querySelector('.split-line');
-        const heroTagline = heroSection.querySelector('.tagline');
-        const heroMeta = heroSection.querySelector('.meta-tag');
+        // Common scrubbed ScrollTrigger setup function
+        const initScrubbedLogoTrigger = () => {
+            gsap.to('#shared-logo', {
+                scrollTrigger: {
+                    trigger: '#slide-hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                },
+                x: () => {
+                    const target = document.getElementById('header-logo-target');
+                    return target ? target.getBoundingClientRect().left : 20;
+                },
+                y: () => {
+                    const target = document.getElementById('header-logo-target');
+                    if (target) {
+                        const rect = target.getBoundingClientRect();
+                        return rect.top + rect.height / 2;
+                    }
+                    return 20;
+                },
+                xPercent: 0,
+                yPercent: -50,
+                scale: 0.7,
+                transformOrigin: 'left center',
+                ease: 'none'
+            });
+        };
 
-        // Set logo to starting position (centered on hero) before animating
-        gsap.set('#shared-logo', {
-            x: '50vw',
-            y: '28vh',
-            xPercent: -50,
-            yPercent: -50,
-            scale: 0.9,
-            opacity: 0,
-            transformOrigin: 'center center'
-        });
-
-        // Logo placeholder fade + scale entrance
-        loadTL.to('#shared-logo', {
-            opacity: 1,
-            scale: 1.4,
-            duration: 0.8,
-            ease: 'power3.out'
-        })
-        // Eyebrow Label
-        .from(heroMeta, {
-            opacity: 0,
-            x: -anim.x,
-            duration: 1.0,
-            ease: anim.ease
-        }, "-=0.5");
-
-        if (prefersReducedMotion) {
-            loadTL.from([heroHeading, heroTagline], { opacity: 0, duration: 1.0, stagger: 0.2 }, "-=0.4");
-        } else {
-            if (heroHeading && heroHeading.splitWords) {
-                loadTL.to(heroHeading.splitWords, {
-                    yPercent: 0,
-                    duration: 1.6,
-                    stagger: 0.06,
-                    ease: "power4.out"
-                }, "-=0.6");
-            }
-            if (heroTagline && heroTagline.splitWords) {
-                loadTL.to(heroTagline.splitWords, {
-                    yPercent: 0,
-                    duration: 1.4,
-                    stagger: 0.03,
-                    ease: "power4.out"
-                }, "-=0.8");
-            }
-        }
-
-        loadTL.fromTo('.hero-cta-wrap', 
-            { y: anim.ySmall, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.0, ease: anim.ease }
-        , "-=0.6")
-        // "v1.0" badge scale-up
-        .from('.version-label', {
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.8,
-            ease: anim.ease
-        }, "-=0.5")
-        // Floating Dot nav fade-in
-        .from('.dot-nav', {
-            opacity: 0,
-            duration: 1.2
-        }, "-=0.6")
-        .call(() => {
+        if (isScrolledPastHero) {
+            // Immediately place logo in header target if loaded scrolled down
+            const target = document.getElementById('header-logo-target');
+            let rect = target ? target.getBoundingClientRect() : null;
+            gsap.set('#shared-logo', {
+                x: rect ? rect.left : 20,
+                y: rect ? rect.top + rect.height / 2 : 20,
+                xPercent: 0,
+                yPercent: -50,
+                scale: 0.7,
+                opacity: 1,
+                transformOrigin: 'left center'
+            });
             isPageLoading = false;
-        });
+            initScrubbedLogoTrigger();
+        } else {
+            const loadTL = gsap.timeline({ delay: 0.2 });
+
+            const heroHeading = heroSection.querySelector('.split-line');
+            const heroTagline = heroSection.querySelector('.tagline');
+            const heroMeta = heroSection.querySelector('.meta-tag');
+
+            // Set logo to starting position (centered on hero) before animating
+            gsap.set('#shared-logo', {
+                x: '50vw',
+                y: '28vh',
+                xPercent: -50,
+                yPercent: -50,
+                scale: 0.9,
+                opacity: 0,
+                transformOrigin: 'center center'
+            });
+
+            // Logo placeholder fade + scale entrance
+            loadTL.to('#shared-logo', {
+                opacity: 1,
+                scale: 1.4,
+                duration: 0.8,
+                ease: 'power3.out'
+            })
+            // Eyebrow Label
+            .from(heroMeta, {
+                opacity: 0,
+                x: -anim.x,
+                duration: 1.0,
+                ease: anim.ease
+            }, "-=0.5");
+
+            if (prefersReducedMotion) {
+                loadTL.from([heroHeading, heroTagline], { opacity: 0, duration: 1.0, stagger: 0.2 }, "-=0.4");
+            } else {
+                if (heroHeading && heroHeading.splitWords) {
+                    loadTL.to(heroHeading.splitWords, {
+                        yPercent: 0,
+                        duration: 1.6,
+                        stagger: 0.06,
+                        ease: "power4.out"
+                    }, "-=0.6");
+                }
+                if (heroTagline && heroTagline.splitWords) {
+                    loadTL.to(heroTagline.splitWords, {
+                        yPercent: 0,
+                        duration: 1.4,
+                        stagger: 0.03,
+                        ease: "power4.out"
+                    }, "-=0.8");
+                }
+            }
+
+            loadTL.fromTo('.hero-cta-wrap', 
+                { y: anim.ySmall, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.0, ease: anim.ease }
+            , "-=0.6")
+            // "v1.0" badge scale-up
+            .from('.version-label', {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.8,
+                ease: anim.ease
+            }, "-=0.5")
+            // Floating Dot nav fade-in
+            .from('.dot-nav', {
+                opacity: 0,
+                duration: 1.2
+            }, "-=0.6")
+            .call(() => {
+                isPageLoading = false;
+                initScrubbedLogoTrigger();
+            });
+        }
     } else {
         isPageLoading = false;
     }
@@ -402,64 +452,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateSharedElements(activeSlide, force = false) {
-        const logoCenter = activeSlide.getAttribute('data-logo-center') === 'true';
-
-        // If page is loading and it's the hero slide, let the load timeline handle the logo entrance
-        if (isPageLoading && logoCenter && !force) {
-            return;
-        }
-
-        // Only run animation if state changes or force is true
-        if (logoCenter !== isLogoCentered || force) {
-            isLogoCentered = logoCenter;
-            let logoProps = {};
-
-            if (logoCenter) {
-                // Hero: perfectly centered using xPercent/yPercent — no pixel math needed
-                logoProps = {
-                    x: '50vw',
-                    y: '28vh',
-                    xPercent: -50,
-                    yPercent: -50,
-                    scale: 1.4,
-                    transformOrigin: 'center center'
-                };
-            } else {
-                const headerLogoTarget = document.getElementById('header-logo-target');
-                if (headerLogoTarget) {
-                    const rect = headerLogoTarget.getBoundingClientRect();
-                    logoProps = {
-                        x: rect.left,
-                        y: rect.top + rect.height / 2,
-                        xPercent: 0,
-                        yPercent: -50,
-                        scale: 0.7,
-                        transformOrigin: 'left center'
-                    };
-                } else {
-                    logoProps = {
-                        x: 20,
-                        y: 20,
-                        xPercent: 0,
-                        yPercent: 0,
-                        scale: 0.7,
-                        transformOrigin: 'left center'
-                    };
-                }
-            }
-
-            gsap.to('#shared-logo', {
-                x: logoProps.x,
-                y: logoProps.y,
-                xPercent: logoProps.xPercent,
-                yPercent: logoProps.yPercent,
-                scale: logoProps.scale,
-                transformOrigin: logoProps.transformOrigin,
-                duration: 1.2,
-                ease: 'power3.inOut',
-                overwrite: 'auto'
-            });
-        }
+        // Logo position is now fully managed by the scrubbed ScrollTrigger on the hero slide,
+        // so we don't need any logo positioning calculations or GSAP animations here.
 
         // Determine default target for active slide
         const frameHide = activeSlide.getAttribute('data-frame-hide') === 'true';
