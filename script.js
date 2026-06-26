@@ -3,6 +3,9 @@
    ----------------------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Mark JS as active (lifts FOUC guard on hero elements)
+    document.body.classList.add('js-ready');
     
     // 1. Check for prefers-reduced-motion (A11y constraint)
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
