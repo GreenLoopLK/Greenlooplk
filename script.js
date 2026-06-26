@@ -209,22 +209,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Common scrubbed ScrollTrigger setup function
         const initScrubbedLogoTrigger = () => {
-            gsap.to('#shared-logo', {
-                scrollTrigger: {
-                    trigger: '#slide-hero',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true,
-                    invalidateOnRefresh: true,
+            gsap.fromTo('#shared-logo', 
+                {
+                    x: '50vw',
+                    y: '28vh',
+                    xPercent: -50,
+                    yPercent: -50,
+                    scale: 2.0,
+                    transformOrigin: 'center center'
                 },
-                x: () => window.innerWidth * 0.05, // Align with left edge of container (5vw)
-                y: 40, // 40px from top
-                xPercent: 0,
-                yPercent: 0,
-                scale: 0.7,
-                transformOrigin: 'left center',
-                ease: 'none'
-            });
+                {
+                    scrollTrigger: {
+                        trigger: '#slide-hero',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: true,
+                        invalidateOnRefresh: true,
+                    },
+                    x: () => window.innerWidth * 0.05, // Align with left edge of container (5vw)
+                    y: 40, // 40px from top
+                    xPercent: 0,
+                    yPercent: 0,
+                    scale: 0.27,
+                    transformOrigin: 'left center',
+                    ease: 'none'
+                }
+            );
         };
 
         if (isScrolledPastHero) {
@@ -234,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 y: 40,
                 xPercent: 0,
                 yPercent: 0,
-                scale: 0.7,
+                scale: 0.27,
                 opacity: 1,
                 transformOrigin: 'left center'
             });
@@ -243,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const loadTL = gsap.timeline({ delay: 0.2 });
 
-            const heroHeading = heroSection.querySelector('.split-line');
             const heroTagline = heroSection.querySelector('.tagline');
             const heroMeta = heroSection.querySelector('.meta-tag');
 
@@ -253,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 y: '28vh',
                 xPercent: -50,
                 yPercent: -50,
-                scale: 0.9,
+                scale: 1.2,
                 opacity: 0,
                 transformOrigin: 'center center'
             });
@@ -261,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Logo placeholder fade + scale entrance
             loadTL.to('#shared-logo', {
                 opacity: 1,
-                scale: 1.4,
+                scale: 2.0,
                 duration: 0.8,
                 ease: 'power3.out'
             })
@@ -274,16 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }, "-=0.5");
 
             if (prefersReducedMotion) {
-                loadTL.from([heroHeading, heroTagline], { opacity: 0, duration: 1.0, stagger: 0.2 }, "-=0.4");
+                loadTL.from(heroTagline, { opacity: 0, duration: 1.0 }, "-=0.4");
             } else {
-                if (heroHeading && heroHeading.splitWords) {
-                    loadTL.to(heroHeading.splitWords, {
-                        yPercent: 0,
-                        duration: 1.6,
-                        stagger: 0.06,
-                        ease: "power4.out"
-                    }, "-=0.6");
-                }
                 if (heroTagline && heroTagline.splitWords) {
                     loadTL.to(heroTagline.splitWords, {
                         yPercent: 0,
@@ -1372,17 +1373,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCardIndex++;
                     const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
                     
-                    // Fail-safe to unlock scrolling after 600ms under any circumstances
+                    // Fail-safe to unlock scrolling after 750ms under any circumstances
                     const unlockTimeout = setTimeout(() => {
                         isAnimatingCard = false;
-                    }, 600);
+                    }, 750);
 
                     lenis.scrollTo(targetScroll, {
-                        duration: 0.5,
+                        duration: 0.35,
                         force: true,
                         onComplete: () => {
-                            clearTimeout(unlockTimeout);
-                            isAnimatingCard = false;
+                            // Devour remaining trackpad inertia before unlocking
+                            setTimeout(() => {
+                                clearTimeout(unlockTimeout);
+                                isAnimatingCard = false;
+                            }, 250);
                         }
                     });
                 }
@@ -1396,17 +1400,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCardIndex--;
                     const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
                     
-                    // Fail-safe to unlock scrolling after 600ms under any circumstances
+                    // Fail-safe to unlock scrolling after 750ms under any circumstances
                     const unlockTimeout = setTimeout(() => {
                         isAnimatingCard = false;
-                    }, 600);
+                    }, 750);
 
                     lenis.scrollTo(targetScroll, {
-                        duration: 0.5,
+                        duration: 0.35,
                         force: true,
                         onComplete: () => {
-                            clearTimeout(unlockTimeout);
-                            isAnimatingCard = false;
+                            // Devour remaining trackpad inertia before unlocking
+                            setTimeout(() => {
+                                clearTimeout(unlockTimeout);
+                                isAnimatingCard = false;
+                            }, 250);
                         }
                     });
                 }
