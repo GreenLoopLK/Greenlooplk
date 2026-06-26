@@ -1264,7 +1264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: 'applications-trigger',
                     trigger: '#slide-applications',
                     pin: true,
-                    scrub: 1.0,
+                    scrub: true,
                     start: 'top top',
                     end: () => `+=${track.scrollWidth - window.innerWidth + 800}`,
                     invalidateOnRefresh: true,
@@ -1291,7 +1291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: 'applications-trigger',
                     trigger: '#slide-applications',
                     pin: true,
-                    scrub: 1.0,
+                    scrub: true,
                     snap: {
                         snapTo: 1 / (cards.length - 1),
                         duration: { min: 0.2, max: 0.4 },
@@ -1344,54 +1344,56 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Card-by-Card Wheel Scroll Hijack for Desktop
-        const slideSection = document.getElementById('slide-applications');
-        if (slideSection) {
-            slideSection.addEventListener('wheel', (e) => {
-                if (window.innerWidth <= 992) return; // Only hijack on desktop
+        // Card-by-Card Wheel Scroll Hijack for Desktop (Attached to window for absolute robustness)
+        window.addEventListener('wheel', (e) => {
+            if (window.innerWidth <= 992) return; // Only hijack on desktop
 
-                const st = ScrollTrigger.getById('applications-trigger');
-                if (!st || !st.isActive) return;
+            const st = ScrollTrigger.getById('applications-trigger');
+            if (!st || !st.isActive) return;
 
-                if (e.deltaY > 0) {
-                    // Scroll down: move to next card
-                    if (currentCardIndex < cards.length - 1) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (!isAnimatingCard) {
-                            isAnimatingCard = true;
-                            currentCardIndex++;
-                            const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
-                            lenis.scrollTo(targetScroll, {
-                                duration: 0.5,
-                                force: true,
-                                onComplete: () => {
-                                    isAnimatingCard = false;
-                                }
-                            });
+            // If we are currently animating, we MUST intercept and block the scroll event
+            if (isAnimatingCard) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+
+            if (e.deltaY > 0) {
+                // Scroll down: move to next card
+                if (currentCardIndex < cards.length - 1) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isAnimatingCard = true;
+                    currentCardIndex++;
+                    const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
+                    lenis.scrollTo(targetScroll, {
+                        duration: 0.5,
+                        force: true,
+                        onComplete: () => {
+                            isAnimatingCard = false;
                         }
-                    }
-                } else if (e.deltaY < 0) {
-                    // Scroll up: move to previous card
-                    if (currentCardIndex > 0) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (!isAnimatingCard) {
-                            isAnimatingCard = true;
-                            currentCardIndex--;
-                            const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
-                            lenis.scrollTo(targetScroll, {
-                                duration: 0.5,
-                                force: true,
-                                onComplete: () => {
-                                    isAnimatingCard = false;
-                                }
-                            });
-                        }
-                    }
+                    });
                 }
-            }, { passive: false });
-        }
+                // If we are at the last card, we don't call preventDefault, allowing the user to scroll out
+            } else if (e.deltaY < 0) {
+                // Scroll up: move to previous card
+                if (currentCardIndex > 0) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isAnimatingCard = true;
+                    currentCardIndex--;
+                    const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
+                    lenis.scrollTo(targetScroll, {
+                        duration: 0.5,
+                        force: true,
+                        onComplete: () => {
+                            isAnimatingCard = false;
+                        }
+                    });
+                }
+                // If we are at the first card, we don't call preventDefault, allowing the user to scroll out
+            }
+        }, { passive: false });
     }
 
     // 15. Window resize handler to maintain frame positioning
