@@ -2022,3 +2022,33 @@ strong.highlight-sweep::after {
 strong.highlight-sweep.active::after {
     width: 100%;
 }
+
+/* Placeholder frame hover border (previously injected dynamically in JS) */
+.placeholder-frame:hover .placeholder-border-rect {
+    stroke: var(--color-keells-green) !important;
+    stroke-width: 2px !important;
+}
+.placeholder-border-svg {
+    overflow: visible;
+}
+
+/* Footer brand mark & top accent bar */
+.footer-top-bar {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--color-keells-green), var(--color-keells-green-dark), transparent);
+    margin-bottom: var(--space-md);
+    opacity: 0.6;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.footer-brand:hover {
+    opacity: 1;
+}
