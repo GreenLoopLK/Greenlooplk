@@ -199,73 +199,124 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // State variables for logo transition lifecycle
+    let isPageLoading = true;
+
     // 6b. Page Load Hero Cascade (Awwwards Mask Entrance)
     const heroSection = document.querySelector('#slide-hero');
     if (heroSection) {
-        const loadTL = gsap.timeline({ delay: 0.2 });
+        const isScrolledPastHero = window.scrollY > window.innerHeight * 0.5;
 
-        const heroHeading = heroSection.querySelector('.split-line');
-        const heroTagline = heroSection.querySelector('.tagline');
-        const heroMeta = heroSection.querySelector('.meta-tag');
+        // Common scrubbed ScrollTrigger setup function
+        const initScrubbedLogoTrigger = () => {
+            gsap.to('#shared-logo', {
+                scrollTrigger: {
+                    trigger: '#slide-hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true,
+                    invalidateOnRefresh: true,
+                },
+                x: () => window.innerWidth * 0.05, // Align with left edge of container (5vw)
+                y: 40, // 40px from top
+                xPercent: 0,
+                yPercent: 0,
+                scale: 0.7,
+                transformOrigin: 'left center',
+                ease: 'none'
+            });
+        };
 
-        // Set logo to starting position (statically centered in hero content) before animating
-        gsap.set('#shared-logo', {
-            scale: 0.9,
-            opacity: 0
-        });
-
-        // Logo placeholder fade + scale entrance
-        loadTL.to('#shared-logo', {
-            opacity: 1,
-            scale: 1.0,
-            duration: 0.8,
-            ease: 'power3.out'
-        })
-        // Eyebrow Label
-        .from(heroMeta, {
-            opacity: 0,
-            x: -anim.x,
-            duration: 1.0,
-            ease: anim.ease
-        }, "-=0.5");
-
-        if (prefersReducedMotion) {
-            loadTL.from([heroHeading, heroTagline], { opacity: 0, duration: 1.0, stagger: 0.2 }, "-=0.4");
+        if (isScrolledPastHero) {
+            // Immediately place logo in top-left target if loaded scrolled down
+            gsap.set('#shared-logo', {
+                x: () => window.innerWidth * 0.05,
+                y: 40,
+                xPercent: 0,
+                yPercent: 0,
+                scale: 0.7,
+                opacity: 1,
+                transformOrigin: 'left center'
+            });
+            isPageLoading = false;
+            initScrubbedLogoTrigger();
         } else {
-            if (heroHeading && heroHeading.splitWords) {
-                loadTL.to(heroHeading.splitWords, {
-                    yPercent: 0,
-                    duration: 1.6,
-                    stagger: 0.06,
-                    ease: "power4.out"
-                }, "-=0.6");
-            }
-            if (heroTagline && heroTagline.splitWords) {
-                loadTL.to(heroTagline.splitWords, {
-                    yPercent: 0,
-                    duration: 1.4,
-                    stagger: 0.03,
-                    ease: "power4.out"
-                }, "-=0.8");
-            }
-        }
+            const loadTL = gsap.timeline({ delay: 0.2 });
 
-        loadTL.fromTo('.hero-cta-wrap', 
-            { y: anim.ySmall, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.0, ease: anim.ease }
-        , "-=0.6")
-        // "v1.0" badge scale-up
-        .from('.version-label', {
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.8,
-            ease: anim.ease
-        }, "-=0.5")
-        // Floating Dot nav fade-in
-        .from('.dot-nav', {
-            opacity: 0,
-            duration: 1.2
-        }, "-=0.6");
+            const heroHeading = heroSection.querySelector('.split-line');
+            const heroTagline = heroSection.querySelector('.tagline');
+            const heroMeta = heroSection.querySelector('.meta-tag');
+
+            // Set logo to starting position (centered on hero) before animating
+            gsap.set('#shared-logo', {
+                x: '50vw',
+                y: '28vh',
+                xPercent: -50,
+                yPercent: -50,
+                scale: 0.9,
+                opacity: 0,
+                transformOrigin: 'center center'
+            });
+
+            // Logo placeholder fade + scale entrance
+            loadTL.to('#shared-logo', {
+                opacity: 1,
+                scale: 1.4,
+                duration: 0.8,
+                ease: 'power3.out'
+            })
+            // Eyebrow Label
+            .from(heroMeta, {
+                opacity: 0,
+                x: -anim.x,
+                duration: 1.0,
+                ease: anim.ease
+            }, "-=0.5");
+
+            if (prefersReducedMotion) {
+                loadTL.from([heroHeading, heroTagline], { opacity: 0, duration: 1.0, stagger: 0.2 }, "-=0.4");
+            } else {
+                if (heroHeading && heroHeading.splitWords) {
+                    loadTL.to(heroHeading.splitWords, {
+                        yPercent: 0,
+                        duration: 1.6,
+                        stagger: 0.06,
+                        ease: "power4.out"
+                    }, "-=0.6");
+                }
+                if (heroTagline && heroTagline.splitWords) {
+                    loadTL.to(heroTagline.splitWords, {
+                        yPercent: 0,
+                        duration: 1.4,
+                        stagger: 0.03,
+                        ease: "power4.out"
+                    }, "-=0.8");
+                }
+            }
+
+            loadTL.fromTo('.hero-cta-wrap', 
+                { y: anim.ySmall, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.0, ease: anim.ease }
+            , "-=0.6")
+            // "v1.0" badge scale-up
+            .from('.version-label', {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.8,
+                ease: anim.ease
+            }, "-=0.5")
+            // Floating Dot nav fade-in
+            .from('.dot-nav', {
+                opacity: 0,
+                duration: 1.2
+            }, "-=0.6")
+            .call(() => {
+                isPageLoading = false;
+                initScrubbedLogoTrigger();
+            });
+        }
+    } else {
+        isPageLoading = false;
     }
 
     // 6c. Active State Sync for Dot Navigation, Mesh Colors, and Shared Morphing Frame on scroll
