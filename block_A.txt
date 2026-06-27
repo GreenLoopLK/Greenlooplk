@@ -1,0 +1,1795 @@
+<section id="slide-overview" class="slide-section" data-frame-target="#overview-frame-target">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">01 / Introduction</span>
+                        <h2 class="split-line">Moving from Passive to Incentivised Recycling</h2>
+                    </div>
+                    <div class="grid grid-2">
+                        <div class="overview-text-column">
+                            <div class="overview-box reveal-element" style="margin-bottom: var(--space-sm);">
+                                <span class="mono-label">1.1 The Conflict</span>
+                                <h4>Plastic Waste & Passive Disposal</h4>
+                                <p>Sri Lanka generates a substantial volume of single-use plastic waste each year, much of which bypasses formal recycling. John Keells Group’s Plasticcycle initiative has placed recycling bins at retail outlets and public spaces, collecting over 215,000 kg of plastic waste. However, the bin model is fundamentally passive — it depends entirely on a person's pre-existing motivation, with no immediate feedback, reward, or proof of impact returned. The action and reward remain disconnected.</p>
+                            </div>
+                            <div class="overview-box reveal-element" style="margin-bottom: var(--space-sm);">
+                                <span class="mono-label">1.2 The Hero</span>
+                                <h4>Instant, Rewarded Recycling</h4>
+                                <p>Green Loop closes the loop between action and reward. A user inserts a plastic bottle; the machine scans, verifies, compacts, and sorts it; and the user is rewarded immediately in Keells Nexus points before they walk away. The machine turns a vague environmental good intention into a concrete, instant transaction.</p>
+                            </div>
+                            <div class="overview-box reveal-element">
+                                <span class="mono-label">1.3 Beyond Recycling</span>
+                                <h4>The Habit Loop Features</h4>
+                                <p>To build a lasting habit loop, the system integrates streak tracking, school leaderboards, and shareable personal-impact stats (kg recycled, bottles diverted, and CO₂e saved). This engagement layer exists purely to keep people motivated beyond the base utility of recycling.</p>
+                            </div>
+                        </div>
+                        <div class="overview-visual-column">
+                            <div class="image-container diagram" id="overview-frame-target">
+                                <img src="assets/machine_appearance_3.png" alt="GreenLoop RVM Machine Appearance">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-directory" class="slide-section" data-frame-hide="true" data-blob1-color="#6DBB45" data-blob1-x="15vw" data-blob1-y="20vh" data-blob1-scale="1.2" data-blob2-color="#FFD54A" data-blob2-x="-10vw" data-blob2-y="-10vh" data-blob2-scale="1.0">
+                <div class="container" style="height: 85vh; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="section-header" style="margin-bottom: var(--space-xs);">
+                        <span class="section-num">02 / Portal Directory</span>
+                        <h2 class="split-line" style="font-size: 2rem;">Strategic Guidelines Directory</h2>
+                    </div>
+                    <div class="directory-grid-13 reveal-element">
+                        
+                        <!-- Module 1: Research -->
+                        <a href="#slide-conflict" class="directory-card">
+                            <div>
+                                <span class="dir-num">01</span>
+                                <h3>Research</h3>
+                            </div>
+                            <p>Waste statistics, surveys, and barriers.</p>
+                        </a>
+
+                        <!-- Module 2: Product Definition -->
+                        <a href="#slide-usp" class="directory-card">
+                            <div>
+                                <span class="dir-num">02</span>
+                                <h3>Product Definition</h3>
+                            </div>
+                            <p>Active loops and Green Loop USP.</p>
+                        </a>
+
+                        <!-- Module 3: Branding -->
+                        <a href="#slide-logo" class="directory-card">
+                            <div>
+                                <span class="dir-num">03</span>
+                                <h3>Branding & Identity</h3>
+                            </div>
+                            <p>Logomarks, colors, and type guidelines.</p>
+                        </a>
+
+                        <!-- Module 4: Marketing -->
+                        <a href="#slide-mkt-campaigns" class="directory-card">
+                            <div>
+                                <span class="dir-num">04</span>
+                                <h3>Marketing</h3>
+                            </div>
+                            <p>Launch channels, ad templates, and campaigns.</p>
+                        </a>
+
+                        <!-- Module 5: Machine Design -->
+                        <a href="#slide-rvm-render" class="directory-card">
+                            <div>
+                                <span class="dir-num">05</span>
+                                <h3>Machine Design</h3>
+                            </div>
+                            <p>RVM mockups and outer branding skins.</p>
+                        </a>
+
+                        <!-- Module 6: Machine Placement -->
+                        <a href="#slide-placement" class="directory-card">
+                            <div>
+                                <span class="dir-num">06</span>
+                                <h3>Machine Placement</h3>
+                            </div>
+                            <p>Entrance vestibules and lobby layouts.</p>
+                        </a>
+
+                        <!-- Module 7: User Experience -->
+                        <a href="#slide-rvm-screen" class="directory-card">
+                            <div>
+                                <span class="dir-num">07</span>
+                                <h3>User Experience</h3>
+                            </div>
+                            <p>Touchscreen flows and app mockups.</p>
+                        </a>
+
+                        <!-- Module 8: Reward System -->
+                        <a href="#slide-rewards" class="directory-card">
+                            <div>
+                                <span class="dir-num">08</span>
+                                <h3>Reward System</h3>
+                            </div>
+                            <p>Nexus points conversion and carbon metrics.</p>
+                        </a>
+
+                        <!-- Module 9: Collection Process -->
+                        <a href="#slide-telemetry" class="directory-card">
+                            <div>
+                                <span class="dir-num">09</span>
+                                <h3>Collection Process</h3>
+                            </div>
+                            <p>Telemetry alerts and logistics dispatch cycles.</p>
+                        </a>
+
+                        <!-- Module 10: Customer Journey -->
+                        <a href="#slide-journey" class="directory-card">
+                            <div>
+                                <span class="dir-num">10</span>
+                                <h3>Customer Journey</h3>
+                            </div>
+                            <p>Recycler steps and feedback loops.</p>
+                        </a>
+
+                        <!-- Module 11: Revenue Model -->
+                        <a href="#slide-bus-model" class="directory-card">
+                            <div>
+                                <span class="dir-num">11</span>
+                                <h3>Revenue Model</h3>
+                            </div>
+                            <p>Customer retention and PET flake sales value.</p>
+                        </a>
+
+                        <!-- Module 12: Financial Plans -->
+                        <a href="#slide-bus-financials" class="directory-card">
+                            <div>
+                                <span class="dir-num">12</span>
+                                <h3>Financial Plans</h3>
+                            </div>
+                            <p>CAPEX/OPEX budgets and funding matrices.</p>
+                        </a>
+
+                        <!-- Module 13: Future Plans -->
+                        <a href="#slide-bus-roadmap" class="directory-card">
+                            <div>
+                                <span class="dir-num">13</span>
+                                <h3>Future Plans</h3>
+                            </div>
+                            <p>Next-gen sorting and double-points campaigns.</p>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-conflict" class="slide-section" data-frame-target="#conflict-frame-target">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">01.1 / Waste Statistics</span>
+                        <h2 class="split-line">The Plastic Waste Problem & Motivation Gap</h2>
+                    </div>
+                    <div class="grid grid-2">
+                        <div class="overview-text-column">
+                            <div class="overview-box reveal-element" style="margin-bottom: var(--space-sm);">
+                                <span class="mono-label">National Plastic Consumption</span>
+                                <h4>Sri Lankan Waste Crisis</h4>
+                                <p>Sri Lanka generates a massive volume of single-use plastic waste annually, consuming over 300,000 metric tons of plastic. The national formal recycling rate stands at less than 10%, meaning over 90% of plastic waste bypasses formal recycling channels, clogging wetlands, waterways, and landfill sites such as Karadiyana and Dompe.</p>
+                            </div>
+                            <div class="overview-box reveal-element">
+                                <span class="mono-label">The Motivation Barrier</span>
+                                <h4>Passive Disposal Limits</h4>
+                                <p>John Keells Group's Plasticcycle initiative has worked to close this gap since 2017, placing recycling bins at retail outlets and public spaces, and collecting over 215,000 kg of plastic waste. However, the bin model is fundamentally passive — it depends entirely on a person's pre-existing motivation, with no immediate feedback, reward, or proof of impact returned. The action and reward are disconnected, capping participation well below potential.</p>
+                            </div>
+                        </div>
+                        <div class="overview-visual-column">
+                            <div class="infographic-container" id="conflict-frame-target">
+                                <!-- R&D Header Tag -->
+                                <div class="info-header-tag" style="opacity:0;">
+                                    <span>🍃</span> Research &amp; Development
+                                </div>
+
+                                <!-- 3 Subtle Particles -->
+                                <div class="floating-particle" style="top: 25%; left: 25%;"></div>
+                                <div class="floating-particle" style="top: 35%; left: 75%;"></div>
+                                <div class="floating-particle" style="top: 65%; left: 30%;"></div>
+
+                                <!-- Donut Chart Wrapper -->
+                                <div class="donut-chart-wrap">
+                                    <!-- SVG Donut & Callouts (ViewBox: 0 0 800 600) -->
+                                    <svg id="conflict-pie-root" viewBox="0 0 680 500"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         class="donut-svg"
+                                         style="overflow:visible; display:block;">
+                                        <defs>
+                                            <linearGradient id="arcGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop offset="0%" stop-color="#5CBF3A"/>
+                                                <stop offset="100%" stop-color="#89D548"/>
+                                            </linearGradient>
+                                            <filter id="greenGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                                <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#5CBF3A" flood-opacity="0.05"/>
+                                            </filter>
+                                        </defs>
+
+                                        <!-- Donut Chart -->
+                                        <!-- Matte Charcoal track (90% unrecycled) -->
+                                        <circle cx="340" cy="250" r="150"
+                                                fill="none" stroke="#3E3E3E" stroke-width="42" />
+
+                                        <!-- Green active segment (10% recycled) -->
+                                        <circle class="active-arc" cx="340" cy="250" r="150"
+                                                fill="none" stroke="url(#arcGreen)" stroke-width="42"
+                                                stroke-dasharray="942.48" stroke-dashoffset="942.48"
+                                                stroke-linecap="round"
+                                                transform="rotate(-90 340 250)" filter="url(#greenGlow)" />
+
+                                        <!-- ── Callout: 90% left (Horizontal center-left alignment) ── -->
+                                        <g class="callout-left" opacity="0">
+                                            <circle cx="169" cy="250" r="3" fill="#3E3E3E" class="glow-dot" />
+                                            <line class="callout-line" x1="169" y1="250" x2="95" y2="250"
+                                                  stroke="#3E3E3E" stroke-width="2" stroke-linecap="round"
+                                                  stroke-dasharray="74" stroke-dashoffset="74" />
+                                            <text x="85" y="242" text-anchor="end"
+                                                  font-family="'Outfit', sans-serif" font-size="28"
+                                                  font-weight="800" fill="#3E3E3E">90%</text>
+                                            <text x="85" y="265" text-anchor="end"
+                                                  font-family="'Inter', sans-serif" font-size="14"
+                                                  font-weight="500" fill="#6B7280">Unrecycled</text>
+                                        </g>
+
+                                        <!-- ── Callout: 10% right (Centered on green segment at -72deg) ── -->
+                                        <g class="callout-right" opacity="0">
+                                            <circle cx="393" cy="87" r="3" fill="#89D548" filter="url(#greenGlow)" class="glow-dot" />
+                                            <line class="callout-line" x1="393" y1="87" x2="470" y2="70"
+                                                  stroke="#5CBF3A" stroke-width="2" stroke-linecap="round"
+                                                  stroke-dasharray="79" stroke-dashoffset="79" />
+                                            <text x="480" y="65" text-anchor="start"
+                                                  font-family="'Outfit', sans-serif" font-size="28"
+                                                  font-weight="800" fill="#3D8B37">10%</text>
+                                            <text x="480" y="88" text-anchor="start"
+                                                  font-family="'Inter', sans-serif" font-size="14"
+                                                  font-weight="500" fill="#6B7280">Recycled</text>
+                                        </g>
+                                    </svg>
+
+                                    <!-- Donut Center HTML Overlay -->
+                                    <div class="donut-center-html">
+                                        <div class="center-number">0</div>
+                                        <div class="center-label-1">METRIC TONS</div>
+                                        <div class="center-label-2">CONSUMED / YEAR</div>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Info Cards -->
+                                <div class="info-cards-wrap">
+                                    <!-- Left Card -->
+                                    <div class="info-card card-left" style="opacity: 0;">
+                                        <div class="card-icon">🗑️</div>
+                                        <div class="card-content">
+                                            <div class="card-val">90%</div>
+                                            <div class="card-lbl">Unrecycled</div>
+                                        </div>
+                                    </div>
+                                    <!-- Right Card -->
+                                    <div class="info-card card-right" style="opacity: 0;">
+                                        <div class="card-icon">♻️</div>
+                                        <div class="card-content">
+                                            <div class="card-val">10%</div>
+                                            <div class="card-lbl">Recycled</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-survey" class="slide-section" data-frame-target="#survey-frame-target" data-blob1-color="#3D8B37" data-blob1-x="15vw" data-blob1-y="30vh" data-blob1-scale="1.1" data-blob2-color="#FFD54A" data-blob2-x="-15vw" data-blob2-y="-10vh" data-blob2-scale="0.9">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">01.2 / Research Insights</span>
+                        <h2 class="split-line">Consumer Recycling Barriers</h2>
+                    </div>
+                    <div class="grid grid-2" style="align-items: start;">
+                        <!-- Left Side: Context & 4 Information Cards -->
+                        <div class="overview-text-column">
+                            <div class="overview-box reveal-element" style="margin-bottom: 24px;">
+                                <span class="mono-label">RESEARCH INSIGHTS</span>
+                                <h4>Understanding the Challenges</h4>
+                                <p>Research consistently identifies several factors that influence recycling behaviour. Studies show that convenience, accessibility, consumer awareness, and incentives play a major role in determining whether people recycle plastic packaging. Improving these areas can significantly increase participation in recycling programmes and support a circular economy.</p>
+                            </div>
+                            
+                            <!-- 2x2 Information Cards Grid -->
+                            <div class="insights-grid reveal-element">
+                                <!-- Card 1: Convenience -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">🚶</div>
+                                        <h5>Convenience</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Easy access to recycling facilities is one of the strongest factors influencing recycling participation.</p>
+                                    <div class="insight-card-src">Source: OECD – Systematic Review of Plastic Packaging Recycling Behaviour</div>
+                                </div>
+                                
+                                <!-- Card 2: Accessibility -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">⏱</div>
+                                        <h5>Accessibility</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Consumers are more likely to recycle when recycling fits naturally into their daily routine.</p>
+                                    <div class="insight-card-src">Source: Household Recycling Barrier Studies</div>
+                                </div>
+                                
+                                <!-- Card 3: Incentives -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">💰</div>
+                                        <h5>Incentives</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Financial rewards, loyalty points, vouchers, and deposit-return systems have been shown to increase recycling participation.</p>
+                                    <div class="insight-card-src">Source: OECD Deposit Return System Guidance / Resources, Conservation & Recycling Journal</div>
+                                </div>
+                                
+                                <!-- Card 4: Knowledge & Awareness -->
+                                <div class="insight-item-card">
+                                    <div class="insight-card-header">
+                                        <div class="insight-icon-circle">♻</div>
+                                        <h5>Knowledge &amp; Awareness</h5>
+                                    </div>
+                                    <p class="insight-card-desc">Clear instructions and public awareness improve correct recycling behaviour and reduce contamination.</p>
+                                    <div class="insight-card-src">Source: Systematic Review of Plastic Packaging Recycling Behaviour</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Side: Ecosystem Diagram & Insight Card -->
+                        <div class="overview-visual-column">
+                            <div class="ecosystem-diagram-card" id="survey-frame-target">
+                                <span class="frame-label" style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--color-keells-green-dark); font-weight: 600;">[ Research Summary ]</span>
+                                
+                                <!-- SVG Ecosystem Diagram (viewBox 0 0 500 400) -->
+                                <svg class="ecosystem-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" style="overflow:visible; display:block; width:100%; height:auto;">
+                                    <!-- Connection lines (connecting outer nodes to center node) -->
+                                    <line class="diag-link top-link" x1="250" y1="150" x2="250" y2="90" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    <line class="diag-link bottom-link" x1="250" y1="250" x2="250" y2="310" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    <line class="diag-link left-link" x1="200" y1="200" x2="150" y2="200" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    <line class="diag-link right-link" x1="300" y1="200" x2="350" y2="200" stroke="#8BC34A" stroke-width="1.5" stroke-linecap="round" />
+                                    
+                                    <!-- Center Node: Recycling Behaviour -->
+                                    <g class="diag-node node-center" transform="translate(250, 200)">
+                                        <circle cx="0" cy="0" r="50" fill="#FFFFFF" stroke="#8BC34A" stroke-width="2" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="-12" font-family="'Outfit', sans-serif" font-size="22" fill="#3D8B37" text-anchor="middle">♻</text>
+                                        <text x="0" y="8" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#2E2E2E" text-anchor="middle">Recycling</text>
+                                        <text x="0" y="21" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#2E2E2E" text-anchor="middle">Behaviour</text>
+                                    </g>
+
+                                    <!-- Top Node: Convenience -->
+                                    <g class="diag-node node-top" transform="translate(250, 70)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Convenience</text>
+                                    </g>
+
+                                    <!-- Bottom Node: Accessibility -->
+                                    <g class="diag-node node-bottom" transform="translate(250, 330)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Accessibility</text>
+                                    </g>
+
+                                    <!-- Left Node: Awareness -->
+                                    <g class="diag-node node-left" transform="translate(90, 200)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Awareness</text>
+                                    </g>
+
+                                    <!-- Right Node: Incentives -->
+                                    <g class="diag-node node-right" transform="translate(410, 200)">
+                                        <rect x="-60" y="-20" width="120" height="40" rx="8" fill="#FFFFFF" stroke="#8BC34A" stroke-width="1.5" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.03));" />
+                                        <text x="0" y="5" font-family="'Outfit', sans-serif" font-size="11" font-weight="600" fill="#2E2E2E" text-anchor="middle">Incentives</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            
+                            <!-- Key Research Finding Insight Card -->
+                            <div class="diagram-insight-card reveal-element">
+                                <div class="insight-card-header">
+                                    <div class="insight-icon-circle">💡</div>
+                                    <h5>Key Research Finding</h5>
+                                </div>
+                                <p class="insight-card-body">Multiple studies conclude that improving convenience, providing incentives, and increasing public awareness are among the most effective strategies for increasing consumer recycling participation. Reverse Vending Machines combine these elements by offering accessible collection points with immediate rewards.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Sources Footer -->
+                    <div class="sources-section reveal-element">
+                        <h6>Sources</h6>
+                        <ul>
+                            <li>OECD – Improving Recycling Markets</li>
+                            <li>OECD – Creating Incentives for Greener Products</li>
+                            <li>Resources, Conservation &amp; Recycling</li>
+                            <li>Drivers of and Barriers to Consumers' Plastic Packaging Recycling (2022)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-competitors" class="slide-section" data-frame-target=".strategy-table-wrapper" data-blob1-color="#6DBB45" data-blob1-x="10vw" data-blob1-y="30vh" data-blob1-scale="1.2" data-blob2-color="#FFD54A" data-blob2-x="-25vw" data-blob2-y="20vh" data-blob2-scale="1.1">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">01.3 / Competitor Matrix</span>
+                        <h2 class="split-line">Competitor & Landscape Analysis</h2>
+                    </div>
+                    <div class="strategy-table-wrapper reveal-element" style="margin-bottom: var(--space-xs);">
+                        <table class="strategy-table" style="font-size: 0.75rem;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;">Product / Initiative</th>
+                                    <th style="width: 60%;">Position & Market Analysis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Plasticcycle (John Keells Group)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-none" title="Reward System: Not Available">— Rewards</span>
+                                            <span class="comp-badge badge-none" title="Reverse Vending Machine: Not Available">— RVM</span>
+                                            <span class="comp-badge badge-partial" title="Retail Integration: Partial">○ Retail</span>
+                                            <span class="comp-badge badge-none" title="Mobile App: Not Available">— App</span>
+                                            <span class="comp-badge badge-none" title="Real-time Analytics: Not Available">— Analytics</span>
+                                            <span class="comp-badge badge-none" title="Loyalty Programme: Not Available">— Loyalty</span>
+                                            <span class="comp-badge badge-partial" title="Sustainability Reporting: Partial">○ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Plasticcycle is John Keells Group's plastic collection and recycling initiative, providing dedicated collection points across Sri Lanka to encourage responsible plastic disposal. The programme focuses on increasing plastic recovery through partnerships with recyclers and public awareness campaigns but does not provide consumers with immediate rewards or an integrated Reverse Vending Machine experience.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Trash2Cash (Chakra Suthra)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-avail" title="Reward System: Available">✓ Rewards</span>
+                                            <span class="comp-badge badge-partial" title="Reverse Vending Machine: Partial">○ RVM</span>
+                                            <span class="comp-badge badge-partial" title="Retail Integration: Partial">○ Retail</span>
+                                            <span class="comp-badge badge-partial" title="Mobile App: Partial">○ App</span>
+                                            <span class="comp-badge badge-partial" title="Real-time Analytics: Partial">○ Analytics</span>
+                                            <span class="comp-badge badge-partial" title="Loyalty Programme: Partial">○ Loyalty</span>
+                                            <span class="comp-badge badge-partial" title="Sustainability Reporting: Partial">○ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Trash2Cash is Sri Lanka's reward-based recycling platform that allows users to exchange recyclable materials for mobile reloads, vouchers, and other rewards. The initiative demonstrates growing local demand for incentive-based recycling and operates through collection partners and selected smart recycling locations.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">TOMRA (Global Market Leader)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-avail" title="Reward System: Available">✓ Rewards</span>
+                                            <span class="comp-badge badge-avail" title="Reverse Vending Machine: Available">✓ RVM</span>
+                                            <span class="comp-badge badge-avail" title="Retail Integration: Available">✓ Retail</span>
+                                            <span class="comp-badge badge-avail" title="Mobile App: Available">✓ App</span>
+                                            <span class="comp-badge badge-avail" title="Real-time Analytics: Available">✓ Analytics</span>
+                                            <span class="comp-badge badge-partial" title="Loyalty Programme: Partial">○ Loyalty</span>
+                                            <span class="comp-badge badge-avail" title="Sustainability Reporting: Available">✓ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">TOMRA is the world's leading Reverse Vending Machine provider, supplying deposit-return technology across numerous countries. Its systems achieve very high bottle return rates where national Deposit Return Schemes exist. However, these solutions are designed primarily for regulated deposit markets and are not specifically tailored for Sri Lanka's retail environment.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Tadweer (United Arab Emirates)</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-avail" title="Reward System: Available">✓ Rewards</span>
+                                            <span class="comp-badge badge-partial" title="Reverse Vending Machine: Partial">○ RVM</span>
+                                            <span class="comp-badge badge-none" title="Retail Integration: Not Available">— Retail</span>
+                                            <span class="comp-badge badge-avail" title="Mobile App: Available">✓ App</span>
+                                            <span class="comp-badge badge-avail" title="Real-time Analytics: Available">✓ Analytics</span>
+                                            <span class="comp-badge badge-none" title="Loyalty Programme: Not Available">— Loyalty</span>
+                                            <span class="comp-badge badge-avail" title="Sustainability Reporting: Available">✓ Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Tadweer operates government-supported recycling initiatives in the UAE, combining public recycling infrastructure with environmental awareness programmes. Their approach demonstrates how public-sector investment and digital engagement can strengthen recycling participation.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px; color: var(--color-text-charcoal);">Reverse Vending Machine Manufacturers</strong>
+                                        <div class="competitor-badges-container">
+                                            <span class="comp-badge badge-avail" title="Plastic Collection: Available">✓ Collection</span>
+                                            <span class="comp-badge badge-partial" title="Reward System: Partial">○ Rewards</span>
+                                            <span class="comp-badge badge-avail" title="Reverse Vending Machine: Available">✓ RVM</span>
+                                            <span class="comp-badge badge-none" title="Retail Integration: Not Available">— Retail</span>
+                                            <span class="comp-badge badge-none" title="Mobile App: Not Available">— App</span>
+                                            <span class="comp-badge badge-partial" title="Real-time Analytics: Partial">○ Analytics</span>
+                                            <span class="comp-badge badge-none" title="Loyalty Programme: Not Available">— Loyalty</span>
+                                            <span class="comp-badge badge-none" title="Sustainability Reporting: Not Available">— Reporting</span>
+                                        </div>
+                                    </td>
+                                    <td style="line-height: 1.5; color: #4A4A4A;">Several manufacturers from China, India, and other countries supply affordable Reverse Vending Machines with barcode scanning, bottle compaction, and cloud connectivity. These products generally require local software integration, retailer partnerships, and operational support before large-scale deployment.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Key Takeaway Insight Card -->
+                    <div class="competitor-insight-card" style="margin-top: 24px; padding: 24px; background: #FFFFFF; border: 1.5px solid rgba(139, 195, 74, 0.25); border-radius: 16px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.025);">
+                        <div class="insight-card-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <div class="insight-icon-circle" style="background: rgba(139, 195, 74, 0.1); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #3D8B37; flex-shrink: 0;">💡</div>
+                            <h5 style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--color-text-charcoal); margin: 0;">Key Market Insight</h5>
+                        </div>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #4A4A4A; margin: 0 0 12px 0;">Sri Lanka's recycling ecosystem already includes plastic collection programmes and reward-based recycling initiatives. However, there remains an opportunity to create a more integrated ecosystem that combines Reverse Vending Machines, supermarket loyalty programmes, real-time data analytics, sustainability reporting, and scalable retail deployment into a single consumer experience.</p>
+                        <p style="font-size: 0.8rem; line-height: 1.5; color: #4A4A4A; margin: 0; font-weight: 500;">GreenLoop aims to strengthen the existing recycling ecosystem by bringing these components together through a modern, retailer-integrated platform rather than replacing current initiatives.</p>
+                    </div>
+
+                    <!-- Bottom Sources Footer -->
+                    <div class="sources-section reveal-element">
+                        <h6>Sources</h6>
+                        <ul>
+                            <li><a href="https://plasticcycle.lk/" target="_blank" rel="noopener noreferrer">John Keells Group – Plasticcycle</a></li>
+                            <li><a href="https://www.chakrasuthra.lk/trash2cash" target="_blank" rel="noopener noreferrer">Chakra Suthra – Trash2Cash</a></li>
+                            <li><a href="https://www.tomra.com/" target="_blank" rel="noopener noreferrer">TOMRA Collection</a></li>
+                            <li><a href="https://www.tadweer.ae/" target="_blank" rel="noopener noreferrer">Tadweer Group</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-usp" class="slide-section" data-frame-target="#usp-frame-target">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">02.1 / USP</span>
+                        <h2 class="split-line">Unique Selling Proposition</h2>
+                    </div>
+                    <div class="grid grid-2 usp-grid">
+                        <div class="overview-text-column">
+                            <div class="overview-box reveal-element" style="margin-bottom: var(--space-sm);">
+                                <span class="mono-label" style="font-weight: 700; letter-spacing: 1px;">The Core Concept Statement</span>
+                                <h4 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin-top: 8px; margin-bottom: 12px;">"Recycling, <strong class="highlight-sweep">Rewarded Instantly</strong>."</h4>
+                                <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-muted);">Green Loop is a Reverse Vending Machine (RVM) service that <strong class="highlight-sweep">closes the loop</strong> between action and reward. It is designed to plug directly into the John Keells Group's sustainability network, providing users with immediate points, checkout discounts, and environmental statistics in exchange for empty plastic bottles.</p>
+                            </div>
+                            <div class="overview-box reveal-element">
+                                <span class="mono-label" style="font-weight: 700; letter-spacing: 1px;">Service Core Goals</span>
+                                <h4 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; line-height: 1.2; margin-top: 8px; margin-bottom: 12px;">Driving <strong class="highlight-sweep">Circular Action</strong></h4>
+                                <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-muted);">Instead of relying on a person's voluntary environmental good intentions, the RVM turns recycling into an <strong class="highlight-sweep">immediate transaction</strong>. It is a premium product experience that bridges the physical action of dropping a bottle and the digital receipt of loyalty incentives, creating a <strong class="highlight-sweep">repeatable habit loop</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="overview-visual-column" style="display: flex; align-items: center; justify-content: center;">
+                            <div id="usp-frame-target" class="placeholder-frame ratio-4-3" style="width: 100%; border-radius: 24px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1.2px solid rgba(92, 191, 67, 0.12); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.03); overflow: visible; padding: 24px;">
+                                <svg class="usp-svg" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block; overflow: visible;">
+                                    <defs>
+                                        <!-- Glow Filters -->
+                                        <filter id="usp-glow-green" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="6" result="blur" />
+                                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                        </filter>
+                                        <filter id="usp-glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="5" result="blur" />
+                                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                        </filter>
+                                    </defs>
+
+                                    <!-- Background Floating Particles -->
+                                    <g class="bg-particles" opacity="0.6">
+                                        <circle class="usp-particle" cx="100" cy="80" r="2.0" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="240" cy="140" r="2.5" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="420" cy="90" r="2.0" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="180" cy="280" r="2.5" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="350" cy="300" r="2.0" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="520" cy="220" r="3.0" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="80" cy="220" r="2.0" fill="#5CBF43" />
+                                        <circle class="usp-particle" cx="480" cy="150" r="2.5" fill="#5CBF43" />
+                                    </g>
+
+                                    <!-- HUD Blueprint Grid & Markings (Opacity < 3%) -->
+                                    <g class="hud-blueprint" opacity="0.02" style="pointer-events: none;">
+                                        <!-- Grid -->
+                                        <pattern id="usp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2E2E2E" stroke-width="0.5" />
+                                        </pattern>
+                                        <rect x="0" y="0" width="680" height="500" fill="url(#usp-grid)" />
+
+                                        <!-- Tech Measurement Rings & Orbit Lines (Only faint central blueprint circle) -->
+                                        <circle cx="340" cy="250" r="140" fill="none" stroke="#2E2E2E" stroke-width="0.8" />
+                                    </g>
+
+                                    <!-- Process Flow Headers -->
+                                    <g class="flow-headers">
+                                        <text x="40" y="55" font-family="var(--font-heading)" font-size="9" font-weight="800" fill="#8E8E93" letter-spacing="1.2">TRADITIONAL PASSIVE BIN</text>
+                                        <line x1="40" y1="65" x2="640" y2="65" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="2 4" />
+                                        
+                                        <text x="40" y="225" font-family="var(--font-heading)" font-size="9" font-weight="800" fill="#5CBF43" letter-spacing="1.2">GREENLOOP SMART RECYCLING SYSTEM</text>
+                                        <line x1="40" y1="235" x2="640" y2="235" stroke="rgba(92, 191, 67, 0.15)" stroke-width="1" />
+                                    </g>
+
+                                    <!-- Process Connectors: Top Flow (Traditional Recycling) -->
+                                    <g class="traditional-connectors">
+                                        <line class="connector-dash" x1="185" y1="120" x2="275" y2="120" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="3 3" />
+                                        <line class="connector-dash" x1="405" y1="120" x2="495" y2="120" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="3 3" />
+                                    </g>
+
+                                    <!-- Process Connectors: Bottom Flow (GreenLoop Active System) -->
+                                    <g class="greenloop-connectors">
+                                        <!-- Smooth curves dipping slightly -->
+                                        <path class="flow-path link-1" d="M 133,345 Q 141.25,353 149.5,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+                                        <path class="flow-path link-2" d="M 265.5,345 Q 273.75,353 282,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+                                        <path class="flow-path link-3" d="M 398,345 Q 406.25,353 414.5,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+                                        <path class="flow-path link-4" d="M 530.5,345 Q 538.75,353 547,345" fill="none" stroke="rgba(92, 191, 67, 0.12)" stroke-width="1.5" />
+
+                                        <!-- Glowing pulse paths (animated dashoffset) -->
+                                        <path class="flow-pulse pulse-1" d="M 133,345 Q 141.25,353 149.5,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                        <path class="flow-pulse pulse-2" d="M 265.5,345 Q 273.75,353 282,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                        <path class="flow-pulse pulse-3" d="M 398,345 Q 406.25,353 414.5,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                        <path class="flow-pulse pulse-4" d="M 530.5,345 Q 538.75,353 547,345" fill="none" stroke="#5CBF43" stroke-width="1.5" stroke-linecap="round" style="stroke-dasharray: 4 20; stroke-dashoffset: 18;" />
+                                    </g>
+
+                                    <!-- FLOW 1 NODES: Traditional Flow -->
+                                    <g class="traditional-nodes">
+                                        <!-- Node 1: Discard -->
+                                        <g class="usp-node node-traditional node-discard" transform="translate(120, 120)">
+                                            <rect x="-65" y="-28" width="130" height="56" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+                                            <!-- Trash Icon -->
+                                            <g transform="translate(-40, 0)">
+                                                <circle cx="0" cy="0" r="10" fill="#F4F4F5" />
+                                                <path d="M -4,-5 L 4,-5 L 3.5,5 L -3.5,5 Z M -2,-5 L -2,3 M 2,-5 L 2,3 M -5,-6 L 5,-6" fill="none" stroke="#8E8E93" stroke-width="1" stroke-linecap="round" />
+                                            </g>
+                                            <text x="-22" y="-2" font-family="var(--font-heading)" font-size="11.5" font-weight="700" fill="#1A1A1A">Discard</text>
+                                            <text x="-22" y="14" font-family="var(--font-body)" font-size="9" font-weight="500" fill="#8E8E93">Landfill waste</text>
+                                        </g>
+
+                                        <!-- Node 2: Passive Bin -->
+                                        <g class="usp-node node-traditional node-passive-bin" transform="translate(340, 120)">
+                                            <rect x="-65" y="-28" width="130" height="56" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+                                            <!-- Bin Icon -->
+                                            <g transform="translate(-40, 0)">
+                                                <circle cx="0" cy="0" r="10" fill="#F4F4F5" />
+                                                <path d="M -5,-4 L 5,-4 L 4,5 L -4,5 Z M -6,-5 L 6,-5 M -2,-4 L -2,3 M 2,-4 L 2,3" fill="none" stroke="#8E8E93" stroke-width="1" stroke-linecap="round" />
+                                            </g>
+                                            <text x="-22" y="-2" font-family="var(--font-heading)" font-size="11.5" font-weight="700" fill="#1A1A1A">Passive Bin</text>
+                                            <text x="-22" y="14" font-family="var(--font-body)" font-size="9" font-weight="500" fill="#8E8E93">No sorting</text>
+                                        </g>
+
+                                        <!-- Node 3: No Reward (Warning / Alert) -->
+                                        <g class="usp-node node-traditional node-no-reward" transform="translate(560, 120)">
+                                            <rect x="-65" y="-28" width="130" height="56" rx="10" fill="#FFF5F5" stroke="#FF5C5C" stroke-width="1.5" />
+                                            <!-- Warning Icon -->
+                                            <g transform="translate(-40, 0)">
+                                                <circle cx="0" cy="0" r="10" fill="#FFEAE8" />
+                                                <path d="M 0,-4 L 0,1 M 0,3 L 0,4" fill="none" stroke="#FF5C5C" stroke-width="1.2" stroke-linecap="round" />
+                                                <path d="M -1,-4 H 1 M -1.5,3.5 H 1.5" fill="none" stroke="#FF5C5C" stroke-width="1" />
+                                            </g>
+                                            <text x="-22" y="-2" font-family="var(--font-heading)" font-size="11.5" font-weight="700" fill="#FF5C5C">No Reward</text>
+                                            <text x="-22" y="14" font-family="var(--font-body)" font-size="9" font-weight="500" fill="#8E8E93">Zero feedback</text>
+                                        </g>
+                                    </g>
+
+                                    <!-- FLOW 2 NODES: GreenLoop Smart System -->
+                                    <g class="greenloop-nodes">
+                                        <!-- Node 1: Deposit Bottle -->
+                                        <g class="usp-node node-greenloop node-deposit" transform="translate(75, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Bottle Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M -2,-5 L 2,-5 L 2,-3 L 3.5,-1 L 3.5,5 L -3.5,5 L -3.5,-1 L -2,-3 Z M -2,-1 H 2 M -2,2 H 2" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Deposit Bottle</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">Plastic Accepted</text>
+                                        </g>
+
+                                        <!-- Node 2: AI Material Scan -->
+                                        <g class="usp-node node-greenloop node-scan" transform="translate(207.5, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Scanner Eye Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M -6,0 C -3,-4 3,-4 6,0 C 3,4 -3,4 -6,0 Z" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                                <circle cx="0" cy="0" r="2.5" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                            </g>
+                                            <!-- Vertical Scanning Line Overlay inside clip path -->
+                                            <g clip-path="url(#card-clip-2)">
+                                                <line class="scan-line" x1="-56" y1="-44" x2="56" y2="-44" stroke="#7ED957" stroke-width="1.5" style="opacity: 0; filter: drop-shadow(0 0 3px #7ED957);" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">AI Material Scan</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">PET, weight scan</text>
+                                            
+                                            <!-- Sub-status checkmarks group below card -->
+                                            <g class="scan-checklist" transform="translate(0, 64)" opacity="0">
+                                                <rect x="-48" y="-8" width="96" height="42" rx="6" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.15)" stroke-width="1" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.02));" />
+                                                <text class="check-item check-pet" x="-36" y="4" font-family="var(--font-mono)" font-size="7.5" font-weight="700" fill="#8E8E93">PET</text>
+                                                <text class="check-item check-label" x="-10" y="4" font-family="var(--font-mono)" font-size="7.5" font-weight="700" fill="#8E8E93">LABEL</text>
+                                                <text class="check-item check-weight" x="22" y="4" font-family="var(--font-mono)" font-size="7.5" font-weight="700" fill="#8E8E93">WT</text>
+                                                <text class="check-item check-verified" x="0" y="24" font-family="var(--font-heading)" font-size="8.5" font-weight="800" fill="#8E8E93" text-anchor="middle">WAITING</text>
+                                            </g>
+                                        </g>
+
+                                        <!-- Node 3: Material Verification -->
+                                        <g class="usp-node node-greenloop node-verify" transform="translate(340, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Shield Check Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M -5,-5 C -1,-5 0,-7 0,-7 C 0,-7 1,-5 5,-5 C 5,-1 3.5,3.5 0,5 C -3.5,3.5 -5,-1 -5,-5 Z M -2,-1 L -0.5,0.5 L 2.5,-2.5" fill="none" stroke="#5CBF43" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Verification</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">Instant checks</text>
+                                        </g>
+
+                                        <!-- Node 4: Smart Crushing -->
+                                        <g class="usp-node node-greenloop node-crush" transform="translate(472.5, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Crusher/Gear Icon -->
+                                            <g transform="translate(0, -22)" class="crush-gear-g">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <circle cx="0" cy="0" r="4" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                                <path d="M 0,-7 L 0,-4 M 0,4 L 0,7 M -7,0 L -4,0 M 4,0 L 7,0 M -5,-5 L -3,-3 M 3,3 L 5,5 M -5,5 L -3,3 M 3,-3 L 5,-5" fill="none" stroke="#5CBF43" stroke-width="1" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Smart Crushing</text>
+                                            <text x="0" y="31" font-family="var(--font-body)" font-size="9.5" font-weight="500" fill="#666666" text-anchor="middle">Volume reduced</text>
+                                        </g>
+
+                                        <!-- Node 5: Instant Nexus Points -->
+                                        <g class="usp-node node-greenloop node-reward" transform="translate(605, 345)">
+                                            <rect x="-58" y="-47" width="116" height="94" rx="12" fill="#FFFFFF" stroke="rgba(92, 191, 67, 0.25)" stroke-width="1.5" />
+                                            <!-- Reward Star Icon -->
+                                            <g transform="translate(0, -22)">
+                                                <circle cx="0" cy="0" r="10" fill="rgba(92, 191, 67, 0.08)" />
+                                                <path d="M 0,-6 L 1.8,-1.8 L 6,-1.8 L 2.6,1 L 3.8,5.2 L 0,2.6 L -3.8,5.2 L -2.6,1 L -6,-1.8 L -1.8,-1.8 Z" fill="none" stroke="#5CBF43" stroke-width="1" stroke-linejoin="round" />
+                                            </g>
+                                            <text x="0" y="13" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="#1A1A1A" text-anchor="middle">Nexus Points</text>
+                                            <text class="rewards-text-sub" x="0" y="31" font-family="var(--font-mono)" font-size="11" font-weight="800" fill="#5CBF43" text-anchor="middle">+0 PTS</text>
+                                        </g>
+                                    </g>
+
+                                    <!-- Subtle Pulse Ring for Reward Activation -->
+                                    <circle class="reward-pulse-ring" cx="605" cy="345" r="58" fill="none" stroke="#5CBF43" stroke-width="1.2" opacity="0" pointer-events="none" />
+
+                                    <!-- Clip path definition for AI Scan module scanning bounds -->
+                                    <clipPath id="card-clip-2">
+                                        <rect x="-57" y="-46" width="114" height="92" rx="11" />
+                                    </clipPath>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-decisions" class="slide-section" data-frame-target="#decisions-frame-target" data-blob1-color="#3D8B37" data-blob1-x="-15vw" data-blob1-y="30vh" data-blob1-scale="1.1" data-blob2-color="#FFD54A" data-blob2-x="20vw" data-blob2-y="-10vh" data-blob2-scale="0.9">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">02.2 / Product Decisions</span>
+                        <h2 class="split-line">Feasibility Decisions & Accepted Materials</h2>
+                    </div>
+                    <div class="grid grid-2">
+                        <div class="overview-text-column" style="display: flex; flex-direction: column; justify-content: center; gap: var(--space-md);">
+                            <div class="overview-box reveal-element" style="padding: 16px 20px; background: rgba(255,255,255,0.4); border-radius: 16px; border: 1px solid rgba(0,0,0,0.03);">
+                                <span class="mono-label" style="margin-bottom: var(--space-sm); display: inline-block;">INITIAL SERVICE SCOPE</span>
+                                
+                                <div class="scope-list" style="display: flex; flex-direction: column; gap: var(--space-xs);">
+                                    <div class="scope-item" style="border-left: 2px solid #6DBE45; padding-left: 12px; margin-bottom: 2px;">
+                                        <h5 style="margin: 0 0 2px 0; font-family: var(--font-heading); color: var(--color-text-charcoal); font-size: 0.88rem; font-weight: 700;">Deposit Mechanism</h5>
+                                        <p style="margin: 0; font-size: 0.78rem; line-height: 1.4; color: var(--color-text-muted);">Single-bottle horizontal intake slot with barcode and shape scanning to prevent double-feeding and fraud.</p>
+                                    </div>
+                                    <div class="scope-item" style="border-left: 2px solid #6DBE45; padding-left: 12px; margin-bottom: 2px;">
+                                        <h5 style="margin: 0 0 2px 0; font-family: var(--font-heading); color: var(--color-text-charcoal); font-size: 0.88rem; font-weight: 700;">Reward System</h5>
+                                        <p style="margin: 0; font-size: 0.78rem; line-height: 1.4; color: var(--color-text-muted);">Direct integration with the Keells Nexus loyalty program, instantly crediting points to customer accounts.</p>
+                                    </div>
+                                    <div class="scope-item" style="border-left: 2px solid #6DBE45; padding-left: 12px; margin-bottom: 2px;">
+                                        <h5 style="margin: 0 0 2px 0; font-family: var(--font-heading); color: var(--color-text-charcoal); font-size: 0.88rem; font-weight: 700;">Accepted Materials – Phase 1</h5>
+                                        <p style="margin: 0; font-size: 0.78rem; line-height: 1.4; color: var(--color-text-muted);">Clean, empty PET plastic beverage bottles (250ml–2L).</p>
+                                    </div>
+                                    <div class="scope-item" style="border-left: 2px solid #A1A1A6; padding-left: 12px; margin-bottom: 2px;">
+                                        <h5 style="margin: 0 0 2px 0; font-family: var(--font-heading); color: var(--color-text-charcoal); font-size: 0.88rem; font-weight: 700;">Future Expansion</h5>
+                                        <p style="margin: 0; font-size: 0.78rem; line-height: 1.4; color: var(--color-text-muted);"><strong>Phase 2:</strong> HDPE plastic bottles and containers. <br><strong>Phase 3:</strong> Aluminum beverage cans.</p>
+                                    </div>
+                                    <div class="scope-item" style="border-left: 2px solid #EF4444; padding-left: 12px; margin-bottom: 2px;">
+                                        <h5 style="margin: 0 0 2px 0; font-family: var(--font-heading); color: #EF4444; font-size: 0.88rem; font-weight: 700;">Excluded Materials</h5>
+                                        <p style="margin: 0; font-size: 0.78rem; line-height: 1.4; color: var(--color-text-muted);">PVC plastics, glass bottles, food containers, and contaminated packaging materials.</p>
+                                    </div>
+                                    <div class="scope-item" style="border-left: 2px solid #6DBE45; padding-left: 12px; margin-bottom: 2px;">
+                                        <h5 style="margin: 0 0 2px 0; font-family: var(--font-heading); color: var(--color-text-charcoal); font-size: 0.88rem; font-weight: 700;">Pilot Deployment</h5>
+                                        <p style="margin: 0; font-size: 0.78rem; line-height: 1.4; color: var(--color-text-muted);">Selected Keells supermarket locations in the Colombo Metropolitan Area.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overview-visual-column">
+                            <div id="decisions-frame-target" class="placeholder-frame ratio-4-3" style="width: 100%; border-radius: 24px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1.2px solid rgba(109, 190, 69, 0.12); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.03); overflow: visible; padding: 24px;">
+                                <svg class="decisions-svg reveal-element" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block; overflow: visible;">
+                                    <defs>
+                                        <!-- Glow Filter for subtle coming soon card borders -->
+                                        <filter id="soon-border-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="3" result="blur" />
+                                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                        </filter>
+                                    </defs>
+
+                                    <!-- Connection Lines (Outward from center (300, 200)) -->
+                                    <g class="decisions-connectors">
+                                        <!-- Left connection to Card 1 -->
+                                        <path class="decision-line line-card1" d="M 245,200 L 175,200" fill="none" stroke="#6DBE45" stroke-width="1.5" stroke-linecap="round" />
+                                        <!-- Top-Right connection to Card 2 -->
+                                        <path class="decision-line line-card2" d="M 340,165 L 425,125" fill="none" stroke="#E5E7EB" stroke-width="1.5" stroke-linecap="round" />
+                                        <!-- Bottom-Right connection to Card 3 -->
+                                        <path class="decision-line line-card3" d="M 340,235 L 425,275" fill="none" stroke="#E5E7EB" stroke-width="1.5" stroke-linecap="round" />
+                                    </g>
+
+                                    <!-- Card 1: PET (Accepted - Phase 1) at (110, 200) -->
+                                    <g class="decision-card card-accepted" transform="translate(110, 200)">
+                                        <rect x="-65" y="-75" width="130" height="150" rx="16" fill="#FFFFFF" stroke="#6DBE45" stroke-width="1.5" style="filter: drop-shadow(0 4px 12px rgba(109, 190, 69, 0.05));" />
+                                        <text x="0" y="-45" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#6DBE45" letter-spacing="1.2" text-anchor="middle">01</text>
+                                        <text x="0" y="-20" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#1A1A1A" text-anchor="middle">PET</text>
+                                        
+                                        <!-- Accepted Badge -->
+                                        <g class="badge-accepted">
+                                            <rect x="-38" y="-5" width="76" height="18" rx="4" fill="#6DBE45" />
+                                            <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="8" font-weight="800" fill="#FFFFFF" letter-spacing="0.5" text-anchor="middle">ACCEPTED</text>
+                                        </g>
+                                        <text x="0" y="28" font-family="'Outfit', sans-serif" font-size="9" font-weight="700" fill="#8E8E93" text-anchor="middle">Phase 1</text>
+                                        
+                                        <!-- Thin line bottle icon -->
+                                        <g transform="translate(0, 48)">
+                                            <path d="M 0,-15 L 0,-10 M -4,-10 L 4,-10 L 4,-8 L 6,-4 L 6,15 C 6,17 4,18 2,18 L -2,18 C -4,18 -6,17 -6,15 L -6,-4 L -4,-8 Z" fill="none" stroke="#6DBE45" stroke-width="1.2" />
+                                        </g>
+                                    </g>
+
+                                    <!-- Card 2: HDPE (Coming Soon - Phase 2) at (490, 110) -->
+                                    <g class="decision-card card-soon-hdpe" transform="translate(490, 110)">
+                                        <rect class="soon-card-rect" x="-65" y="-75" width="130" height="150" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" style="filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.02));" />
+                                        <text x="0" y="-45" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#A1A1A6" letter-spacing="1.2" text-anchor="middle">02</text>
+                                        <text x="0" y="-20" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#1A1A1A" text-anchor="middle">HDPE</text>
+                                        
+                                        <!-- Coming Soon Badge -->
+                                        <g class="badge-soon">
+                                            <rect x="-42" y="-5" width="84" height="18" rx="4" fill="#F2F2F7" stroke="#E5E7EB" stroke-width="1" />
+                                            <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="7.5" font-weight="800" fill="#8E8E93" letter-spacing="0.5" text-anchor="middle">COMING SOON</text>
+                                        </g>
+                                        <text x="0" y="28" font-family="'Outfit', sans-serif" font-size="9" font-weight="700" fill="#8E8E93" text-anchor="middle">Phase 2</text>
+                                        
+                                        <!-- Thin line jug container icon -->
+                                        <g transform="translate(0, 48)">
+                                            <path d="M -5,-12 L 2,-12 L 2,-9 L 6,-5 L 6,15 C 6,17 4,18 2,18 L -6,18 C -7,18 -8,17 -8,15 L -8,-7 C -8,-9 -7,-10 -5,-10 Z M 2,-9 L -5,-9 L -5,-5 L 2,-5 Z" fill="none" stroke="#A1A1A6" stroke-width="1.2" />
+                                        </g>
+                                    </g>
+
+                                    <!-- Card 3: Aluminum Cans (Coming Soon - Phase 3) at (490, 290) -->
+                                    <g class="decision-card card-soon-aluminum" transform="translate(490, 290)">
+                                        <rect class="soon-card-rect" x="-65" y="-75" width="130" height="150" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" style="filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.02));" />
+                                        <text x="0" y="-45" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#A1A1A6" letter-spacing="1.2" text-anchor="middle">03</text>
+                                        <text x="0" y="-26" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#1A1A1A" text-anchor="middle">ALUMINUM</text>
+                                        <text x="0" y="-12" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#1A1A1A" text-anchor="middle">CANS</text>
+                                        
+                                        <!-- Coming Soon Badge -->
+                                        <g class="badge-soon">
+                                            <rect x="-42" y="-2" width="84" height="18" rx="4" fill="#F2F2F7" stroke="#E5E7EB" stroke-width="1" />
+                                            <text x="0" y="10" font-family="'Outfit', sans-serif" font-size="7.5" font-weight="800" fill="#8E8E93" letter-spacing="0.5" text-anchor="middle">COMING SOON</text>
+                                        </g>
+                                        <text x="0" y="28" font-family="'Outfit', sans-serif" font-size="9" font-weight="700" fill="#8E8E93" text-anchor="middle">Phase 3</text>
+                                        
+                                        <!-- Thin line beverage can icon -->
+                                        <g transform="translate(0, 48)">
+                                            <path d="M -5,-15 L 5,-15 M -6,-13 L 6,-13 L 6,15 C 6,17 5,18 3,18 L -3,18 C -5,18 -6,17 -6,15 Z M -3,-13 L -3,15 M 3,-13 L 3,15" fill="none" stroke="#A1A1A6" stroke-width="1.2" />
+                                        </g>
+                                    </g>
+
+                                    <!-- Center Warning Badge: PVC & Glass Not Accepted -->
+                                    <g class="decision-warning-badge" transform="translate(300, 200)">
+                                        <circle cx="0" cy="0" r="55" fill="#FFF5F5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="3 3" style="filter: drop-shadow(0 4px 12px rgba(255, 59, 48, 0.05));" />
+                                        <!-- Thin line Warning Triangle -->
+                                        <g transform="translate(0, -32)">
+                                            <path d="M 0,-8 L 8,6 L -8,6 Z" fill="none" stroke="#FF3B30" stroke-width="1.2" stroke-linejoin="round" />
+                                            <line x1="0" y1="-3" x2="0" y2="1" stroke="#FF3B30" stroke-width="1.2" stroke-linecap="round" />
+                                            <circle cx="0" cy="3.5" r="0.8" fill="#FF3B30" />
+                                        </g>
+                                        <text x="0" y="-8" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="800" fill="#FF3B30" letter-spacing="0.5" text-anchor="middle">PVC &amp; GLASS</text>
+                                        <g class="badge-not-accepted" transform="translate(0, 16)">
+                                            <rect x="-38" y="-7" width="76" height="15" rx="3" fill="#FF3B30" />
+                                            <text x="0" y="3" font-family="'Outfit', sans-serif" font-size="7" font-weight="800" fill="#FFFFFF" letter-spacing="0.5" text-anchor="middle">NOT ACCEPTED</text>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-logo" class="slide-section" data-frame-target="#logo-frame-target">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">03.1 / Logo</span>
+                        <h2 class="split-line">Logomark & Construction</h2>
+                    </div>
+                    <div class="grid grid-2">
+                        <div class="guideline-card reveal-element">
+                            <span class="mono-label">03.1.1 Primary Logo</span>
+                            <div class="image-container diagram" id="logo-frame-target">
+                                <img src="assets/logo_concept.png" alt="Primary Logo Grid & Construction">
+                            </div>
+                            <p class="card-desc">The primary horizontal mark, combining the recycling loop logomark with clean custom sans-serif typography. Optimized for retail store lobbies and the physical RVM outer skin.</p>
+                        </div>
+                        <div class="guideline-card reveal-element">
+                            <span class="mono-label">03.1.2 Stacked Variant</span>
+                            <div class="image-container diagram">
+                                <img src="assets/logo_variations.png" alt="Stacked Variant Logo Variations">
+                            </div>
+                            <p class="card-desc">The secondary stacked logo layout, designed for narrow vertical spaces such as coupons, receipts, and companion app screens.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-construction" class="slide-section" data-frame-target="#geo-frame-target" data-blob1-color="#3D8B37" data-blob1-x="15vw" data-blob1-y="30vh" data-blob1-scale="1.1" data-blob2-color="#FFD54A" data-blob2-x="-15vw" data-blob2-y="-10vh" data-blob2-scale="0.9">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">03.2 / Geometry</span>
+                        <h2 class="split-line">Logo Construction Grid & Constraints</h2>
+                    </div>
+                    <div class="grid grid-3">
+                        <div class="guideline-card reveal-element">
+                            <span class="mono-label">03.2.1 Clear Space</span>
+                            <div class="image-container diagram" id="geo-frame-target">
+                                <img src="assets/logo_usage.png" alt="Clear Space Specifications">
+                            </div>
+                            <p class="card-desc">A strict minimum clear space boundary equal to 1.5 times the radius of the outer symbol ring must surround the entire logomark, keeping it free from surrounding visual clutter.</p>
+                        </div>
+                        <div class="guideline-card reveal-element">
+                            <span class="mono-label">03.2.2 Grid Lines</span>
+                            <div class="image-container diagram">
+                                <img src="assets/logogideline.png" alt="Logo Construction Grid Lines">
+                            </div>
+                            <p class="card-desc">The symbol geometry utilizes an outer concentric circle boundary construct mapped exactly to a 10x10 drafting division grid.</p>
+                        </div>
+                        <div class="guideline-card reveal-element">
+                            <span class="mono-label">03.2.3 Restrictions</span>
+                            <div class="image-container diagram">
+                                <img src="assets/logo_bad_usage.png" alt="Logo Restrictions and Incorrect Usage">
+                            </div>
+                            <p class="card-desc">Do not recolor elements ad-hoc. Do not distort the circular loop proportions or adjust spacing alignments of the text block.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-colors" class="slide-section" data-frame-target="#color-frame-target" data-blob1-color="#7DBE43" data-blob1-x="-10vw" data-blob1-y="20vh" data-blob1-scale="1.0" data-blob2-color="#4CAF00" data-blob2-x="20vw" data-blob2-y="20vh" data-blob2-scale="1.1">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">03.3 / Color Specs</span>
+                        <h2 class="split-line">Primary & Secondary Color System</h2>
+                    </div>
+                    
+                    <div class="brand-color-sheet reveal-element" id="color-frame-target">
+                        <div class="color-sheet-top">
+                            <div class="color-sheet-intro-col">
+                                <h3 class="color-sheet-title">GREENLOOP – COLOUR PALETTE</h3>
+                                <div class="color-sheet-line"></div>
+                                <p class="color-sheet-intro">Our colour palette reflects nature, sustainability, and trust. Greens symbolize growth and renewal, while neutrals bring clarity and balance.</p>
+                            </div>
+                            
+                            <div class="color-groups-container">
+                                <div class="color-group">
+                                    <h4 class="group-title">PRIMARY COLOURS</h4>
+                                    <div class="swatches-row">
+                                        <div class="color-swatch-card">
+                                            <div class="swatch-color" style="background-color: #7DBE43;"></div>
+                                            <div class="swatch-details">
+                                                <span class="swatch-hex">#7DBE43</span>
+                                                <div class="swatch-values">
+                                                    <span>RGB 125, 190, 67</span>
+                                                    <span>CMYK 56, 0, 85, 0</span>
+                                                </div>
+                                                <span class="swatch-label green-primary">GREEN (PRIMARY)</span>
+                                            </div>
+                                        </div>
+                                        <div class="color-swatch-card">
+                                            <div class="swatch-color" style="background-color: #4CAF00;"></div>
+                                            <div class="swatch-details">
+                                                <span class="swatch-hex">#4CAF00</span>
+                                                <div class="swatch-values">
+                                                    <span>RGB 76, 175, 0</span>
+                                                    <span>CMYK 75, 0, 100, 0</span>
+                                                </div>
+                                                <span class="swatch-label green-dark">GREEN (DARK)</span>
+                                            </div>
+                                        </div>
+                                        <div class="color-swatch-card has-border">
+                                            <div class="swatch-color" style="background-color: #FFFFFF;"></div>
+                                            <div class="swatch-details">
+                                                <span class="swatch-hex">#FFFFFF</span>
+                                                <div class="swatch-values">
+                                                    <span>RGB 255, 255, 255</span>
+                                                    <span>CMYK 0, 0, 0, 0</span>
+                                                </div>
+                                                <span class="swatch-label white">WHITE</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="color-group">
+                                    <h4 class="group-title">SECONDARY / NEUTRAL COLOURS</h4>
+                                    <div class="swatches-row">
+                                        <div class="color-swatch-card">
+                                            <div class="swatch-color" style="background-color: #1A1A1A;"></div>
+                                            <div class="swatch-details">
+                                                <span class="swatch-hex">#1A1A1A</span>
+                                                <div class="swatch-values">
+                                                    <span>RGB 26, 26, 26</span>
+                                                    <span>CMYK 0, 0, 0, 90</span>
+                                                </div>
+                                                <span class="swatch-label charcoal">CHARCOAL</span>
+                                            </div>
+                                        </div>
+                                        <div class="color-swatch-card">
+                                            <div class="swatch-color" style="background-color: #757575;"></div>
+                                            <div class="swatch-details">
+                                                <span class="swatch-hex">#757575</span>
+                                                <div class="swatch-values">
+                                                    <span>RGB 117, 117, 117</span>
+                                                    <span>CMYK 0, 0, 0, 60</span>
+                                                </div>
+                                                <span class="swatch-label medium-grey">MEDIUM GREY</span>
+                                            </div>
+                                        </div>
+                                        <div class="color-swatch-card has-border">
+                                            <div class="swatch-color" style="background-color: #F2F2F2;"></div>
+                                            <div class="swatch-details">
+                                                <span class="swatch-hex">#F2F2F2</span>
+                                                <div class="swatch-values">
+                                                    <span>RGB 242, 242, 242</span>
+                                                    <span>CMYK 0, 0, 0, 5</span>
+                                                </div>
+                                                <span class="swatch-label light-grey">LIGHT GREY</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="color-divider"></div>
+                        
+                        <div class="gradients-section">
+                            <h4 class="section-sub-title">GRADIENTS</h4>
+                            <div class="gradients-grid">
+                                <div class="gradient-item">
+                                    <div class="gradient-bar" style="background: linear-gradient(to right, #7DBE43, #4CAF00);"></div>
+                                    <div class="gradient-info">
+                                        <span class="gradient-name">PRIMARY GREEN GRADIENT</span>
+                                        <div class="gradient-endpoints">
+                                            <span>#7DBE43</span>
+                                            <span class="line-dot"></span>
+                                            <span>#4CAF00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gradient-item">
+                                    <div class="gradient-bar" style="background: linear-gradient(to right, #0F5B1E, #4CAF00);"></div>
+                                    <div class="gradient-info">
+                                        <span class="gradient-name">DEEP GREEN GRADIENT</span>
+                                        <div class="gradient-endpoints">
+                                            <span>#0F5B1E</span>
+                                            <span class="line-dot"></span>
+                                            <span>#4CAF00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gradient-item">
+                                    <div class="gradient-bar" style="background: linear-gradient(to right, #E8F5E9, #C8E6A0); border: 1px solid rgba(0,0,0,0.05);"></div>
+                                    <div class="gradient-info">
+                                        <span class="gradient-name">LIGHT GREEN GRADIENT</span>
+                                        <div class="gradient-endpoints">
+                                            <span>#E8F5E9</span>
+                                            <span class="line-dot"></span>
+                                            <span>#C8E6A0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="color-divider"></div>
+                        
+                        <div class="ratio-section">
+                            <h4 class="section-sub-title">COLOUR USAGE RATIO</h4>
+                            <div class="ratio-container">
+                                <div class="donut-chart-wrapper">
+                                    <svg viewBox="0 0 200 200" class="donut-chart">
+                                        <circle cx="100" cy="100" r="70" fill="none" stroke="#7DBE43" stroke-width="26" stroke-dasharray="263.89 439.82" stroke-dashoffset="0" transform="rotate(-90 100 100)" />
+                                        <circle cx="100" cy="100" r="70" fill="none" stroke="#4CAF00" stroke-width="26" stroke-dasharray="87.96 439.82" stroke-dashoffset="-263.89" transform="rotate(-90 100 100)" />
+                                        <circle cx="100" cy="100" r="70" fill="none" stroke="#FFFFFF" stroke-width="26" stroke-dasharray="43.98 439.82" stroke-dashoffset="-351.85" transform="rotate(-90 100 100)" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1));" />
+                                        <circle cx="100" cy="100" r="70" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-dasharray="30.79 439.82" stroke-dashoffset="-395.83" transform="rotate(-90 100 100)" />
+                                        <circle cx="100" cy="100" r="70" fill="none" stroke="#F2F2F2" stroke-width="26" stroke-dasharray="13.19 439.82" stroke-dashoffset="-426.62" transform="rotate(-90 100 100)" />
+                                    </svg>
+                                    <div class="donut-center-label">
+                                        <span class="donut-pct">60%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="ratio-legend-grid">
+                                    <div class="legend-card">
+                                        <div class="legend-badge primary-green-bg">60%</div>
+                                        <div class="legend-content">
+                                            <span class="legend-title">PRIMARY GREEN</span>
+                                            <p class="legend-desc">Used for key brand elements, highlights, buttons, icons, and important accents.</p>
+                                        </div>
+                                    </div>
+                                    <div class="legend-card">
+                                        <div class="legend-badge dark-green-bg">20%</div>
+                                        <div class="legend-content">
+                                            <span class="legend-title">DARK GREEN</span>
+                                            <p class="legend-desc">Used for headings, strong text, and key brand elements for emphasis.</p>
+                                        </div>
+                                    </div>
+                                    <div class="legend-card">
+                                        <div class="legend-badge white-bg">10%</div>
+                                        <div class="legend-content">
+                                            <span class="legend-title">WHITE</span>
+                                            <p class="legend-desc">Used for backgrounds and negative space to create clarity and cleanliness.</p>
+                                        </div>
+                                    </div>
+                                    <div class="legend-card">
+                                        <div class="legend-badge charcoal-bg">7%</div>
+                                        <div class="legend-content">
+                                            <span class="legend-title">CHARCOAL</span>
+                                            <p class="legend-desc">Used for body text, icons, and elements that need strong readability.</p>
+                                        </div>
+                                    </div>
+                                    <div class="legend-card">
+                                        <div class="legend-badge light-grey-bg">3%</div>
+                                        <div class="legend-content">
+                                            <span class="legend-title">LIGHT GREY</span>
+                                            <p class="legend-desc">Used for subtle backgrounds, dividers, and supporting elements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="color-sheet-footer">
+                            <div class="footer-left">
+                                <div class="footer-icon-circle">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#7DBE43" stroke-width="2">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                    </svg>
+                                </div>
+                                <span class="footer-text">This colour palette strengthens the GreenLoop identity by communicating sustainability, trust, and positive impact in every interaction.</span>
+                            </div>
+                            <div class="footer-right">
+                                <div class="footer-logo">
+                                    <img src="assets/logo.png" alt="GreenLoop Logo" class="footer-logo-img">
+                                    <div class="footer-logo-text">
+                                        <span class="footer-logo-title">GreenLoop</span>
+                                        <span class="footer-logo-tagline">RECYCLE. EARN. REPEAT.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-type" class="slide-section" data-frame-target="#type-frame-target" data-blob1-color="#3D8B37" data-blob1-x="10vw" data-blob1-y="30vh" data-blob1-scale="1.2" data-blob2-color="#FFD54A" data-blob2-x="-25vw" data-blob2-y="20vh" data-blob2-scale="1.1">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-num">03.4 / Typography</span>
+                        <h2 class="split-line" id="typewriter-main-title">Editorial Specimen & Scale Rules</h2>
+                    </div>
+                    
+                    <div class="brand-type-sheet reveal-element" id="type-frame-target" style="font-family: 'Poppins', sans-serif;">
+                        <div class="type-sheet-header">
+                            <span class="type-sheet-category" style="font-family: 'Poppins', sans-serif; color: #4CAF00;">TYPOGRAPHY</span>
+                            <img src="assets/logo.png" alt="GreenLoop Logo" class="type-sheet-logo">
+                        </div>
+                        
+                        <div class="type-sheet-main-grid">
+                            <div class="typefaces-specimen-col">
+                                <div class="typeface-card reveal-card" style="border-radius: 12px; border: 1px solid var(--color-border-default); padding: 28px; background: #FFFFFF; font-family: 'Poppins', sans-serif;">
+                                    <span class="type-card-category" style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #4CAF00; letter-spacing: 0.05em; font-size: 0.75rem;">PRIMARY TYPEFACE</span>
+                                    <h3 class="typeface-title-display" style="font-family: 'Poppins', sans-serif; font-size: 4.2rem; font-weight: 700; color: #103b14; margin: 0; line-height: 1.1;">Poppins</h3>
+                                    <div class="type-accent-line float-element" style="background-color: #7DBE43; width: 40px; height: 4px; margin: 12px 0;"></div>
+                                    <p class="type-subtitle" style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: var(--color-text-muted);">Clean. Modern. Friendly.</p>
+                                    
+                                    <div class="specimen-styles-list" style="margin-top: 24px; display: flex; flex-direction: column; gap: 20px;">
+                                        <div class="specimen-row" style="display: flex; gap: var(--space-sm); align-items: start;">
+                                            <div class="specimen-badge" style="background-color: #F2F9ED; color: #4CAF00; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; min-width: 54px; text-align: center;">H1</div>
+                                            <div class="specimen-text-block">
+                                                <span class="specimen-style-name" style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #103b14; font-size: 0.9rem;">Poppins Bold</span>
+                                                <span class="specimen-alphabet" style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.9rem; color: #103b14; letter-spacing: 0.05em; line-height: 1.5;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</span>
+                                            </div>
+                                        </div>
+                                        <div class="specimen-row" style="display: flex; gap: var(--space-sm); align-items: start;">
+                                            <div class="specimen-badge" style="background-color: #F2F9ED; color: #4CAF00; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; min-width: 54px; text-align: center;">H2</div>
+                                            <div class="specimen-text-block">
+                                                <span class="specimen-style-name" style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #103b14; font-size: 0.9rem;">Poppins SemiBold</span>
+                                                <span class="specimen-alphabet" style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; color: #103b14; letter-spacing: 0.05em; line-height: 1.5;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</span>
+                                            </div>
+                                        </div>
+                                        <div class="specimen-row" style="display: flex; gap: var(--space-sm); align-items: start;">
+                                            <div class="specimen-badge" style="background-color: #F2F9ED; color: #4CAF00; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; min-width: 54px; text-align: center;">BODY</div>
+                                            <div class="specimen-text-block">
+                                                <span class="specimen-style-name" style="font-family: 'Poppins', sans-serif; font-weight: 400; color: var(--color-text-muted); font-size: 0.9rem;">Poppins Regular</span>
+                                                <span class="specimen-alphabet" style="font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 0.85rem; color: var(--color-text-muted); letter-spacing: 0.05em; line-height: 1.5;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</span>
+                                            </div>
+                                        </div>
+                                        <div class="specimen-row" style="display: flex; gap: var(--space-sm); align-items: start;">
+                                            <div class="specimen-badge" style="background-color: #F2F9ED; color: #4CAF00; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; min-width: 54px; text-align: center;">CAPTION</div>
+                                            <div class="specimen-text-block">
+                                                <span class="specimen-style-name" style="font-family: 'Poppins', sans-serif; font-weight: 500; color: var(--color-text-muted); font-size: 0.9rem;">Poppins Medium</span>
+                                                <span class="specimen-alphabet" style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.85rem; color: var(--color-text-muted); letter-spacing: 0.05em; line-height: 1.5;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>1234567890</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="type-rules-col">
+                                <div class="type-scale-card reveal-card" style="font-family: 'Poppins', sans-serif;">
+                                    <h4 class="scale-section-title" style="font-family: 'Poppins', sans-serif; color: #4CAF00;">TYPE SCALE</h4>
+                                    <table class="type-scale-table">
+                                        <thead>
+                                            <tr>
+                                                <th style="font-family: 'Poppins', sans-serif; font-weight: 700;">ELEMENT</th>
+                                                <th style="font-family: 'Poppins', sans-serif; font-weight: 700;">WEIGHT</th>
+                                                <th style="font-family: 'Poppins', sans-serif; font-weight: 700;">SIZE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #4CAF00;">H1</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">Bold</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #103b14;">64px</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #4CAF00;">H2</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">SemiBold</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #103b14;">40px</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #4CAF00;">H3</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">SemiBold</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #103b14;">28px</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">Body</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">Regular</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400; color: #103b14;">18px</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 500; color: #4CAF00;">Caption</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">Medium</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 500; color: #103b14;">14px</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #4CAF00;">Button</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 400;">SemiBold</td>
+                                                <td style="font-family: 'Poppins', sans-serif; font-weight: 600; color: #103b14;">18px</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="example-usage-card reveal-card" style="font-family: 'Poppins', sans-serif;">
+                                    <h4 class="scale-section-title" style="font-family: 'Poppins', sans-serif; color: #4CAF00;">EXAMPLE USAGE</h4>
+                                    
+                                    <div class="usage-preview-block" style="font-family: 'Poppins', sans-serif;">
+                                        <h2 class="usage-headline" id="typing-usage-headline" style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #103b14;">Recycle Today For a Better Tomorrow</h2>
+                                        <div class="type-accent-line float-element" style="background-color: #7DBE43; width: 30px; height: 3px; margin: 16px 0;"></div>
+                                        
+                                        <h4 class="usage-subheading" style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #103b14;">Earn Rewards While Recycling</h4>
+                                        <p class="usage-body" style="font-family: 'Poppins', sans-serif; font-weight: 400; color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0;">GreenLoop makes recycling simple by rewarding users for returning PET bottles through smart recycling stations at Keells supermarkets.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="type-sheet-footer" style="font-family: 'Poppins', sans-serif;">
+                            <div class="footer-left">
+                                <img src="assets/logo.png" alt="GreenLoop Logo" class="footer-logo-img">
+                                <span class="footer-logo-title" style="margin-left: 6px; font-weight: 700; color: #4CAF00;">GreenLoop</span>
+                                <span class="footer-logo-tagline" style="margin-left: 8px; border-left: 1px solid rgba(0,0,0,0.1); padding-left: 8px; color: var(--color-text-muted); font-size: 0.65rem;">RECYCLE. EARN. REPEAT.</span>
+                            </div>
+                            <div class="footer-right">
+                                <span class="footer-initiative" style="color: var(--color-text-muted); font-weight: 600;">A Keells Initiative</span>
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="#7DBE43" style="margin-left: 6px;">
+                                    <path d="M17 8C8 10 5 17 5 17C5 17 7 11 15 9 M2 22 L22 2 M12 12 C18 10 20 5 20 5 C20 5 15 7 13 13"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<section id="slide-photo" class="slide-section" data-frame-target="#photo-frame-target" data-blob1-color="#6DBB45" data-blob1-x="-15vw" data-blob1-y="30vh" data-blob1-scale="1.1" data-blob2-color="#FFD54A" data-blob2-x="20vw" data-blob2-y="-10vh" data-blob2-scale="1.0">
+                <!-- Parallax green circle/dot decorators -->
+                <div class="photo-decorator-circle dec-1"></div>
+                <div class="photo-decorator-circle dec-2"></div>
+                <div class="photo-decorator-dot dec-3"></div>
+
+                <div class="container" style="position: relative; z-index: 2;">
+                    <div class="section-header">
+                        <span class="section-num">03.5 / Imagery</span>
+                        <h2 class="split-line">Photography Art Direction Guidelines</h2>
+                    </div>
+                    
+                    <div class="brand-photo-sheet reveal-element" id="photo-frame-target" style="font-family: 'Poppins', sans-serif;">
+                        <div class="photo-sheet-header">
+                            <span class="photo-sheet-category" style="font-family: 'Poppins', sans-serif; color: #4CAF00;">IMAGERY</span>
+                            <img src="assets/logo.png" alt="GreenLoop Logo" class="photo-sheet-logo">
+                        </div>
+                        
+                        <div class="photo-sheet-main-grid">
+                            <!-- Left side (40%): Information panel stacked vertically -->
+                            <div class="photo-info-panel reveal-card">
+                                <div class="info-section">
+                                    <div class="info-header">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4CAF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                        </svg>
+                                        <span class="mono-label" style="font-family: 'Poppins', sans-serif; color: #4CAF00; font-weight: 700; font-size: 0.75rem;">03.5.1 Creative Lighting</span>
+                                    </div>
+                                    <h4>High Contrast Minimalist</h4>
+                                    <p>Green Loop photography guidelines dictate high-contrast, clean setups. Subjects are captured in bright ambient retail environments or natural workspaces, with primary green focal elements drawing interest. Maintain clean horizons and minimal clutter.</p>
+                                </div>
+                                
+                                <div class="info-divider"></div>
+                                
+                                <div class="info-section">
+                                    <div class="info-header">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4CAF00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                                            <line x1="15" y1="3" x2="15" y2="21"></line>
+                                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                                            <line x1="3" y1="15" x2="21" y2="15"></line>
+                                        </svg>
+                                        <span class="mono-label" style="font-family: 'Poppins', sans-serif; color: #4CAF00; font-weight: 700; font-size: 0.75rem;">03.5.2 Crop Ratios</span>
+                                    </div>
+                                    <h4>Symmetrical Composition</h4>
+                                    <p>Images are framed symmetrically with the primary subject in the horizontal center. A crop scale grid must maintain comfortable margins, supporting dl templates, standard A4 letterheads, or mobile companion screens without clipping crucial details.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Right side (60%): Large interactive horizontal carousel gallery -->
+                            <div class="photo-gallery-carousel-col">
+                                <div class="carousel-container reveal-card">
+                                    <div class="carousel-glow-bg"></div>
+                                    <div class="carousel-grid-overlay"></div>
+                                    
+                                    <!-- Carousel Track -->
+                                    <div class="carousel-track-wrapper" id="carousel-track-wrapper">
+                                        <div class="carousel-track" id="greenloop-photo-gallery">
+                                            <!-- Dynamic slides injected via JS -->
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Hover navigation controls -->
+                                    <button class="carousel-nav-btn prev-btn" id="carousel-prev" aria-label="Previous image">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                                            <polyline points="12 19 5 12 12 5"></polyline>
+                                        </svg>
+                                    </button>
+                                    <button class="carousel-nav-btn next-btn" id="carousel-next" aria-label="Next image">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </button>
+                                    
+                                    <!-- Pagination Indicator -->
+                                    <div class="carousel-pagination" id="carousel-dots-indicator">
+                                        <!-- Dots injected via JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-sheet-footer" style="font-family: 'Poppins', sans-serif; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.05); padding-top: var(--space-xs); font-size: 0.75rem; margin-top: 12px;">
+                            <div class="footer-left" style="display: flex; align-items: center;">
+                                <img src="assets/logo.png" alt="GreenLoop Logo" class="footer-logo-img">
+                                <span class="footer-logo-title" style="margin-left: 6px; font-weight: 700; color: #4CAF00;">GreenLoop</span>
+                                <span class="footer-logo-tagline" style="margin-left: 8px; border-left: 1px solid rgba(0,0,0,0.1); padding-left: 8px; color: var(--color-text-muted); font-size: 0.65rem;">RECYCLE. EARN. REPEAT.</span>
+                            </div>
+                            <div class="footer-right" style="display: flex; align-items: center;">
+                                <span class="footer-initiative" style="color: var(--color-text-muted); font-weight: 600;">A Keells Initiative</span>
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="#7DBE43" style="margin-left: 6px;">
+                                    <path d="M17 8C8 10 5 17 5 17C5 17 7 11 15 9 M2 22 L22 2 M12 12 C18 10 20 5 20 5 C20 5 15 7 13 13"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+<section id="slide-applications" class="slide-section horizontal-scroll-slide" data-frame-hide="true">
+                <div class="horizontal-scroll-container">
+                    <div class="horizontal-header-sticky">
+                        <div class="section-header">
+                            <div class="header-titles">
+                                <span class="section-num">03.7 / RVM Ecosystem</span>
+                                <h2>Reverse Vending Machine Ecosystem</h2>
+                            </div>
+                            <p class="scroll-helper">[ Scroll horizontally to explore the RVM ecosystem ]</p>
+                        </div>
+                    </div>
+                    <div class="horizontal-track">
+                                                <!-- Card 1 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.1" data-title="GREENLOOP RVM" data-frame-label="03.7.1 RVM Kiosk" data-desc="Hero render of the GreenLoop Reverse Vending Machine. Clean studio product shot with white and green branding.">
+                            <span class="mono-label">03.7.1 GREENLOOP RVM</span>
+                            <div class="image-container screenshot">
+                                <img src="assets/rvm_front_view.png" alt="GREENLOOP RVM Kiosk Render">
+                            </div>
+                            <p class="card-desc">Hero render of the GreenLoop RVM showing the clean white-green chassis.</p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.2" data-title="RVM IN SUPERMARKET" data-frame-label="03.7.2 Supermarket Lobby" data-desc="GreenLoop RVM placed near a supermarket entrance with customers recycling bottles. Designed to test real-world user flow, foot traffic visibility, and line-of-sight exposure.">
+                            <span class="mono-label">03.7.2 RVM IN SUPERMARKET</span>
+                            <div class="image-container screenshot">
+                                <img src="assets/machine_appearance_2.png" alt="RVM Supermarket Placement">
+                            </div>
+                            <p class="card-desc">Supermarket vestibule entrance installation near the checkout counters.</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.3" data-title="RVM IN SHOPPING MALL" data-frame-label="03.7.3 Shopping Mall" data-desc="Modern shopping mall installation with people interacting with the machine. Validates high-density public placement, kiosk footprint resilience, and branding exposure.">
+                            <span class="mono-label">03.7.3 RVM IN SHOPPING MALL</span>
+                            <div class="image-container screenshot">
+                                <img src="assets/machine_appearance_3.png" alt="RVM Shopping Mall Placement">
+                            </div>
+                            <p class="card-desc">Shopping mall installation with high-contrast panel graphics drawing interest.</p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.4" data-title="RVM IN UNIVERSITY" data-frame-label="03.7.4 University Campus" data-desc="University campus placement showing students using the machine. Evaluates civic engagement, youth behavior recycling loops, and companion mobile app integrations.">
+                            <span class="mono-label">03.7.4 RVM IN UNIVERSITY</span>
+                            <div class="image-container screenshot">
+                                <img src="assets/rvm_university.png" alt="RVM University Placement">
+                            </div>
+                            <p class="card-desc">University campus library entrance installation modeling sustainable actions.</p>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.5" data-title="HOW IT WORKS" data-frame-label="03.7.5 Kiosk User Flow" data-desc="Simple infographic detail outlining the user experience flow: Insert Bottle → Scan Barcode → Sort Material → Store Bottle → Earn Reward.">
+                            <span class="mono-label">03.7.5 HOW IT WORKS</span>
+                            <div class="placeholder-frame ratio-4-3">
+                                <svg viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; background: #FAF9F6;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="card5-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="10" y2="0" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#card5-grid)"/>
+                                    
+                                    <path d="M 50,150 L 350,150" stroke="rgba(63, 174, 73, 0.25)" stroke-width="2" stroke-dasharray="4 4"/>
+                                    
+                                    <g transform="translate(50, 150)">
+                                        <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <path d="M -6,-11 L 6,-11 L 6,-8 L 4,-8 L 4,-5 L 6,-5 L 6,11 L -6,11 L -6,-5 L -4,-5 L -4,-8 L -6,-8 Z" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <line x1="-9" y1="-1" x2="9" y2="-1" stroke="#8CC63F" stroke-width="1.2" stroke-dasharray="2 2"/>
+                                        <text x="0" y="38" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">1. Insert</text>
+                                    </g>
+                                    
+                                    <g transform="translate(125, 150)">
+                                        <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <rect x="-10" y="-8" width="20" height="16" fill="none" stroke="#757575" stroke-width="1"/>
+                                        <line x1="-7" y1="-5" x2="-7" y2="5" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <line x1="-4" y1="-5" x2="-4" y2="5" stroke="#3FAE49" stroke-width="0.8"/>
+                                        <line x1="0" y1="-5" x2="0" y2="5" stroke="#3FAE49" stroke-width="1.8"/>
+                                        <line x1="4" y1="-5" x2="4" y2="5" stroke="#3FAE49" stroke-width="0.6"/>
+                                        <line x1="7" y1="-5" x2="7" y2="5" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <line x1="-12" y1="0" x2="12" y2="0" stroke="#EF4444" stroke-width="1.2"/>
+                                        <text x="0" y="38" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">2. Scan</text>
+                                    </g>
+                                    
+                                    <g transform="translate(200, 150)">
+                                        <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <path d="M -8,-6 L 0,-12 L 8,-6 M 0,-12 L 0,12" fill="none" stroke="#3FAE49" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M -9,4 L -14,8 L -9,12 M -14,8 L -3,8" fill="none" stroke="#8CC63F" stroke-width="1.2" stroke-linecap="round"/>
+                                        <text x="0" y="38" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">3. Sort</text>
+                                    </g>
+                                    
+                                    <g transform="translate(275, 150)">
+                                        <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <rect x="-8" y="-10" width="16" height="20" rx="1.5" fill="none" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <line x1="-5" y1="-5" x2="5" y2="-5" stroke="#8CC63F" stroke-width="1.5"/>
+                                        <path d="M -5,0 L 0,-5 L 5,0" fill="none" stroke="#8CC63F" stroke-width="1.2"/>
+                                        <text x="0" y="38" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">4. Store</text>
+                                    </g>
+                                    
+                                    <g transform="translate(350, 150)">
+                                        <circle cx="0" cy="0" r="24" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <polygon points="0,-10 2.5,-3 9,-3 4,1 5.5,7.5 0,3.5 -5.5,7.5 -4,1 -9,-3 -2.5,-3" fill="#8CC63F" stroke="#3FAE49" stroke-width="1"/>
+                                        <text x="0" y="38" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">5. Reward</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="card-desc">Step-by-step consumer recycling journey from insertion to rewards collection.</p>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.6" data-title="BOTTLE RECOGNITION" data-frame-label="03.7.6 Intelligent Sensors" data-desc="Technical diagnostic diagram detailing the barcode scanning, optical weight sensors, and material verification checks.">
+                            <span class="mono-label">03.7.6 BOTTLE RECOGNITION</span>
+                            <div class="placeholder-frame ratio-4-3">
+                                <svg viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; background: #FAF9F6;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="card6-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="10" y2="0" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#card6-grid)"/>
+                                    
+                                    <rect x="20" y="40" width="180" height="220" rx="10" fill="#FFFFFF" stroke="rgba(63, 174, 73, 0.15)" stroke-width="1.5"/>
+                                    <circle cx="110" cy="150" r="75" fill="none" stroke="rgba(63, 174, 73, 0.08)" stroke-width="1"/>
+                                    <circle cx="110" cy="150" r="60" fill="none" stroke="rgba(63, 174, 73, 0.12)" stroke-width="1" stroke-dasharray="3 3"/>
+                                    
+                                    <g transform="translate(110, 150) scale(0.95)">
+                                        <path d="M -12,-35 C -12,-35 -6,-45 -6,-52 L 6,-52 C 6,-45 12,-35 12,-35 L 14,40 C 14,40 8,50 0,50 C -8,50 -14,40 -14,40 Z" fill="none" stroke="rgba(46, 46, 46, 0.25)" stroke-width="1.5"/>
+                                        <line x1="-13" y1="-8" x2="13" y2="-8" stroke="#8CC63F" stroke-width="1"/>
+                                        <line x1="-14" y1="12" x2="14" y2="12" stroke="#8CC63F" stroke-width="1"/>
+                                    </g>
+                                    
+                                    <line x1="25" y1="125" x2="195" y2="125" stroke="#EF4444" stroke-width="1.2" stroke-opacity="0.8"/>
+                                    <line x1="25" y1="150" x2="195" y2="150" stroke="#3FAE49" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="2 2"/>
+                                    
+                                    <rect x="215" y="40" width="165" height="220" rx="10" fill="#FFFFFF" stroke="rgba(46, 46, 46, 0.05)" stroke-width="1"/>
+                                    <g transform="translate(230, 70)" font-family="var(--font-mono)">
+                                        <text x="0" y="0" font-size="8" font-weight="700" fill="#3FAE49">[ SCAN ACTIVE ]</text>
+                                        <line x1="0" y1="8" x2="135" y2="8" stroke="rgba(46,46,46,0.08)" stroke-width="0.8"/>
+                                        
+                                        <text x="0" y="24" font-size="7" fill="var(--color-text-muted)">BARCODE ID:</text>
+                                        <text x="0" y="34" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)">479100342981</text>
+                                        
+                                        <text x="0" y="52" font-size="7" fill="var(--color-text-muted)">MATERIAL:</text>
+                                        <text x="0" y="62" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)">PET [TYPE 1]</text>
+                                        
+                                        <text x="0" y="80" font-size="7" fill="var(--color-text-muted)">NET WEIGHT:</text>
+                                        <text x="0" y="90" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)">28.4 GRAMS</text>
+                                        
+                                        <text x="0" y="108" font-size="7" fill="var(--color-text-muted)">BRAND ID:</text>
+                                        <text x="0" y="118" font-size="7.5" font-weight="700" fill="#3FAE49">KEELLS WATER ✓</text>
+                                        
+                                        <rect x="0" y="132" width="135" height="24" rx="4" fill="rgba(63, 174, 73, 0.08)" stroke="rgba(63, 174, 73, 0.2)" stroke-width="1"/>
+                                        <text x="67.5" y="147" font-size="8" font-weight="700" fill="#3FAE49" text-anchor="middle">APPROVED ✓</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="card-desc">Interactive sensor system detecting material density, barcodes, and fluid presence.</p>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.7" data-title="INTERNAL COMPONENTS" data-frame-label="03.7.7 Cabinet Schematic" data-desc="Axonometric layout projection showing the internal components of the RVM: Display Screen, Scanner, Sensor Unit, Storage Bin, Compactor, Collection Door.">
+                            <span class="mono-label">03.7.7 INTERNAL COMPONENTS</span>
+                            <div class="placeholder-frame ratio-4-3">
+                                <svg viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; background: #FAF9F6;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="card7-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="10" y2="0" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#card7-grid)"/>
+                                    
+                                    <g transform="translate(200, 150)" stroke="var(--color-text-charcoal)" stroke-width="1.2" fill="none">
+                                        <rect x="-35" y="-100" width="70" height="200" rx="6" stroke="rgba(46, 46, 46, 0.2)"/>
+                                        <rect x="-27" y="-88" width="54" height="34" rx="2" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <rect x="-24" y="-84" width="48" height="26" fill="none" stroke="rgba(140, 198, 63, 0.5)" stroke-width="0.8"/>
+                                        <circle cx="0" cy="-28" r="14" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <rect x="-28" y="0" width="56" height="30" rx="3" stroke="#8CC63F" stroke-width="1.2" stroke-dasharray="2 2"/>
+                                        <rect x="-28" y="40" width="56" height="50" rx="3" stroke="rgba(46, 46, 46, 0.25)" stroke-width="1"/>
+                                        <rect x="-35" y="40" width="7" height="50" stroke="rgba(46, 46, 46, 0.15)" stroke-width="0.8"/>
+                                    </g>
+                                    
+                                    <path d="M 120,65 L 170,65" stroke="#757575" stroke-width="0.8" fill="none"/>
+                                    <circle cx="170" cy="65" r="2" fill="#757575"/>
+                                    <text x="110" y="68" font-family="var(--font-mono)" font-size="7.5" fill="var(--color-text-charcoal)" text-anchor="end" font-weight="700">Display Screen</text>
+                                    
+                                    <path d="M 280,122 L 208,122" stroke="#757575" stroke-width="0.8" fill="none"/>
+                                    <circle cx="208" cy="122" r="2" fill="#757575"/>
+                                    <text x="290" y="125" font-family="var(--font-mono)" font-size="7.5" fill="var(--color-text-charcoal)" text-anchor="start" font-weight="700">Scanner Slot</text>
+                                    
+                                    <path d="M 120,135 L 188,135" stroke="#757575" stroke-width="0.8" fill="none"/>
+                                    <circle cx="188" cy="135" r="2" fill="#757575"/>
+                                    <text x="110" y="138" font-family="var(--font-mono)" font-size="7.5" fill="var(--color-text-charcoal)" text-anchor="end" font-weight="700">Sensor Unit</text>
+                                    
+                                    <path d="M 280,165 L 225,165" stroke="#757575" stroke-width="0.8" fill="none"/>
+                                    <circle cx="225" cy="165" r="2" fill="#757575"/>
+                                    <text x="290" y="168" font-family="var(--font-mono)" font-size="7.5" fill="var(--color-text-charcoal)" text-anchor="start" font-weight="700">Compactor Unit</text>
+                                    
+                                    <path d="M 120,215 L 175,215" stroke="#757575" stroke-width="0.8" fill="none"/>
+                                    <circle cx="175" cy="215" r="2" fill="#757575"/>
+                                    <text x="110" y="218" font-family="var(--font-mono)" font-size="7.5" fill="var(--color-text-charcoal)" text-anchor="end" font-weight="700">Storage Bin</text>
+                                    
+                                    <path d="M 280,230 L 168,230" stroke="#757575" stroke-width="0.8" fill="none"/>
+                                    <circle cx="168" cy="230" r="2" fill="#757575"/>
+                                    <text x="290" y="233" font-family="var(--font-mono)" font-size="7.5" fill="var(--color-text-charcoal)" text-anchor="start" font-weight="700">Collection Door</text>
+                                </svg>
+                            </div>
+                            <p class="card-desc">Exploded cabinet blueprint tracking RVM physical components and bins.</p>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.8" data-title="RECYCLING PROCESS" data-frame-label="03.7.8 Circular Loop" data-desc="Circular flow diagram tracking materials collection loops: User → RVM → Collection Truck → Recycling Plant → New Products.">
+                            <span class="mono-label">03.7.8 RECYCLING PROCESS</span>
+                            <div class="placeholder-frame ratio-4-3">
+                                <svg viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; background: #FAF9F6;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="card8-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="10" y2="0" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#card8-grid)"/>
+                                    
+                                    <circle cx="200" cy="140" r="75" fill="none" stroke="rgba(63, 174, 73, 0.12)" stroke-width="3" stroke-dasharray="6 6"/>
+                                    
+                                    <g transform="translate(200, 65)">
+                                        <circle cx="0" cy="0" r="20" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <circle cx="0" cy="-5" r="4.5" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <path d="M -8,7 C -8,0 -4,0 0,0 C 4,0 8,0 8,7" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <text x="0" y="30" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">User</text>
+                                    </g>
+                                    
+                                    <g transform="translate(272, 115)">
+                                        <circle cx="0" cy="0" r="20" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <rect x="-5" y="-9" width="10" height="18" rx="1.2" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <circle cx="0" cy="-4" r="2.5" fill="#8CC63F"/>
+                                        <text x="26" y="3" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="start">RVM</text>
+                                    </g>
+                                    
+                                    <g transform="translate(244, 198)">
+                                        <circle cx="0" cy="0" r="20" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <rect x="-9" y="-5" width="12" height="9" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <rect x="3" y="-1" width="5" height="5" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <circle cx="-5" cy="5" r="2" fill="#8CC63F"/>
+                                        <circle cx="4" cy="5" r="2" fill="#8CC63F"/>
+                                        <text x="0" y="30" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">Truck</text>
+                                    </g>
+                                    
+                                    <g transform="translate(156, 198)">
+                                        <circle cx="0" cy="0" r="20" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <path d="M -9,7 L -9,-3 L -4,0 L -4,-3 L 2,0 L 2,-3 L 9,0 L 9,7 Z" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <line x1="-6" y1="-7" x2="-6" y2="-3" stroke="#8CC63F" stroke-width="1.2"/>
+                                        <line x1="-4" y1="-7" x2="-4" y2="-3" stroke="#8CC63F" stroke-width="1.2"/>
+                                        <text x="0" y="30" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="middle">Plant</text>
+                                    </g>
+                                    
+                                    <g transform="translate(128, 115)">
+                                        <circle cx="0" cy="0" r="20" fill="#FFFFFF" stroke="#3FAE49" stroke-width="1.5"/>
+                                        <path d="M -3,-7 L 3,-7 L 3,-4 L 1.5,-4 L 1.5,-2 L 3,-2 L 3,7 L -3,7 L -3,-2 L -1.5,-2 L -1.5,-4 L -3,-4 Z" fill="none" stroke="#3FAE49" stroke-width="1.2"/>
+                                        <text x="-26" y="3" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="end">Products</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="card-desc">End-to-end circular flow chart tracking materials lifecycle and processing.</p>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.9" data-title="ENVIRONMENTAL IMPACT" data-frame-label="03.7.9 Impact Metrics" data-desc="Real-time environmental dashboard metrics detailing Bottles Collected, Plastic Recycled, CO2 Saved, and Energy Saved.">
+                            <span class="mono-label">03.7.9 ENVIRONMENTAL IMPACT</span>
+                            <div class="placeholder-frame ratio-4-3">
+                                <svg viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; background: #FAF9F6;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="card9-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="10" y2="0" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#card9-grid)"/>
+                                    
+                                    <g transform="translate(25, 45)">
+                                        <rect x="0" y="0" width="165" height="90" rx="8" fill="#FFFFFF" stroke="rgba(63, 174, 73, 0.12)" stroke-width="1"/>
+                                        <rect x="0" y="0" width="4" height="90" fill="#3FAE49" rx="2"/>
+                                        <g transform="translate(25, 25) scale(0.65)" stroke="#3FAE49" stroke-width="1.5" fill="none">
+                                            <path d="M -5,-12 L 5,-12 L 5,-8 L -5,-8 Z"/>
+                                            <path d="M -8,-8 L 8,-8 L 8,18 L -8,18 Z"/>
+                                        </g>
+                                        <text x="45" y="28" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-muted)">BOTTLES COLLECTED</text>
+                                        <text x="25" y="62" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="var(--color-text-charcoal)">142,500</text>
+                                        <text x="25" y="76" font-family="var(--font-mono)" font-size="6" fill="#3FAE49" font-weight="700">▲ +12% THIS MONTH</text>
+                                    </g>
+                                    
+                                    <g transform="translate(210, 45)">
+                                        <rect x="0" y="0" width="165" height="90" rx="8" fill="#FFFFFF" stroke="rgba(63, 174, 73, 0.12)" stroke-width="1"/>
+                                        <rect x="0" y="0" width="4" height="90" fill="#8CC63F" rx="2"/>
+                                        <g transform="translate(25, 25) scale(0.65)" stroke="#8CC63F" stroke-width="1.5" fill="none">
+                                            <circle cx="0" cy="0" r="10"/>
+                                            <path d="M -5,5 L 0,10 L 5,5"/>
+                                        </g>
+                                        <text x="45" y="28" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-muted)">PLASTIC RECYCLED</text>
+                                        <text x="25" y="62" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="var(--color-text-charcoal)">3.5 tons</text>
+                                        <text x="25" y="76" font-family="var(--font-mono)" font-size="6" fill="#8CC63F" font-weight="700">● 100% RECOVERED</text>
+                                    </g>
+                                    
+                                    <g transform="translate(25, 155)">
+                                        <rect x="0" y="0" width="165" height="90" rx="8" fill="#FFFFFF" stroke="rgba(63, 174, 73, 0.12)" stroke-width="1"/>
+                                        <rect x="0" y="0" width="4" height="90" fill="#8CC63F" rx="2"/>
+                                        <g transform="translate(25, 25) scale(0.65)" stroke="#8CC63F" stroke-width="1.5" fill="none">
+                                            <path d="M -10,5 C -15,5 -17,0 -12,-5 C -12,-15 5,-15 7,-5 C 12,-5 12,5 7,5 Z"/>
+                                        </g>
+                                        <text x="45" y="28" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-muted)">CO₂ SAVED</text>
+                                        <text x="25" y="62" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="var(--color-text-charcoal)">4.8 tons</text>
+                                        <text x="25" y="76" font-family="var(--font-mono)" font-size="6" fill="#8CC63F" font-weight="700">▲ NET REDUCTION</text>
+                                    </g>
+                                    
+                                    <g transform="translate(210, 155)">
+                                        <rect x="0" y="0" width="165" height="90" rx="8" fill="#FFFFFF" stroke="rgba(63, 174, 73, 0.12)" stroke-width="1"/>
+                                        <rect x="0" y="0" width="4" height="90" fill="#3FAE49" rx="2"/>
+                                        <g transform="translate(25, 25) scale(0.65)" stroke="#3FAE49" stroke-width="1.5" fill="none">
+                                            <polygon points="5,-12 -8,2 0,2 -5,12 8,-2 0,-2"/>
+                                        </g>
+                                        <text x="45" y="28" font-family="var(--font-heading)" font-size="7.5" font-weight="700" fill="var(--color-text-muted)">ENERGY SAVED</text>
+                                        <text x="25" y="62" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="var(--color-text-charcoal)">12.5 MWh</text>
+                                        <text x="25" y="76" font-family="var(--font-mono)" font-size="6" fill="#3FAE49" font-weight="700">▲ POWER SAVED</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="card-desc">Environmental impact dashboard showcasing collected metrics and CO2 offsets.</p>
+                        </div>
+
+                        <!-- Card 10 -->
+                        <div class="guideline-card horizontal-card" data-morph="card" data-num="03.7.10" data-title="FUTURE ECOSYSTEM" data-frame-label="03.7.10 Connected Grid" data-desc="Sri Lanka national network deployment map connecting multiple RVM kiosks into one united smart telemetry recycling ecosystem.">
+                            <span class="mono-label">03.7.10 FUTURE ECOSYSTEM</span>
+                            <div class="placeholder-frame ratio-4-3">
+                                <svg viewBox="0 0 400 300" style="width: 100%; height: 100%; display: block; background: #FAF9F6;" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="card10-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                            <line x1="0" y1="0" x2="10" y2="0" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(109, 187, 69, 0.05)" stroke-width="0.5"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#card10-grid)"/>
+                                    
+                                    <g transform="translate(180, 20) scale(1.1)" fill="none" stroke="rgba(63, 174, 73, 0.2)" stroke-width="1.5">
+                                        <path d="M 30,10 C 35,5 45,5 50,15 C 55,25 60,35 60,45 C 60,55 65,65 65,75 C 65,85 70,95 70,105 C 70,115 65,125 65,135 C 65,145 60,155 60,165 C 60,175 55,185 50,195 C 45,205 35,210 25,200 C 15,190 10,180 10,170 C 10,160 5,150 5,140 C 5,130 10,120 10,110 C 10,100 15,90 15,80 C 15,70 10,60 10,50 C 10,40 15,30 20,20 C 25,10 28,15 30,10 Z" fill="rgba(63, 174, 73, 0.02)"/>
+                                    </g>
+                                    
+                                    <g fill="none" stroke="#3FAE49" stroke-width="1" stroke-dasharray="3 3">
+                                        <path d="M 215,45 Q 235,70 245,95"/>
+                                        <path d="M 245,95 Q 235,130 220,160"/>
+                                        <path d="M 220,160 Q 210,210 208,250"/>
+                                        <path d="M 200,220 Q 204,235 208,250"/>
+                                        <path d="M 208,250 Q 210,255 212,260"/>
+                                        <path d="M 245,95 Q 190,170 208,250"/>
+                                        <path d="M 215,45 Q 170,140 208,250"/>
+                                    </g>
+                                    
+                                    <g transform="translate(208, 250)">
+                                        <circle cx="0" cy="0" r="4.5" fill="#3FAE49"/>
+                                        <circle cx="0" cy="0" r="8" fill="none" stroke="#3FAE49" stroke-width="1" opacity="0.5"/>
+                                        <text x="-12" y="3" font-family="var(--font-mono)" font-size="7" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="end">Colombo (HQ)</text>
+                                    </g>
+                                    
+                                    <g transform="translate(220, 160)">
+                                        <circle cx="0" cy="0" r="3.5" fill="#8CC63F"/>
+                                        <text x="10" y="3" font-family="var(--font-mono)" font-size="6.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="start">Kandy Hub</text>
+                                    </g>
+                                    
+                                    <g transform="translate(212, 260)">
+                                        <circle cx="0" cy="0" r="3.5" fill="#8CC63F"/>
+                                        <text x="10" y="3" font-family="var(--font-mono)" font-size="6.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="start">Galle Hub</text>
+                                    </g>
+                                    
+                                    <g transform="translate(215, 45)">
+                                        <circle cx="0" cy="0" r="3.5" fill="#8CC63F"/>
+                                        <text x="10" y="3" font-family="var(--font-mono)" font-size="6.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="start">Jaffna Hub</text>
+                                    </g>
+                                    
+                                    <g transform="translate(245, 95)">
+                                        <circle cx="0" cy="0" r="3.5" fill="#8CC63F"/>
+                                        <text x="10" y="3" font-family="var(--font-mono)" font-size="6.5" font-weight="700" fill="var(--color-text-charcoal)" text-anchor="start">Trinco Hub</text>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="card-desc">National IoT mesh topology linking RVM terminals into a centralized platform.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>

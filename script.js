@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const initScrubbedLogoTrigger = () => {
             gsap.fromTo('#shared-logo', 
                 {
-                    x: () => window.innerWidth * 0.5 - 20,
+                    x: () => window.innerWidth * 0.5 - 55, // Shift left slightly from 20 for optical center alignment
                     y: '35vh',
                     xPercent: -50,
                     yPercent: -50,
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         scrub: true,
                         invalidateOnRefresh: true,
                     },
-                    x: () => window.innerWidth * 0.05, // Align with left edge of container (5vw)
+                    x: () => window.innerWidth * 0.038, // Shift left slightly from 0.05
                     y: 40, // 40px from top
                     xPercent: 0,
                     yPercent: 0,
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isScrolledPastHero) {
             // Immediately place logo in top-left target if loaded scrolled down
             gsap.set('#shared-logo', {
-                x: () => window.innerWidth * 0.05,
+                x: () => window.innerWidth * 0.038, // Shift left slightly from 0.05
                 y: 40,
                 xPercent: 0,
                 yPercent: 0,
@@ -248,6 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity: 1,
                 transformOrigin: 'left center'
             });
+
+            // If page loaded scrolled down, force tagline words to be visible so they appear when scrolling back up
+            const heroTagline = heroSection.querySelector('.tagline');
+            if (heroTagline && heroTagline.splitWords) {
+                gsap.set(heroTagline.splitWords, { yPercent: 0 });
+            }
+
             isPageLoading = false;
             initScrubbedLogoTrigger();
         } else {
@@ -258,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Set logo to starting position (centered on hero) before animating
             gsap.set('#shared-logo', {
-                x: () => window.innerWidth * 0.5 - 20,
+                x: () => window.innerWidth * 0.5 - 55, // Shift left slightly from 20 for optical center alignment
                 y: '35vh',
                 xPercent: -50,
                 yPercent: -50,
@@ -335,8 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'slide-colors': '[ Green Loop Brand System ]',
         'slide-type': '[ Green Loop Brand System ]',
         'slide-photo': '[ Green Loop Brand System ]',
-        'slide-iconography': '[ Green Loop Brand System ]',
-        'slide-applications': '[ Green Loop Brand Specs ]',
+        'slide-applications': '[ RVM Product Ecosystem ]',
         'slide-mkt-campaigns': '[ Marketing & Outreach ]',
         'slide-mkt-channels': '[ Marketing & Outreach ]',
         'slide-rvm-render': '[ RVM Physical Design ]',
@@ -519,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Attach frame hover listeners to all potential visual targets on page load
     const attachFrameHoverListeners = () => {
-        const frameHoverTargets = document.querySelectorAll('.placeholder-frame:not(#usp-frame-target), .strategy-table-wrapper, .color-spec-card, .directory-card, .metric-card');
+        const frameHoverTargets = document.querySelectorAll('.placeholder-frame:not(#usp-frame-target), .image-container, .strategy-table-wrapper, .color-spec-card, .directory-card, .metric-card');
         frameHoverTargets.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 hoveredElement = el;
@@ -760,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
             y: 0,
             scale: 1,
             opacity: 1,
-            duration: anim.duration,
+            duration: 0.8, // Snappier entrance
             stagger: 0.15,
             ease: anim.ease
         })
@@ -768,15 +774,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .to(cards, {
             y: 0,
             opacity: 1,
-            duration: anim.duration * 0.8,
-            stagger: 0.1,
+            duration: 0.6,
+            stagger: 0.08,
             ease: anim.ease
         }, "-=0.6");
 
         if (prefersReducedMotion) {
             surveyTL.to([centerNode, outerNodes, links], {
                 opacity: 1,
-                duration: anim.duration,
+                duration: 0.6,
                 stagger: 0.1,
                 ease: anim.ease
             }, "-=0.4");
@@ -784,29 +790,29 @@ document.addEventListener('DOMContentLoaded', () => {
             surveyTL.to(centerNode, {
                 scale: 1,
                 opacity: 1,
-                duration: anim.duration,
+                duration: 0.8,
                 ease: "back.out(1.5)"
             }, "-=0.8")
             .to(links, {
                 strokeDashoffset: 0,
-                duration: 0.8,
+                duration: 0.5,
                 stagger: 0.08,
                 ease: "power2.out"
             }, "-=0.4")
             .to(outerNodes, {
                 scale: 1,
                 opacity: 1,
-                duration: 0.8,
-                stagger: 0.1,
+                duration: 0.6,
+                stagger: 0.08,
                 ease: "back.out(1.2)"
-            }, "-=0.6");
+            }, "-=0.4");
         }
 
         // 6. Reveal bottom right insight card & sources section
         surveyTL.to([insightCard, sourcesSection], {
             y: 0,
             opacity: 1,
-            duration: anim.duration,
+            duration: 0.8,
             stagger: 0.15,
             ease: anim.ease
         }, "-=0.4");
@@ -878,6 +884,131 @@ document.addEventListener('DOMContentLoaded', () => {
                    .to('.floor-plan-svg .dim-line', { opacity: 1, duration: 0.8, stagger: 0.25 }, "-=0.3");
     }
 
+    // 7cc. Feasibility Decisions & Accepted Materials animations
+    const slideDecisions = document.getElementById('slide-decisions');
+    if (slideDecisions) {
+        const decisionsFrame = document.getElementById('decisions-frame-target');
+        const textColumn = slideDecisions.querySelector('.overview-text-column');
+        const acceptedCard = slideDecisions.querySelector('.card-accepted');
+        const soonHdpeCard = slideDecisions.querySelector('.card-soon-hdpe');
+        const soonAluCard = slideDecisions.querySelector('.card-soon-aluminum');
+        const warningBadge = slideDecisions.querySelector('.decision-warning-badge');
+        const connectors = slideDecisions.querySelectorAll('.decision-line');
+
+        // Set initial states
+        gsap.set(decisionsFrame, { y: 20, opacity: 0 });
+        gsap.set(textColumn, { y: anim.ySmall, opacity: 0 });
+        gsap.set([acceptedCard, soonHdpeCard, soonAluCard, warningBadge], { scale: 0.95, opacity: 0, transformOrigin: "center center" });
+        
+        connectors.forEach(line => {
+            const len = line.getTotalLength();
+            gsap.set(line, { strokeDasharray: len, strokeDashoffset: len });
+        });
+
+        const decisionsTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: slideDecisions,
+                start: "top 75%",
+                once: true
+            }
+        });
+
+        // 1. Diagram fades in and moves upward on scroll
+        decisionsTL.to(decisionsFrame, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        })
+        .to(textColumn, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: anim.ease
+        }, "-=0.6");
+
+        // 2. Connection lines animate from the center outward
+        connectors.forEach((line) => {
+            decisionsTL.to(line, {
+                strokeDashoffset: 0,
+                duration: 0.8,
+                ease: "power1.inOut"
+            }, "-=0.5");
+        });
+
+        // 3. Fades and scales in Cards and Badge
+        decisionsTL.to(warningBadge, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            ease: "back.out(1.2)"
+        }, "-=0.6")
+        .to(acceptedCard, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            ease: "back.out(1.2)"
+        }, "-=0.4")
+        .to([soonHdpeCard, soonAluCard], {
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.2)"
+        }, "-=0.3");
+
+        // 4. Start continuous premium loops
+        decisionsTL.call(() => {
+            if (prefersReducedMotion) return;
+
+            // A. Accepted card gently floats by 5px
+            gsap.to(acceptedCard, {
+                y: "-=5",
+                duration: 2.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+
+            // B. Accepted badge softly pulses
+            const acceptedRect = acceptedCard.querySelector('.badge-accepted rect');
+            const acceptedText = acceptedCard.querySelector('.badge-accepted text');
+            if (acceptedRect && acceptedText) {
+                gsap.to([acceptedRect, acceptedText], {
+                    scale: 1.05,
+                    transformOrigin: "center center",
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            }
+
+            // C. Coming Soon cards have a subtle glowing border
+            const hdpeRect = soonHdpeCard.querySelector('.soon-card-rect');
+            const aluRect = soonAluCard.querySelector('.soon-card-rect');
+            if (hdpeRect && aluRect) {
+                gsap.to([hdpeRect, aluRect], {
+                    stroke: "#6DBE45",
+                    filter: "drop-shadow(0 0 8px rgba(109, 190, 69, 0.35))",
+                    duration: 2.0,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            }
+
+            // D. PVC warning badge slowly fades in and out
+            gsap.to(warningBadge, {
+                opacity: 0.4,
+                duration: 3.0,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+    }
+
     // 7d. USP Process Flow Interactive Animation
     const slideUsp = document.getElementById('slide-usp');
     if (slideUsp) {
@@ -901,8 +1032,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Set initial states
         gsap.set(glassCard, { y: 20, opacity: 0 });
         gsap.set(leftBoxes, { y: anim.ySmall, opacity: 0 });
-        gsap.set(traditionalNodes, { scale: 0, opacity: 0, transformOrigin: 'center center' });
-        gsap.set(greenloopNodes, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+        gsap.set(traditionalNodes, { scale: 0.95, opacity: 0, transformOrigin: 'center center' });
+        gsap.set(greenloopNodes, { scale: 0.95, opacity: 0, transformOrigin: 'center center' });
         gsap.set(flowHeaders, { opacity: 0 });
         gsap.set(hudBlueprint, { opacity: 0 });
         gsap.set(traditionalConnectors, { opacity: 0 });
@@ -930,7 +1061,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 1. Entrance animation
+        // 1. Entrance animation (entire diagram fades and moves up 20px)
         uspTL.to(glassCard, {
             opacity: 1,
             y: 0,
@@ -951,27 +1082,53 @@ document.addEventListener('DOMContentLoaded', () => {
         .to(hudBlueprint, {
             opacity: 0.02,
             duration: 0.8
-        }, "-=0.4")
-        .to(traditionalNodes, {
+        }, "-=0.4");
+
+        // 2. Animate GreenLoop cards one by one from left to right (Fade in, scale 0.95 -> 1.0, soft green glow for 0.5s)
+        const glNodesList = [
+            slideUsp.querySelector('.node-deposit'),
+            slideUsp.querySelector('.node-scan'),
+            slideUsp.querySelector('.node-verify'),
+            slideUsp.querySelector('.node-crush'),
+            slideUsp.querySelector('.node-reward')
+        ];
+
+        glNodesList.forEach((node, idx) => {
+            uspTL.to(node, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.5,
+                ease: "power2.out"
+            }, idx === 0 ? "-=0.3" : "-=0.25");
+
+            const rect = node.querySelector('rect');
+            if (rect) {
+                uspTL.to(rect, {
+                    stroke: "#5CBF43",
+                    filter: "drop-shadow(0 0 8px rgba(92, 191, 67, 0.45))",
+                    duration: 0.25,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power1.inOut"
+                }, "<");
+            }
+        });
+
+        // 3. Stagger reveal Traditional cards
+        uspTL.to(traditionalNodes, {
             opacity: 1,
             scale: 1,
             duration: 0.6,
             stagger: 0.1,
-            ease: "back.out(1.2)"
-        }, "-=0.3")
+            ease: "power2.out"
+        }, "-=0.4")
         .to(traditionalConnectors, {
             opacity: 1,
             duration: 0.6,
             stagger: 0.1
-        }, "-=0.2")
-        .to(greenloopNodes, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "back.out(1.2)"
-        }, "-=0.4");
+        }, "-=0.2");
 
+        // 4. Draw GreenLoop connection lines smoothly
         greenloopConnectors.forEach((path, idx) => {
             uspTL.to(path, {
                 strokeDashoffset: 0,
@@ -981,17 +1138,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         uspTL.call(() => {
+            startBackgroundParticles();
             startPulseCycle();
-            startIdleDrift();
             attachNodeHoverEffects();
         });
 
-        // 2. Idle Floating drift
-        function startIdleDrift() {
-            // Keep nodes static as requested by the user
+        // 2. Background Drift Particle effect (5-10 particles drifting slowly in background)
+        function startBackgroundParticles() {
+            if (prefersReducedMotion) return;
+            const particles = slideUsp.querySelectorAll('.usp-particle');
+            particles.forEach((p, idx) => {
+                gsap.to(p, {
+                    x: () => (Math.random() - 0.5) * 30,
+                    y: () => (Math.random() - 0.5) * 30,
+                    opacity: () => 0.2 + Math.random() * 0.5,
+                    duration: 4 + Math.random() * 4,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            });
         }
 
-        // 3. Recurring Pulse timeline loop
+        // 3. Recurring Pulse timeline loop (Thin green line travel + active pulses)
         function startPulseCycle() {
             if (prefersReducedMotion) return;
             
@@ -1007,6 +1176,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const nVerify = slideUsp.querySelector('.node-verify');
             const nCrush = slideUsp.querySelector('.node-crush');
             const nReward = slideUsp.querySelector('.node-reward');
+
+            const rDeposit = nDeposit.querySelector('rect');
+            const rScan = nScan.querySelector('rect');
+            const rVerify = nVerify.querySelector('rect');
+            const rCrush = nCrush.querySelector('rect');
+            const rReward = nReward.querySelector('rect');
             
             const checkPet = slideUsp.querySelector('.check-pet');
             const checkLabel = slideUsp.querySelector('.check-label');
@@ -1015,7 +1190,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Reset callback
             cycle.add(() => {
-                gsap.set([nDeposit, nScan, nVerify, nCrush, nReward], { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", scale: 1.0 });
+                gsap.set([rDeposit, rScan, rVerify, rCrush, rReward], { stroke: "rgba(92, 191, 67, 0.25)", filter: "none" });
+                gsap.set([nDeposit, nScan, nVerify, nCrush, nReward], { scale: 1.0 });
                 gsap.set([p1, p2, p3, p4], { opacity: 0, strokeDashoffset: 18 });
                 gsap.set(scanLine, { opacity: 0, y: -44 });
                 gsap.set(scanChecklist, { opacity: 0, y: 5 });
@@ -1028,108 +1204,87 @@ document.addEventListener('DOMContentLoaded', () => {
                 gsap.set(pulseRing, { opacity: 0, attr: { r: 58 } });
             });
 
-            // Node 1: Deposit active state
-            cycle.to(nDeposit, {
+            // Node 1: Deposit active state pulse
+            cycle.to(nDeposit, { scale: 1.02, duration: 0.2, ease: "power2.out" })
+            .to(rDeposit, {
                 stroke: "#5CBF43",
-                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
-                scale: 1.02,
-                duration: 0.15,
-                ease: "power2.out"
-            })
-            .to(nDeposit, {
-                stroke: "rgba(92, 191, 67, 0.25)",
-                filter: "none",
-                scale: 1.0,
-                duration: 0.15,
-                ease: "power2.inOut"
-            })
+                filter: "drop-shadow(0 0 8px rgba(92, 191, 67, 0.4))",
+                duration: 0.2
+            }, "<")
+            .to(nDeposit, { scale: 1.0, duration: 0.2, ease: "power2.in" })
+            .to(rDeposit, { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", duration: 0.2 }, "<")
+            
             // Pulse 1 travels
-            .set(p1, { opacity: 1 }, "+=0.1")
-            .to(p1, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p1, { opacity: 1 }, "+=0.05")
+            .to(p1, { strokeDashoffset: 0, duration: 0.5, ease: "sine.inOut" })
             .set(p1, { opacity: 0 })
             
-            // Node 2: Scan active state & scan animation
-            .to(nScan, {
+            // Node 2: Scan active state pulse & scan animation
+            .to(nScan, { scale: 1.02, duration: 0.2, ease: "power2.out" })
+            .to(rScan, {
                 stroke: "#5CBF43",
-                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
-                scale: 1.02,
-                duration: 0.15,
-                ease: "power2.out"
-            })
-            .set(scanLine, { opacity: 1 })
+                filter: "drop-shadow(0 0 8px rgba(92, 191, 67, 0.4))",
+                duration: 0.2
+            }, "<")
+            .set(scanLine, { opacity: 1 }, "<")
             .to(scanLine, { y: 44, duration: 0.8, ease: "power1.inOut" })
             .set(scanLine, { opacity: 0 })
             .to(scanChecklist, { opacity: 1, y: 0, duration: 0.3 })
             .to(checkPet, { opacity: 1, fill: "#5CBF43", duration: 0.2 })
-            .to(checkLabel, { opacity: 1, fill: "#5CBF43", duration: 0.2 }, "+=0.1")
-            .to(checkWeight, { opacity: 1, fill: "#5CBF43", duration: 0.2 }, "+=0.1")
+            .to(checkLabel, { opacity: 1, fill: "#5CBF43", duration: 0.2 }, "+=0.05")
+            .to(checkWeight, { opacity: 1, fill: "#5CBF43", duration: 0.2 }, "+=0.05")
             .add(() => {
                 if (checkVerified) {
                     checkVerified.textContent = "VERIFIED ✓";
                     gsap.set(checkVerified, { fill: "#5CBF43" });
                 }
-            }, "+=0.1")
-            .to(nScan, {
-                stroke: "rgba(92, 191, 67, 0.25)",
-                filter: "none",
-                scale: 1.0,
-                duration: 0.15,
-                ease: "power2.inOut"
-            })
+            }, "+=0.05")
+            .to(nScan, { scale: 1.0, duration: 0.2, ease: "power2.in" })
+            .to(rScan, { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", duration: 0.2 }, "<")
+            
             // Pulse 2 travels
-            .set(p2, { opacity: 1 }, "+=0.2")
-            .to(p2, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p2, { opacity: 1 }, "+=0.1")
+            .to(p2, { strokeDashoffset: 0, duration: 0.5, ease: "sine.inOut" })
             .set(p2, { opacity: 0 })
 
-            // Node 3: Verification active state
-            .to(nVerify, {
+            // Node 3: Verification active state pulse
+            .to(nVerify, { scale: 1.02, duration: 0.2, ease: "power2.out" })
+            .to(rVerify, {
                 stroke: "#5CBF43",
-                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
-                scale: 1.02,
-                duration: 0.15,
-                ease: "power2.out"
-            })
-            .to(nVerify, {
-                stroke: "rgba(92, 191, 67, 0.25)",
-                filter: "none",
-                scale: 1.0,
-                duration: 0.15,
-                ease: "power2.inOut"
-            })
+                filter: "drop-shadow(0 0 8px rgba(92, 191, 67, 0.4))",
+                duration: 0.2
+            }, "<")
+            .to(nVerify, { scale: 1.0, duration: 0.2, ease: "power2.in" })
+            .to(rVerify, { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", duration: 0.2 }, "<")
+            
             // Pulse 3 travels
-            .set(p3, { opacity: 1 }, "+=0.2")
-            .to(p3, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p3, { opacity: 1 }, "+=0.1")
+            .to(p3, { strokeDashoffset: 0, duration: 0.5, ease: "sine.inOut" })
             .set(p3, { opacity: 0 })
 
-            // Node 4: Crusher active state & gears turn
-            .to(nCrush, {
+            // Node 4: Crusher active state pulse & gears turn
+            .to(nCrush, { scale: 1.02, duration: 0.2, ease: "power2.out" })
+            .to(rCrush, {
                 stroke: "#5CBF43",
-                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.12))",
-                scale: 1.02,
-                duration: 0.15,
-                ease: "power2.out"
-            })
+                filter: "drop-shadow(0 0 8px rgba(92, 191, 67, 0.4))",
+                duration: 0.2
+            }, "<")
             .to(crushGear, { rotation: 180, duration: 0.6, ease: "power2.inOut" }, "<")
-            .to(nCrush, {
-                stroke: "rgba(92, 191, 67, 0.25)",
-                filter: "none",
-                scale: 1.0,
-                duration: 0.15,
-                ease: "power2.inOut"
-            })
+            .to(nCrush, { scale: 1.0, duration: 0.2, ease: "power2.in" })
+            .to(rCrush, { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", duration: 0.2 }, "<")
+            
             // Pulse 4 travels
-            .set(p4, { opacity: 1 }, "+=0.2")
-            .to(p4, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" })
+            .set(p4, { opacity: 1 }, "+=0.1")
+            .to(p4, { strokeDashoffset: 0, duration: 0.5, ease: "sine.inOut" })
             .set(p4, { opacity: 0 })
 
-            // Node 5: Reward active state & count up & pulse ring
-            .to(nReward, {
+            // Node 5: Reward active state pulse & smooth count up & brighter glow
+            .to(nReward, { scale: 1.03, duration: 0.25, ease: "power2.out" })
+            .to(rReward, {
                 stroke: "#5CBF43",
-                filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.15))",
-                scale: 1.02,
-                duration: 0.15,
-                ease: "power2.out"
-            });
+                filter: "drop-shadow(0 0 12px rgba(92, 191, 67, 0.65))", // Glows brighter
+                duration: 0.25
+            }, "<");
 
             const pointsObj = { val: 0 };
             cycle.to(pointsObj, {
@@ -1150,15 +1305,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.7,
                 ease: "power2.out"
             }, "<")
-            .to(nReward, {
-                stroke: "rgba(92, 191, 67, 0.25)",
-                filter: "none",
-                scale: 1.0,
-                duration: 0.15,
-                ease: "power2.inOut"
-            }); }
+            .to(nReward, { scale: 1.0, duration: 0.25, ease: "power2.in" })
+            .to(rReward, { stroke: "rgba(92, 191, 67, 0.25)", filter: "none", duration: 0.25 }, "<");
+        }
 
-        // 4. Node Hover Micro-interactions
+        // 4. Node Hover Micro-interactions (Lift by 5px + slightly increase glow)
         function attachNodeHoverEffects() {
             const allNodes = slideUsp.querySelectorAll('.usp-node');
             allNodes.forEach(node => {
@@ -1167,7 +1318,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 node.addEventListener('mouseenter', () => {
                     if (isTraditional) {
                         gsap.to(node, {
-                            y: 116,
+                            y: 115, // lift by 5px
                             duration: 0.3,
                             overwrite: "auto"
                         });
@@ -1181,19 +1332,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             gsap.to(node.querySelector('rect'), {
                                 stroke: "#FF3B30",
                                 fill: "#FFF0F0",
+                                filter: "drop-shadow(0 4px 8px rgba(255, 59, 48, 0.15))",
                                 duration: 0.3,
                                 overwrite: "auto"
                             });
                         }
                     } else {
                         gsap.to(node, {
-                            y: 341,
+                            y: 340, // lift by 5px
                             duration: 0.3,
                             overwrite: "auto"
                         });
                         gsap.to(node.querySelector('rect'), {
                             stroke: "#5CBF43",
-                            filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.05))",
+                            filter: "drop-shadow(0 4px 10px rgba(92, 191, 67, 0.25))", // soft border glow
                             duration: 0.3,
                             overwrite: "auto"
                         });
@@ -1553,217 +1705,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 14. Refresh ScrollTrigger after all setup has settled
-        // 15. Shared Morph Modal Overlay logic
-    const morphOverlay = document.getElementById('morph-overlay');
-    const modalCloseBtn = document.querySelector('.morph-modal-close');
-    const cardsWithMorph = document.querySelectorAll('[data-morph="card"]');
-
-    if (morphOverlay && modalCloseBtn) {
-        cardsWithMorph.forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Get data attributes
-                const num = card.getAttribute('data-num');
-                const title = card.getAttribute('data-title');
-                const frameLabel = card.getAttribute('data-frame-label');
-                const desc = card.getAttribute('data-desc');
-
-                // Update modal elements
-                morphOverlay.querySelector('.modal-num').innerText = num;
-                morphOverlay.querySelector('.modal-title').innerText = title;
-                morphOverlay.querySelector('.modal-desc').innerText = desc;
-
-                // Clone and inject the SVG/visual content
-                const placeholder = card.querySelector('.placeholder-frame');
-                const modalPlaceholderBox = morphOverlay.querySelector('.modal-placeholder-box');
-                
-                // Clear only visual content (svg or img) but keep metadata like labels & crosshairs
-                const prevVisual = modalPlaceholderBox.querySelector('svg, img');
-                if (prevVisual) {
-                    prevVisual.remove();
-                }
-
-                // Set the modal frame label
-                const modalLabel = modalPlaceholderBox.querySelector('.modal-frame-label');
-                if (modalLabel) {
-                    modalLabel.innerText = `[ ${frameLabel} ]`;
-                }
-                
-                modalPlaceholderBox.classList.remove('ratio-16-9', 'ratio-4-3', 'ratio-1-1');
-                if (placeholder) {
-                    if (placeholder.classList.contains('ratio-4-3')) {
-                        modalPlaceholderBox.classList.add('ratio-4-3');
-                    } else if (placeholder.classList.contains('ratio-1-1')) {
-                        modalPlaceholderBox.classList.add('ratio-1-1');
-                    } else {
-                        modalPlaceholderBox.classList.add('ratio-16-9');
-                    }
-
-                    const visual = placeholder.querySelector('svg, img');
-                    if (visual) {
-                        const clonedVisual = visual.cloneNode(true);
-                        clonedVisual.style.width = '100%';
-                        clonedVisual.style.height = '100%';
-                        clonedVisual.style.display = 'block';
-                        clonedVisual.style.padding = '0';
-                        modalPlaceholderBox.appendChild(clonedVisual);
-                    }
-                }
-
-                // Animate modal opening
-                morphOverlay.classList.add('active');
-                morphOverlay.querySelector('.morph-modal-card').classList.add('expanded');
-                
-                gsap.fromTo('.morph-modal-card', 
-                    { scale: 0.9, opacity: 0, y: 30 },
-                    { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
-                );
-            });
-        });
-
-        // Click-to-enlarge for all other placeholder-frame elements (mockups and diagrams)
-        const placeholderFrames = document.querySelectorAll('.placeholder-frame');
-        placeholderFrames.forEach(frame => {
-            // Skip if it's already inside a data-morph="card" element or is the modal box itself
-            if (frame.closest('[data-morph="card"]') || frame.classList.contains('modal-placeholder-box')) {
-                return;
-            }
-
-            // Make it clickable visually
-            frame.style.cursor = 'zoom-in';
-
-            frame.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                // Find parent slide-section to extract content context
-                const section = frame.closest('.slide-section');
-                let num = '0.0';
-                let title = 'Visual Specification';
-                let desc = 'Detailed diagram / visual template representation.';
-                let frameLabel = 'Visual Frame';
-
-                if (section) {
-                    const numEl = section.querySelector('.section-num');
-                    const titleEl = section.querySelector('h2.split-line, h2');
-                    const descEl = section.querySelector('p'); // first paragraph
-
-                    if (numEl) num = numEl.innerText.trim();
-                    if (titleEl) title = titleEl.innerText.trim();
-                    if (descEl) desc = descEl.innerText.trim();
-
-                    // Determine default label
-                    const rawLabel = frameLabels[section.id] || '[ Visual Frame ]';
-                    frameLabel = rawLabel.replace(/[\[\]]/g, '').trim(); // Remove brackets if present
-                }
-
-                // Update modal text fields
-                morphOverlay.querySelector('.modal-num').innerText = num;
-                morphOverlay.querySelector('.modal-title').innerText = title;
-                morphOverlay.querySelector('.modal-desc').innerText = desc;
-
-                const modalPlaceholderBox = morphOverlay.querySelector('.modal-placeholder-box');
-                
-                // Clear only visual content (svg or img) but keep metadata like labels & crosshairs
-                const prevVisual = modalPlaceholderBox.querySelector('svg, img');
-                if (prevVisual) {
-                    prevVisual.remove();
-                }
-
-                // Set the modal frame label
-                const modalLabel = modalPlaceholderBox.querySelector('.modal-frame-label');
-                if (modalLabel) {
-                    modalLabel.innerText = `[ ${frameLabel} ]`;
-                }
-
-                // Find visual element (svg or img)
-                modalPlaceholderBox.classList.remove('ratio-16-9', 'ratio-4-3', 'ratio-1-1');
-                if (frame.classList.contains('ratio-4-3')) {
-                    modalPlaceholderBox.classList.add('ratio-4-3');
-                } else if (frame.classList.contains('ratio-1-1')) {
-                    modalPlaceholderBox.classList.add('ratio-1-1');
-                } else {
-                    modalPlaceholderBox.classList.add('ratio-16-9');
-                }
-
-                const visual = frame.querySelector('svg, img');
-                if (visual) {
-                    const clonedVisual = visual.cloneNode(true);
-                    clonedVisual.style.width = '100%';
-                    clonedVisual.style.height = '100%';
-                    clonedVisual.style.display = 'block';
-                    clonedVisual.style.padding = '0';
-                    modalPlaceholderBox.appendChild(clonedVisual);
-                }
-
-                // Animate modal opening
-                morphOverlay.classList.add('active');
-                morphOverlay.querySelector('.morph-modal-card').classList.add('expanded');
-                gsap.fromTo('.morph-modal-card', 
-                    { scale: 0.9, opacity: 0, y: 30 },
-                    { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
-                );
-            });
-        });
-
-        const closeModal = () => {
-            const card = morphOverlay.querySelector('.morph-modal-card');
-            gsap.to(card, {
-                scale: 0.9,
-                opacity: 0,
-                y: 30,
-                duration: 0.3,
-                ease: "power3.in",
-                onComplete: () => {
-                    morphOverlay.classList.remove('active');
-                    card.classList.remove('expanded');
-                }
-            });
-        };
-
-        modalCloseBtn.addEventListener('click', closeModal);
-        morphOverlay.querySelector('.morph-modal-bg').addEventListener('click', closeModal);
-    }
 
     // 14. Horizontal Scroll Pinning & Middle Highlight
     const track = document.querySelector('.horizontal-track');
     const headerSticky = document.querySelector('.horizontal-header-sticky');
+    const scrollContainer = document.querySelector('.horizontal-scroll-container');
+    
     if (track && headerSticky) {
         let isAnimatingCard = false;
         let currentCardIndex = 0;
         const cards = document.querySelectorAll('.horizontal-card');
         const mm = gsap.matchMedia();
 
-        // Desktop: Pin & scrub, but NO snap in ScrollTrigger to prevent conflict with wheel hijacking
+        // Desktop: Pin & scrub, with smooth snapping and exact scroll bounds
         mm.add("(min-width: 993px)", () => {
-            gsap.to(track, {
-                x: () => {
-                    const totalMove = track.scrollWidth - window.innerWidth;
-                    return -totalMove;
-                },
-                ease: 'none',
-                scrollTrigger: {
-                    id: 'applications-trigger',
-                    trigger: '#slide-applications',
-                    pin: true,
-                    scrub: true,
-                    start: 'top top',
-                    end: () => `+=${track.scrollWidth - window.innerWidth + 800}`,
-                    invalidateOnRefresh: true,
-                    onUpdate: () => {
-                        updateHighlightedCard();
-                    },
-                    onRefresh: () => {
-                        updateHighlightedCard();
-                    }
-                }
-            });
-            updateHighlightedCard();
-        });
-
-        // Mobile/Tablet: Pin, scrub, AND snap in ScrollTrigger. No wheel hijack runs on mobile.
-        mm.add("(max-width: 992px)", () => {
             gsap.to(track, {
                 x: () => {
                     const totalMove = track.scrollWidth - window.innerWidth;
@@ -1779,10 +1734,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         snapTo: 1 / (cards.length - 1),
                         duration: { min: 0.2, max: 0.4 },
                         delay: 0.05,
-                        ease: "power1.inOut"
+                        ease: "power2.inOut"
                     },
                     start: 'top top',
-                    end: () => `+=${track.scrollWidth - window.innerWidth + 800}`,
+                    end: () => `+=${track.scrollWidth - window.innerWidth}`, // Removed dead scroll space
                     invalidateOnRefresh: true,
                     onUpdate: () => {
                         updateHighlightedCard();
@@ -1795,6 +1750,18 @@ document.addEventListener('DOMContentLoaded', () => {
             updateHighlightedCard();
         });
 
+        // Mobile/Tablet: No pinning/translating in ScrollTrigger.
+        // Handled via native CSS scroll-snap. Just add an observer/scroll listener.
+        mm.add("(max-width: 992px)", () => {
+            if (scrollContainer) {
+                scrollContainer.addEventListener('scroll', () => {
+                    updateHighlightedCardMobile();
+                }, { passive: true });
+                updateHighlightedCardMobile();
+            }
+        });
+
+        // Function to update highlighted card on desktop (middle of screen)
         function updateHighlightedCard() {
             const viewportCenter = window.innerWidth / 2;
             
@@ -1827,7 +1794,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Card-by-Card Wheel Scroll Hijack for Desktop (Attached to window for absolute robustness)
+        // Function to update highlighted card on mobile (scrollContainer center)
+        function updateHighlightedCardMobile() {
+            if (!scrollContainer) return;
+            const containerCenter = scrollContainer.scrollLeft + scrollContainer.clientWidth / 2;
+            
+            let closestIdx = 0;
+            let minDistance = Infinity;
+            
+            cards.forEach((card, idx) => {
+                const cardCenter = card.offsetLeft + card.clientWidth / 2;
+                const distance = Math.abs(cardCenter - containerCenter);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestIdx = idx;
+                }
+            });
+            
+            cards.forEach((card, idx) => {
+                if (idx === closestIdx) {
+                    card.classList.add('highlighted');
+                } else {
+                    card.classList.remove('highlighted');
+                }
+            });
+            
+            currentCardIndex = closestIdx;
+        }
+
+
+
+        // Card-by-Card Wheel Scroll Hijack for Desktop
         window.addEventListener('wheel', (e) => {
             if (window.innerWidth <= 992) return; // Only hijack on desktop
 
@@ -1835,11 +1833,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!st) return;
 
             const scrollY = window.scrollY;
-            // Active if inside the trigger range, with a 10px buffer at the boundaries
             const isActive = scrollY >= (st.start - 10) && scrollY <= (st.end + 10);
             if (!isActive) return;
 
-            // If we are currently animating, we MUST intercept and block the scroll event
             if (isAnimatingCard) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -1855,7 +1851,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCardIndex++;
                     const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
                     
-                    // Fail-safe to unlock scrolling after 750ms under any circumstances
                     const unlockTimeout = setTimeout(() => {
                         isAnimatingCard = false;
                     }, 750);
@@ -1864,7 +1859,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         duration: 0.35,
                         force: true,
                         onComplete: () => {
-                            // Devour remaining trackpad inertia before unlocking
                             setTimeout(() => {
                                 clearTimeout(unlockTimeout);
                                 isAnimatingCard = false;
@@ -1872,7 +1866,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                 }
-                // If we are at the last card, we don't call preventDefault, allowing the user to scroll out
             } else if (e.deltaY < 0) {
                 // Scroll up: move to previous card
                 if (currentCardIndex > 0) {
@@ -1882,7 +1875,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCardIndex--;
                     const targetScroll = st.start + (currentCardIndex / (cards.length - 1)) * (st.end - st.start);
                     
-                    // Fail-safe to unlock scrolling after 750ms under any circumstances
                     const unlockTimeout = setTimeout(() => {
                         isAnimatingCard = false;
                     }, 750);
@@ -1891,7 +1883,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         duration: 0.35,
                         force: true,
                         onComplete: () => {
-                            // Devour remaining trackpad inertia before unlocking
                             setTimeout(() => {
                                 clearTimeout(unlockTimeout);
                                 isAnimatingCard = false;
@@ -1899,12 +1890,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                 }
-                // If we are at the first card, we don't call preventDefault, allowing the user to scroll out
             }
         }, { passive: false });
     }
 
-    // 15. Window resize handler to maintain frame positioning
+        // 15. Window resize handler to maintain frame positioning
     window.addEventListener('resize', () => {
         const activeDot = document.querySelector('.dot-link.active');
         if (activeDot) {
@@ -1915,6 +1905,919 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // ── 16. Lightbox — Full Rebuild ───────────────────────────────────────────
+    const initLightbox = () => {
+
+        /* ── DOM construction ───────────────────────────────────────────────── */
+        const lightbox = document.createElement('div');
+        lightbox.id = 'image-lightbox';
+        lightbox.className = 'lightbox';
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-modal', 'true');
+        lightbox.setAttribute('aria-label', 'Image Preview');
+
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.innerHTML = '&times;';
+        closeBtn.setAttribute('aria-label', 'Close Preview');
+
+        const content = document.createElement('div');
+        content.className = 'lightbox-content';
+
+        // Fullscreen Navigation Arrows
+        const arrowPrev = document.createElement('button');
+        arrowPrev.className = 'lightbox-nav-arrow arrow-prev';
+        arrowPrev.innerHTML = '&#10094;';
+        arrowPrev.setAttribute('aria-label', 'Previous image');
+
+        const arrowNext = document.createElement('button');
+        arrowNext.className = 'lightbox-nav-arrow arrow-next';
+        arrowNext.innerHTML = '&#10095;';
+        arrowNext.setAttribute('aria-label', 'Next image');
+
+        const zoomControls = document.createElement('div');
+        zoomControls.className = 'lightbox-zoom-controls';
+
+        const btnMinus = document.createElement('button');
+        btnMinus.className = 'zoom-btn btn-minus';
+        btnMinus.textContent = '-';
+        btnMinus.setAttribute('aria-label', 'Zoom Out');
+
+        const zoomLabel = document.createElement('span');
+        zoomLabel.className = 'zoom-label';
+        zoomLabel.textContent = '100%';
+
+        const btnPlus = document.createElement('button');
+        btnPlus.className = 'zoom-btn btn-plus';
+        btnPlus.textContent = '+';
+        btnPlus.setAttribute('aria-label', 'Zoom In');
+
+        const btnReset = document.createElement('button');
+        btnReset.className = 'zoom-btn btn-reset';
+        btnReset.innerHTML = '&#x21BB;';
+        btnReset.setAttribute('aria-label', 'Reset Zoom');
+
+        zoomControls.append(btnMinus, zoomLabel, btnPlus, btnReset);
+        lightbox.append(closeBtn, arrowPrev, arrowNext, content, zoomControls);
+        document.body.appendChild(lightbox);
+
+        /* ── State ──────────────────────────────────────────────────────────── */
+        const MIN_SCALE = 0.5;
+        const MAX_SCALE = 5;
+        let scale     = 1;
+        let panX      = 0;
+        let panY      = 0;
+        let isDragging     = false;
+        let dragStartX     = 0;
+        let dragStartY     = 0;
+        let touchStartDist  = 0;
+        let touchStartScale = 1;
+        let touchStartPanX  = 0;
+        let touchStartPanY  = 0;
+        let resizeRAF       = null;
+
+        // Gallery navigation track references
+        let activeGalleryList = [];
+        let activeGalleryIndex = -1;
+
+        /* ── Helpers ────────────────────────────────────────────────────────── */
+        const getEl = () => content.querySelector('img, svg');
+
+        /** Clamp pan so the image cannot be dragged completely off-screen */
+        const clampPan = () => {
+            const el = getEl();
+            if (!el || scale <= 1) { panX = 0; panY = 0; return; }
+            const r = el.getBoundingClientRect();
+            // how far the scaled image extends beyond the viewport centre
+            const maxX = Math.max(0, (r.width  / 2) - 20);
+            const maxY = Math.max(0, (r.height / 2) - 20);
+            panX = Math.max(-maxX, Math.min(panX, maxX));
+            panY = Math.max(-maxY, Math.min(panY, maxY));
+        };
+
+        /** Guard: ensure a number is safe (not 0, NaN, ±Infinity, negative) */
+        const safeScale = (v) => {
+            if (!Number.isFinite(v) || Number.isNaN(v) || v <= 0) return 1;
+            return Math.max(MIN_SCALE, Math.min(v, MAX_SCALE));
+        };
+
+        /** Update the CSS transform on the element */
+        const applyTransform = (instant = false) => {
+            const el = getEl();
+            if (!el) return;
+            el.style.transition = instant ? 'none' : 'transform 160ms ease-out';
+            el.style.transform  = `translate(${panX}px, ${panY}px) scale(${scale})`;
+            zoomLabel.textContent = Math.round(scale * 100) + '%';
+            // cursor hint
+            content.classList.toggle('can-drag', scale > 1);
+        };
+
+        /** Full reset — called every time the lightbox opens */
+        const resetState = () => {
+            scale = 1; panX = 0; panY = 0;
+            isDragging = false;
+            const el = getEl();
+            if (el) { el.style.transition = 'none'; el.style.transform = ''; }
+            zoomLabel.textContent = '100%';
+            content.classList.remove('can-drag', 'dragging');
+        };
+
+        /** Step zoom (buttons) — centred, animated */
+        const stepZoom = (factor) => {
+            scale = safeScale(scale * factor);
+            clampPan();
+            applyTransform(false);
+        };
+
+        /** Zoom anchored to a viewport point (for wheel / pinch) — instant */
+        const anchoredZoom = (factor, cx, cy) => {
+            const el = getEl();
+            if (!el) return;
+            const prev = scale;
+            scale = safeScale(scale * factor);
+            if (scale !== prev && scale > 1 && cx !== undefined) {
+                const r = el.getBoundingClientRect();
+                const ox = cx - (r.left + r.width  / 2);
+                const oy = cy - (r.top  + r.height / 2);
+                panX -= ox * (scale / prev - 1);
+                panY -= oy * (scale / prev - 1);
+            }
+            if (scale === 1) { panX = 0; panY = 0; }
+            clampPan();
+            applyTransform(true); // instant during wheel/drag
+        };
+
+        /* ── Safe image-load measurement ────────────────────────────────────── */
+        const applyImageFit = (img) => {
+            const nw = img.naturalWidth;
+            const nh = img.naturalHeight;
+
+            if (!nw || !nh) {
+                if (!nw) console.warn('[Lightbox] naturalWidth is 0 — using CSS fallback.');
+                if (!nh) console.warn('[Lightbox] naturalHeight is 0 — using CSS fallback.');
+                img.style.maxWidth  = '95vw';
+                img.style.maxHeight = '95vh';
+                img.style.objectFit = 'contain';
+                return;
+            }
+
+            const computed = Math.min(
+                (window.innerWidth  * 0.95) / nw,
+                (window.innerHeight * 0.95) / nh
+            );
+
+            if (Number.isNaN(computed))    { console.warn('[Lightbox] scale is NaN — using CSS fallback.');      return; }
+            if (!Number.isFinite(computed)){ console.warn('[Lightbox] scale is Infinity — using CSS fallback.'); return; }
+
+            img.style.transform = '';
+        };
+
+        /* ── Clone & open ───────────────────────────────────────────────────── */
+        const openLightbox = (source) => {
+            content.innerHTML = '';
+            resetState();
+
+            // Setup active gallery context list
+            const currentSection = source.closest('section');
+            if (currentSection) {
+                activeGalleryList = Array.from(currentSection.querySelectorAll(zoomableSelector));
+                activeGalleryIndex = activeGalleryList.indexOf(source);
+            } else {
+                activeGalleryList = [source];
+                activeGalleryIndex = 0;
+            }
+
+            updateNavArrowsState();
+
+            // Extract the img or svg from the clicked element
+            let clone;
+            const tag = source.tagName.toLowerCase();
+
+            if (tag === 'img') {
+                clone = source.cloneNode(true);
+            } else if (tag === 'svg') {
+                clone = source.cloneNode(true);
+            } else {
+                // container: find child img or svg
+                const childImg = source.querySelector('img');
+                const childSvg = source.querySelector('svg');
+                clone = childImg ? childImg.cloneNode(true)
+                      : childSvg ? childSvg.cloneNode(true)
+                      : null;
+            }
+
+            if (!clone) return;
+
+            // Clear every inline size override so CSS is authoritative
+            ['width','height','maxWidth','maxHeight','objectFit',
+             'transform','transformOrigin'].forEach(p => { clone.style[p] = ''; });
+
+            content.appendChild(clone);
+
+            // Lock page scroll
+            document.body.style.overflow = 'hidden';
+
+            // For raster images: wait for decode before measuring
+            if (clone.tagName.toLowerCase() === 'img') {
+                if (clone.complete && clone.naturalWidth > 0) {
+                    applyImageFit(clone);
+                } else {
+                    clone.onload  = () => applyImageFit(clone);
+                    clone.onerror = () => {
+                        console.warn('[Lightbox] Image failed to load — CSS fallback applied.');
+                        clone.style.maxWidth  = '95vw';
+                        clone.style.maxHeight = '95vh';
+                        clone.style.objectFit = 'contain';
+                    };
+                }
+            }
+
+            // Show & animate in
+            lightbox.classList.add('active');
+            gsap.fromTo(lightbox,
+                { opacity: 0 },
+                { opacity: 1, duration: 0.28, ease: 'power2.out' }
+            );
+            gsap.fromTo(content,
+                { scale: 0.92, opacity: 0 },
+                { scale: 1,    opacity: 1, duration: 0.38, ease: 'back.out(1.4)' }
+            );
+
+            // Replay SVG animations
+            if (clone.tagName.toLowerCase() === 'svg') {
+                restartSvgAnimations(clone);
+                animateClonedDiagram(clone);
+            }
+        };
+
+        const updateNavArrowsState = () => {
+            if (activeGalleryList.length <= 1) {
+                arrowPrev.style.display = 'none';
+                arrowNext.style.display = 'none';
+            } else {
+                arrowPrev.style.display = 'flex';
+                arrowNext.style.display = 'flex';
+                arrowPrev.style.opacity = activeGalleryIndex === 0 ? '0.3' : '1';
+                arrowPrev.style.pointerEvents = activeGalleryIndex === 0 ? 'none' : 'auto';
+                arrowNext.style.opacity = activeGalleryIndex === activeGalleryList.length - 1 ? '0.3' : '1';
+                arrowNext.style.pointerEvents = activeGalleryIndex === activeGalleryList.length - 1 ? 'none' : 'auto';
+            }
+        };
+
+        const navigateLightbox = (direction) => {
+            const nextIdx = activeGalleryIndex + direction;
+            if (nextIdx >= 0 && nextIdx < activeGalleryList.length) {
+                const targetSrc = activeGalleryList[nextIdx];
+                gsap.to(content, {
+                    scale: 0.95,
+                    opacity: 0,
+                    duration: 0.15,
+                    ease: 'power2.in',
+                    onComplete: () => {
+                        openLightbox(targetSrc);
+                    }
+                });
+            }
+        };
+
+        /* ── SVG animation restart ───────────────────────────────────────────── */
+        const restartSvgAnimations = (svgEl) => {
+            try {
+                const anims = svgEl.querySelectorAll('animate, animateTransform, animateMotion, set');
+                anims.forEach(a => { a.beginElement?.(); });
+            } catch(_) {}
+            svgEl.querySelectorAll('*').forEach(el => {
+                const style = el.style;
+                if (style.animationName) {
+                    const name = style.animationName;
+                    style.animationName = 'none';
+                    requestAnimationFrame(() => { style.animationName = name; });
+                }
+            });
+        };
+
+        /* ── Close ──────────────────────────────────────────────────────────── */
+        const closeLightbox = () => {
+            gsap.to([content, lightbox], {
+                opacity: 0, scale: 0.92,
+                duration: 0.26,
+                ease: 'power2.in',
+                onComplete: () => {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                    content.innerHTML = '';
+                    gsap.set([content, lightbox], { clearProps: 'all' });
+                    resetState();
+                }
+            });
+        };
+
+        /* ── Mouse wheel zoom ───────────────────────────────────────────────── */
+        content.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            anchoredZoom(e.deltaY < 0 ? 1.12 : 0.89, e.clientX, e.clientY);
+        }, { passive: false });
+
+        /* ── Double-click: fit ↔ 100% ───────────────────────────────────────── */
+        content.addEventListener('dblclick', (e) => {
+            if (scale !== 1) { scale = 1; panX = 0; panY = 0; applyTransform(false); return; }
+            const el = getEl();
+            if (!el) return;
+            const nw = el.naturalWidth  || el.viewBox?.baseVal?.width  || 0;
+            const dw = el.getBoundingClientRect().width;
+            if (!nw || !dw) return;
+            scale = safeScale(nw / dw);
+            panX = 0; panY = 0;
+            applyTransform(false);
+        });
+
+        /* ── Mouse drag ─────────────────────────────────────────────────────── */
+        content.addEventListener('mousedown', (e) => {
+            if (scale <= 1) return;
+            isDragging  = true;
+            dragStartX  = e.clientX - panX;
+            dragStartY  = e.clientY - panY;
+            content.classList.add('dragging');
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            panX = e.clientX - dragStartX;
+            panY = e.clientY - dragStartY;
+            clampPan();
+            applyTransform(true);
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            content.classList.remove('dragging');
+        });
+
+        /* ── Touch: single-finger pan + two-finger pinch ────────────────────── */
+        let touchStartClientX = 0;
+        content.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                isDragging     = false;
+                touchStartDist  = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                touchStartScale = scale;
+                touchStartPanX  = panX;
+                touchStartPanY  = panY;
+            } else if (e.touches.length === 1) {
+                touchStartClientX = e.touches[0].clientX;
+                if (scale > 1) {
+                    isDragging = true;
+                    dragStartX = e.touches[0].clientX - panX;
+                    dragStartY = e.touches[0].clientY - panY;
+                }
+            }
+        }, { passive: true });
+
+        content.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2 && touchStartDist > 0) {
+                const dist   = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                scale = safeScale(touchStartScale * (dist / touchStartDist));
+                if (scale === 1) { panX = 0; panY = 0; }
+                clampPan();
+                applyTransform(true);
+            } else if (e.touches.length === 1 && isDragging) {
+                panX = e.touches[0].clientX - dragStartX;
+                panY = e.touches[0].clientY - dragStartY;
+                clampPan();
+                applyTransform(true);
+            }
+        }, { passive: true });
+
+        content.addEventListener('touchend', (e) => {
+            if (scale === 1 && touchStartClientX > 0 && e.changedTouches.length === 1) {
+                // Swipe navigation in lightbox
+                const diffX = e.changedTouches[0].clientX - touchStartClientX;
+                if (Math.abs(diffX) > 60) {
+                    if (diffX < 0 && activeGalleryIndex < activeGalleryList.length - 1) {
+                        navigateLightbox(1);
+                    } else if (diffX > 0 && activeGalleryIndex > 0) {
+                        navigateLightbox(-1);
+                    }
+                }
+            }
+            isDragging    = false;
+            touchStartDist = 0;
+            touchStartClientX = 0;
+            if (scale < 1) { scale = 1; panX = 0; panY = 0; applyTransform(false); }
+        }, { passive: true });
+
+        // Nav arrow clicks
+        arrowPrev.addEventListener('click', () => navigateLightbox(-1));
+        arrowNext.addEventListener('click', () => navigateLightbox(1));
+
+        /* ── Zoom buttons ───────────────────────────────────────────────────── */
+        btnPlus.addEventListener('click',  () => stepZoom(1.2));
+        btnMinus.addEventListener('click', () => stepZoom(1 / 1.2));
+        btnReset.addEventListener('click', () => { scale = 1; panX = 0; panY = 0; applyTransform(false); });
+
+        /* ── Window resize: re-clamp pan ────────────────────────────────────── */
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeRAF);
+            resizeRAF = requestAnimationFrame(() => {
+                clampPan();
+                applyTransform(true);
+            });
+        });
+
+        /* ── Trigger elements (Event Delegation standard) ───────────────────── */
+        const zoomableSelector = [
+            '.image-container',
+            '.image-card',
+            '.placeholder-frame:has(svg)',
+            '.ecosystem-svg',
+            '.usp-svg',
+            '.decisions-svg',
+            '.behavioral-loop-svg',
+            '.floor-plan-svg'
+        ].join(', ');
+
+        document.addEventListener('click', (e) => {
+            const zoomable = e.target.closest(zoomableSelector);
+            if (zoomable) {
+                if (zoomable.closest('.lightbox') || e.target.closest('a, button, input')) return;
+                openLightbox(zoomable);
+            }
+        });
+
+        /* ── Close triggers ─────────────────────────────────────────────────── */
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === content || e.target === closeBtn) {
+                closeLightbox();
+            }
+        });
+        window.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft' && activeGalleryIndex > 0) {
+                navigateLightbox(-1);
+            } else if (e.key === 'ArrowRight' && activeGalleryIndex < activeGalleryList.length - 1) {
+                navigateLightbox(1);
+            }
+        });
+
+    };
+
+    initLightbox();
+
+    // ── 17. Typography Section Custom Animations ─────────────────────────────
+    const initTypographyAnimations = () => {
+        const typewriter = (element, text, speed, onComplete) => {
+            if (!element) return;
+            element.innerHTML = '';
+            element.style.visibility = 'visible';
+            
+            let i = 0;
+            const cursor = document.createElement('span');
+            cursor.className = 'typewriter-cursor';
+            cursor.textContent = '|';
+            element.appendChild(cursor);
+            
+            const typeLetter = () => {
+                if (i < text.length) {
+                    cursor.before(text.charAt(i));
+                    i++;
+                    setTimeout(typeLetter, speed);
+                } else {
+                    cursor.style.animation = 'none';
+                    gsap.to(cursor, {
+                        opacity: 0,
+                        duration: 0.3,
+                        onComplete: () => {
+                            cursor.remove();
+                            if (onComplete) onComplete();
+                        }
+                    });
+                }
+            };
+            typeLetter();
+        };
+
+        const typeSection = document.querySelector('#slide-type');
+        if (!typeSection) return;
+
+        // Hide title text initially
+        const titleEl = typeSection.querySelector('#typewriter-main-title');
+        if (titleEl) {
+            titleEl.style.visibility = 'hidden';
+        }
+
+        // Hide headline initially
+        const headlineEl = typeSection.querySelector('#typing-usage-headline');
+        if (headlineEl) {
+            headlineEl.style.visibility = 'hidden';
+        }
+
+        ScrollTrigger.create({
+            trigger: '#slide-type',
+            start: 'top 75%',
+            onEnter: () => {
+                // 1. Animate main title with typewriter effect
+                if (titleEl) {
+                    typewriter(titleEl, "Editorial Specimen & Scale Rules", 45, () => {
+                        // 2. Animate typeface cards staggered
+                        gsap.fromTo('#slide-type .reveal-card', 
+                            { opacity: 0, y: 20 },
+                            { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out', force3D: true }
+                        );
+                        
+                        // 3. Animate example usage headline
+                        if (headlineEl) {
+                            setTimeout(() => {
+                                typewriter(headlineEl, "Recycle Today For a Better Tomorrow", 35);
+                            }, 300);
+                        }
+                    });
+                }
+            },
+            once: true
+        });
+    };
+    initTypographyAnimations();
+
+    // ── 18. Horizontal Peeking Carousel Photography System & Parallax ──────────
+    const initPhotographySystem = () => {
+        // Dynamic image data source for easy addition/scalability
+        const photographyGallery = [
+            { src: 'assets/photo_1.png', alt: 'Photography Art Direction 1 - Creative Lighting' },
+            { src: 'assets/photo_2.png', alt: 'Photography Art Direction 2 - Symmetrical Composition' },
+            { src: 'assets/photo_3.png', alt: 'Photography Art Direction 3 - Symmetrical Clean Spec' }
+        ];
+
+        const container = document.getElementById('greenloop-photo-gallery');
+        const dotsContainer = document.getElementById('carousel-dots-indicator');
+        const trackWrapper = document.getElementById('carousel-track-wrapper');
+        const btnPrev = document.getElementById('carousel-prev');
+        const btnNext = document.getElementById('carousel-next');
+        
+        if (!container || !trackWrapper) return;
+
+        let currentIndex = 0;
+        const slideWidth = 320;
+        const slideMargin = 28;
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
+        let dragOffset = 0;
+
+        // Render card nodes dynamically
+        container.innerHTML = '';
+        if (dotsContainer) dotsContainer.innerHTML = '';
+
+        photographyGallery.forEach((item, index) => {
+            // Create Slide Card
+            const card = document.createElement('div');
+            card.className = 'carousel-slide';
+            card.setAttribute('data-index', index);
+            
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            img.loading = 'lazy';
+            
+            card.appendChild(img);
+            container.appendChild(card);
+
+            // Create Pagination Dot
+            if (dotsContainer) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (index === 0 ? ' active-dot' : '');
+                dot.setAttribute('data-index', index);
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        });
+
+        // Add class `.image-card` to selector list to trigger Lightbox via event delegation
+        container.querySelectorAll('.carousel-slide').forEach(slide => {
+            slide.classList.add('image-card');
+        });
+
+        const slides = container.querySelectorAll('.carousel-slide');
+
+        const updateCarouselLayout = (instant = false) => {
+            const wrapperWidth = trackWrapper.getBoundingClientRect().width;
+            
+            // To center the active slide:
+            // Center of wrapper = wrapperWidth / 2
+            // Center of active slide = slideWidth / 2
+            // Offset needed = (wrapperWidth / 2) - (slideWidth / 2)
+            const centerOffset = (wrapperWidth / 2) - (slideWidth / 2);
+            
+            // Theoretical target position for the track without dragging offset
+            const targetX = centerOffset - currentIndex * (slideWidth + slideMargin);
+            const currentTrackX = targetX + dragOffset;
+
+            // Set track transform
+            gsap.to(container, {
+                x: currentTrackX,
+                duration: instant ? 0 : 0.7,
+                ease: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                overwrite: 'auto'
+            });
+
+            // Set classes for Active, Peeking and regular slides
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active-slide', 'peeking-slide');
+                if (i === currentIndex) {
+                    slide.classList.add('active-slide');
+                } else if (i === currentIndex + 1) {
+                    slide.classList.add('peeking-slide');
+                }
+            });
+
+            // Update pagination indicators
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active-dot', idx === currentIndex);
+                });
+            }
+        };
+
+        const goToSlide = (index) => {
+            if (index < 0 || index >= photographyGallery.length) return;
+            currentIndex = index;
+            dragOffset = 0;
+            updateCarouselLayout(false);
+        };
+
+        // Navigation button hooks
+        if (btnPrev) {
+            btnPrev.addEventListener('click', () => {
+                if (currentIndex > 0) goToSlide(currentIndex - 1);
+            });
+        }
+        if (btnNext) {
+            btnNext.addEventListener('click', () => {
+                if (currentIndex < photographyGallery.length - 1) goToSlide(currentIndex + 1);
+            });
+        }
+
+        // Keyboard navigation support
+        window.addEventListener('keydown', (e) => {
+            // Check if section is visible in viewport
+            const rect = trackWrapper.getBoundingClientRect();
+            const isVisible = (rect.top < window.innerHeight && rect.bottom > 0);
+            if (!isVisible) return;
+
+            if (e.key === 'ArrowLeft') {
+                if (currentIndex > 0) goToSlide(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                if (currentIndex < photographyGallery.length - 1) goToSlide(currentIndex + 1);
+            }
+        });
+
+        // Mousewheel horizontal support
+        let wheelTimeout;
+        trackWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            clearTimeout(wheelTimeout);
+            wheelTimeout = setTimeout(() => {
+                if (e.deltaX > 20 || e.deltaY > 20) {
+                    if (currentIndex < photographyGallery.length - 1) goToSlide(currentIndex + 1);
+                } else if (e.deltaX < -20 || e.deltaY < -20) {
+                    if (currentIndex > 0) goToSlide(currentIndex - 1);
+                }
+            }, 50);
+        }, { passive: false });
+
+        // Mouse Drag / Touch Swipe momentum positioning
+        const startDrag = (clientX) => {
+            isDragging = true;
+            startX = clientX;
+            dragOffset = 0;
+            gsap.killTweensOf(container);
+        };
+
+        const moveDrag = (clientX) => {
+            if (!isDragging) return;
+            dragOffset = clientX - startX;
+            updateCarouselLayout(true);
+        };
+
+        const endDrag = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            // Determine threshold for slide change (e.g. 80px)
+            const threshold = 80;
+            if (dragOffset < -threshold && currentIndex < photographyGallery.length - 1) {
+                goToSlide(currentIndex + 1);
+            } else if (dragOffset > threshold && currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+            } else {
+                goToSlide(currentIndex); // Snap back
+            }
+        };
+
+        // Mouse event listeners
+        trackWrapper.addEventListener('mousedown', (e) => {
+            if (e.target.closest('button, .carousel-dot')) return;
+            startDrag(e.clientX);
+            e.preventDefault();
+        });
+        window.addEventListener('mousemove', (e) => {
+            moveDrag(e.clientX);
+        });
+        window.addEventListener('mouseup', () => {
+            endDrag();
+        });
+
+        // Touch event listeners
+        trackWrapper.addEventListener('touchstart', (e) => {
+            startDrag(e.touches[0].clientX);
+        }, { passive: true });
+        trackWrapper.addEventListener('touchmove', (e) => {
+            moveDrag(e.touches[0].clientX);
+        }, { passive: true });
+        trackWrapper.addEventListener('touchend', () => {
+            endDrag();
+        }, { passive: true });
+
+        // Handle initial layout and window resize updates
+        setTimeout(() => updateCarouselLayout(true), 100);
+        window.addEventListener('resize', () => updateCarouselLayout(true));
+
+        // 1. Scroll animation trigger: smooth fade-up title/text, staggered images
+        ScrollTrigger.create({
+            trigger: '#slide-photo',
+            start: 'top 75%',
+            onEnter: () => {
+                // Fade up title and text content
+                gsap.fromTo('#slide-photo .section-header, #slide-photo .photo-info-panel, #slide-photo .carousel-container',
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.12, force3D: true }
+                );
+            },
+            once: true
+        });
+
+        // 2. Parallax Scroll movement for circle and dot decorators
+        gsap.to('#slide-photo .dec-1', {
+            yPercent: -20,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#slide-photo',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+        gsap.to('#slide-photo .dec-2', {
+            yPercent: 20,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#slide-photo',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+        gsap.to('#slide-photo .dec-3', {
+            yPercent: -35,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#slide-photo',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        // 3. Parallax Mousemove movement for circle and dot decorators
+        const slidePhoto = document.querySelector('#slide-photo');
+        if (slidePhoto) {
+            slidePhoto.addEventListener('mousemove', (e) => {
+                const rect = slidePhoto.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - (rect.width / 2);
+                const mouseY = e.clientY - rect.top - (rect.height / 2);
+                
+                gsap.to(slidePhoto.querySelectorAll('.dec-1'), {
+                    x: mouseX * 0.03,
+                    y: mouseY * 0.03,
+                    duration: 0.8,
+                    ease: 'power1.out'
+                });
+                gsap.to(slidePhoto.querySelectorAll('.dec-2'), {
+                    x: mouseX * -0.025,
+                    y: mouseY * -0.025,
+                    duration: 0.8,
+                    ease: 'power1.out'
+                });
+                gsap.to(slidePhoto.querySelectorAll('.dec-3'), {
+                    x: mouseX * 0.05,
+                    y: mouseY * 0.05,
+                    duration: 0.8,
+                    ease: 'power1.out'
+                });
+            });
+        }
+    };
+    initPhotographySystem();
+
+    // Initialize Ecosystem Dashboard
+    function initEcosystemDashboard() {
+        const mapCard = document.querySelector('.map-card');
+        const tooltip = document.getElementById('map-tooltip');
+        const hubLocations = document.querySelectorAll('.hub-location');
+        
+        if (mapCard && tooltip && hubLocations.length > 0) {
+            hubLocations.forEach(hub => {
+                hub.addEventListener('mouseenter', (e) => {
+                    const name = hub.getAttribute('data-name');
+                    const details = hub.getAttribute('data-details');
+                    tooltip.innerHTML = `<strong>${name}</strong><br/>${details}`;
+                    tooltip.style.opacity = '1';
+                });
+                
+                hub.addEventListener('mousemove', (e) => {
+                    const cardRect = mapCard.getBoundingClientRect();
+                    const x = e.clientX - cardRect.left + 15;
+                    const y = e.clientY - cardRect.top + 15;
+                    tooltip.style.transform = `translate(${x}px, ${y}px)`;
+                });
+                
+                hub.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+        
+        // Setup GSAP counters & route drawing trigger
+        ScrollTrigger.create({
+            trigger: '#slide-mkt-channels',
+            start: 'top 70%',
+            onEnter: () => {
+                // Route drawing animation
+                gsap.fromTo('.route-line', {
+                    strokeDashoffset: 100
+                }, {
+                    strokeDashoffset: 0,
+                    duration: 2.2,
+                    ease: 'power2.out',
+                    stagger: 0.15
+                });
+                
+                // Count from 0 to final values
+                document.querySelectorAll('.kpi-val, .live-stat-val').forEach(el => {
+                    const targetVal = parseFloat(el.getAttribute('data-val'));
+                    if (isNaN(targetVal)) return;
+                    
+                    const isInt = el.getAttribute('data-type') === 'int';
+                    const suffix = el.getAttribute('data-suffix') || '';
+                    
+                    const obj = { val: 0 };
+                    gsap.to(obj, {
+                        val: targetVal,
+                        duration: 2.0,
+                        ease: 'power2.out',
+                        onUpdate: () => {
+                            if (isInt) {
+                                el.textContent = Math.floor(obj.val).toLocaleString() + suffix;
+                            } else {
+                                el.textContent = obj.val.toFixed(1) + suffix;
+                            }
+                        }
+                    });
+                });
+            }
+        });
+
+        // Simulate live activity by periodically highlighting active routes
+        const routeLines = document.querySelectorAll('.route-line');
+        if (routeLines.length > 0) {
+            setInterval(() => {
+                const randomIdx = Math.floor(Math.random() * routeLines.length);
+                const route = routeLines[randomIdx];
+                gsap.fromTo(route, {
+                    stroke: 'rgba(34, 197, 94, 0.8)',
+                    strokeWidth: 2.5
+                }, {
+                    stroke: 'rgba(34, 197, 94, 0.2)',
+                    strokeWidth: 1.5,
+                    duration: 1.5,
+                    ease: 'power1.out'
+                });
+            }, 3000);
+        }
+    }
+    initEcosystemDashboard();
 
     ScrollTrigger.refresh();
 
