@@ -32,7 +32,7 @@
     --card-gap: 80px;
     
     /* Fonts */
-    --font-heading: 'Outfit', sans-serif;
+    --font-heading: 'Sora', 'Montserrat', 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'Fira Code', monospace;
     
@@ -549,28 +549,37 @@ p {
 
 /* Make hero text white so it reads over the image */
 #slide-hero .hero-content .meta-tag {
-    color: #ffffff !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-    font-family: 'Poppins', sans-serif !important;
-    font-weight: 700;
-    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 #slide-hero .hero-content .tagline {
-    color: rgba(255, 255, 255, 0.95) !important;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
-    font-family: 'Poppins', sans-serif !important;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.6;
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    font-family: 'Sora', 'Montserrat', 'Poppins', sans-serif !important;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+    line-height: 1.3;
+    letter-spacing: -1px;
+    margin-bottom: var(--space-md);
+}
+
+#slide-hero .hero-content .tagline .highlight-accent {
+    color: #22C55E !important;
+    font-weight: 800 !important;
 }
 
 #slide-hero .hero-content .mono-label {
-    color: #a8e878 !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-    font-family: 'Poppins', sans-serif !important;
+    color: #22C55E !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    font-family: 'Inter', sans-serif !important;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 
@@ -581,7 +590,7 @@ p {
 
 /* Slide 0: Hero Section Content */
 .hero-content {
-    max-width: 800px;
+    max-width: 1050px;
     z-index: 10;
     position: relative;
     text-align: center;
@@ -4141,4 +4150,212 @@ strong.highlight-sweep.active::after {
 .hub-pulse {
     animation: hubPulse 2s infinite ease-out;
     transform-origin: center;
+}
+
+/* Hide dot-nav when hero section is active and display the scroll indicator instead */
+body.hero-active .dot-nav {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(-50%) translateX(30px);
+}
+
+/* Glassmorphism Card in Hero Section */
+.hero-glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    padding: 180px 80px 72px 80px; /* Top padding leaves space for the centered logo */
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.12), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    width: 100%;
+    max-width: 1000px;
+    margin: 12vh auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+    animation: cardEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEntrance {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Override hero-content inside glass card */
+#slide-hero .hero-content {
+    max-width: 900px;
+    width: 100%;
+    padding: 0; /* Reset original padding */
+    margin: 0;
+}
+
+#slide-hero .hero-content .tagline {
+    font-size: clamp(2.3rem, 5.2vw, 3.6rem); /* 58-64px range on desktop */
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -1.5px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.18);
+}
+
+#slide-hero .hero-content .meta-tag {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+/* Premium Pill-shaped CTA Button for Hero Section */
+#slide-hero .cta-button {
+    border-radius: 50px;
+    padding: 16px 36px;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    background-color: #22C55E !important;
+    border-color: #22C55E !important;
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+#slide-hero .cta-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(34, 197, 94, 0.55);
+    background-color: #1eab50 !important;
+    border-color: #1eab50 !important;
+}
+
+/* Scroll to Explore Indicator */
+.scroll-explore-indicator {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeInScrollIndicator 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+@keyframes fadeInScrollIndicator {
+    0% { opacity: 0; transform: translateY(-50%) translateX(20px); }
+    100% { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+.scroll-explore-indicator .scroll-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.5);
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    animation: scrollTextPulse 2s ease-in-out infinite alternate;
+}
+
+.scroll-explore-indicator .scroll-line {
+    width: 1px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-explore-indicator .scroll-line-active {
+    width: 1px;
+    height: 30px;
+    background: #22C55E;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    animation: scrollLineMove 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes scrollTextPulse {
+    0% { opacity: 0.35; }
+    100% { opacity: 0.75; }
+}
+
+@keyframes scrollLineMove {
+    0% { top: -30px; }
+    100% { top: 80px; }
+}
+
+/* Floating Leaves System */
+.floating-leaves-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-leaf {
+    position: absolute;
+    color: rgba(34, 197, 94, 0.32);
+    pointer-events: none;
+    z-index: 2;
+    transform-origin: center;
+}
+
+@keyframes leafFloat {
+    0% {
+        transform: translateY(110vh) rotate(0deg) translateX(0);
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg) translateX(60px);
+    }
+}
+
+/* Ambient glow and overlays */
+body.hero-active #shared-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 130px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.25) 0%, rgba(34, 197, 94, 0) 75%);
+    filter: blur(25px);
+    z-index: -1;
+    pointer-events: none;
+    animation: logoGlowBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlowBreathe {
+    0% { opacity: 0.65; transform: translate(-50%, -50%) scale(0.95); }
+    100% { opacity: 1.05; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+#slide-hero::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.22) 0%,
+        rgba(0, 0, 0, 0.38) 50%,
+        rgba(0, 0, 0, 0.55) 100%
+    ) !important;
+}
+
+/* Responsive adjust for mobile */
+@media (max-width: 768px) {
+    .hero-glass-card {
+        margin-top: 10vh;
+        padding: 150px 24px 48px 24px;
+        border-radius: 20px;
+    }
+    .scroll-explore-indicator {
+        display: none !important;
+    }
 }

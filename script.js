@@ -54,6 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             gsap.set(split.words, { yPercent: 105 });
             el.splitWords = split.words;
+
+            // Apply highlight class to specific brand words in the hero tagline
+            if (el.classList.contains('tagline')) {
+                split.words.forEach(word => {
+                    const text = word.textContent.trim().replace(/[.,()]/g, '');
+                    if (['Reverse', 'Vending', 'Machine', 'RVM', 'John', 'Keells', 'Group'].includes(text)) {
+                        word.classList.add('highlight-accent');
+                    }
+                });
+            }
         }
     });
 
@@ -323,6 +333,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 initScrubbedLogoTrigger();
             });
         }
+
+        // Spawn premium floating leaves in the hero section
+        const leafContainer = document.createElement('div');
+        leafContainer.className = 'floating-leaves-container';
+        heroSection.appendChild(leafContainer);
+
+        const leafSVG = `
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;">
+                <path d="M21,3c-3,0-8,3-10,6C9,11,7,14,3,17c0,0,3,1,5,0c2-0.5,4-2,6-4c2,2,4,3.5,6,4c2,0.5,5,0,5,0C17,14,15,11,13,9C15,6,20,3,21,3z"/>
+            </svg>
+        `;
+
+        const numLeaves = 15;
+        for (let i = 0; i < numLeaves; i++) {
+            const leaf = document.createElement('div');
+            leaf.className = 'floating-leaf';
+            leaf.innerHTML = leafSVG;
+            
+            const size = Math.random() < 0.8 
+                ? Math.random() * 8 + 8   // Small: 8px to 16px
+                : Math.random() * 12 + 16; // Medium: 16px to 28px
+                
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const duration = Math.random() * 15 + 15;
+            const delay = Math.random() * -25;
+            const rotation = Math.random() * 360;
+            
+            leaf.style.width = `${size}px`;
+            leaf.style.height = `${size}px`;
+            leaf.style.left = `${startX}vw`;
+            leaf.style.top = `${startY}vh`;
+            leaf.style.transform = `rotate(${rotation}deg)`;
+            leaf.style.animation = `leafFloat ${duration}s linear infinite`;
+            leaf.style.animationDelay = `${delay}s`;
+            
+            leaf.style.opacity = (size < 16) 
+                ? (Math.random() * 0.20 + 0.12).toFixed(2)
+                : (Math.random() * 0.30 + 0.20).toFixed(2);
+                
+            if (size < 12) {
+                leaf.style.filter = 'blur(1px)';
+            } else if (size > 22) {
+                leaf.style.filter = 'blur(1.5px)';
+            }
+
+            leafContainer.appendChild(leaf);
+        }
     } else {
         isPageLoading = false;
     }
@@ -547,6 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial position on load
     if (heroSection) {
         updateSharedElements(heroSection);
+        document.body.classList.add('hero-active');
     }
 
     slides.forEach((slide, idx) => {
@@ -560,6 +619,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     dotLinks.forEach(link => link.classList.remove('active'));
                     if (dotLinks[idx]) {
                         dotLinks[idx].classList.add('active');
+                    }
+
+                    if (slide.id === 'slide-hero') {
+                        document.body.classList.add('hero-active');
+                    } else {
+                        document.body.classList.remove('hero-active');
                     }
 
                     // Dynamically morph background blobs based on active section attribute values
